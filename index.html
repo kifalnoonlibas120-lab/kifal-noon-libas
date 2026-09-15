@@ -9,7 +9,10 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link href="https://api.fontshare.com/v2/css?f[]=ranade@400,500,600,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -25,7 +28,7 @@ html{
 }
 
 body{
-  font-family:Poppins,Arial,sans-serif;
+  font-family:"Ranade",Arial,sans-serif;
   background:#fff;
   color:#171717;
 }
@@ -80,6 +83,7 @@ a{
   gap:10px;
   font-size:22px;
   font-weight:700;
+  font-family:"Playfair Display",serif;
 }
 
 .logo-icon{
@@ -90,7 +94,7 @@ a{
 }
 
 .logo span{
-  color:#b18a35;
+  color:#092328;
 }
 
 .nav{
@@ -146,10 +150,11 @@ a{
   font-size:48px;
   line-height:1.15;
   margin-bottom:18px;
+  font-family:"Playfair Display",serif;
 }
 
 .hero h1 span{
-  color:#b18a35;
+  color:#092328;
 }
 
 .hero p{
@@ -1417,7 +1422,7 @@ function renderProducts(){
 
   if(count){
 
-    count.textContent =
+    count.textContent=
       `${filtered.length} ${
         currentLanguage==="ur"
         ? "پروڈکٹس"
