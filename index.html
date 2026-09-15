@@ -1,2352 +1,1954 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>Kifal Noon Libas | Online Clothing Store</title>
-<meta name="description" content="Kifal Noon Libas - Quality clothing at great prices. Shop online with easy ordering and Cash on Delivery.">
-<meta name="keywords" content="Kifal Noon Libas, clothing, clothes, online clothing store, Pakistan, fashion, dresses">
-<meta name="author" content="Kifal Noon Libas">
-
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23ffffff'/%3E%3Cpath d='M25 25v50M25 50l38-25M25 50l38 25' stroke='%23111111' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M70 25v50' stroke='%23111111' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="description" content="Kifal Noon Libas - Online Clothing Store">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 *{
-box-sizing:border-box;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
-scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:#ffffff;
-color:#171717;
+  font-family:Poppins,Arial,sans-serif;
+  background:#fff;
+  color:#171717;
 }
 
 body.urdu{
-font-family:'Noto Naskh Arabic','Poppins',sans-serif;
+  font-family:"Noto Naskh Arabic",Arial,sans-serif;
 }
 
-header{
-background:#ffffff;
-color:#171717;
-padding:12px 6%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-position:sticky;
-top:0;
-z-index:20;
-border-bottom:1px solid #e5e5e5;
-box-shadow:0 2px 12px rgba(0,0,0,.05);
+button,input,select,textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#fff;
+  border-bottom:1px solid #e7e7e7;
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 28px;
 }
 
 .logo{
-display:flex;
-align-items:center;
-gap:12px;
-text-decoration:none;
-color:#171717;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:22px;
+  font-weight:700;
 }
 
-.logo-image{
-width:52px;
-height:52px;
-object-fit:contain;
-display:block;
-border-radius:12px;
-background:#ffffff;
-border:1px solid #e5e5e5;
+.logo-icon{
+  width:40px;
+  height:40px;
 }
 
-.logo-text{
-font-size:22px;
-font-weight:800;
-letter-spacing:.5px;
+.logo span{
+  color:#b18a35;
 }
 
-nav a{
-color:#333;
-text-decoration:none;
-margin:0 10px;
-font-size:14px;
-font-weight:500;
+.nav{
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
 
-nav a:hover{
-color:#000;
+.nav button,
+.header-btn{
+  background:none;
+  border:0;
+  padding:10px 13px;
+  border-radius:8px;
+  color:#222;
 }
 
-.header-actions{
-display:flex;
-align-items:center;
-gap:8px;
+.nav button:hover,
+.header-btn:hover{
+  background:#f3f3f3;
 }
 
-.cart-btn,
-.admin-btn,
-.settings-btn{
-background:#171717;
-color:#fff;
-border:0;
-padding:10px 14px;
-border-radius:8px;
-cursor:pointer;
-font-weight:700;
-font-family:inherit;
+.cart-btn{
+  background:#171717;
+  color:#fff;
+  border:0;
+  border-radius:8px;
+  padding:10px 16px;
 }
 
-.admin-btn{
-display:none;
+.cart-btn:hover{
+  background:#333;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 20px;
 }
 
 .hero{
-padding:110px 8%;
-text-align:center;
-background:#fafafa;
-border-bottom:1px solid #e8e8e8;
+  min-height:430px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:linear-gradient(135deg,#faf8f2,#fff);
+  border-bottom:1px solid #eee;
+  padding:60px 20px;
 }
 
 .hero h1{
-font-size:55px;
-margin:0 0 15px;
-font-weight:800;
+  font-size:48px;
+  line-height:1.15;
+  margin-bottom:18px;
+}
+
+.hero h1 span{
+  color:#b18a35;
 }
 
 .hero p{
-font-size:18px;
-color:#666;
+  color:#666;
+  font-size:17px;
+  margin-bottom:28px;
 }
 
-.shop-btn{
-display:inline-block;
-background:#171717;
-color:#fff;
-padding:14px 28px;
-border-radius:8px;
-text-decoration:none;
-margin-top:15px;
-font-weight:700;
+.main-btn{
+  display:inline-block;
+  background:#171717;
+  color:#fff;
+  padding:13px 22px;
+  border-radius:8px;
+  font-weight:600;
 }
 
-section{
-padding:70px 7%;
+.main-btn:hover{
+  background:#333;
 }
 
-h2{
-text-align:center;
-font-size:36px;
-margin-bottom:40px;
+.section{
+  padding:60px 0;
 }
 
-.products{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:22px;
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
 }
 
-.product{
-background:#fff;
-border:1px solid #e4e4e4;
-border-radius:14px;
-padding:18px;
-text-align:center;
-overflow:hidden;
-transition:.2s;
-box-shadow:0 3px 15px rgba(0,0,0,.04);
+.section-title h2{
+  font-size:28px;
 }
 
-.product:hover{
-transform:translateY(-4px);
-box-shadow:0 8px 25px rgba(0,0,0,.08);
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:22px;
+}
+
+.product-card{
+  border:1px solid #e5e5e5;
+  border-radius:12px;
+  overflow:hidden;
+  background:#fff;
+  transition:.2s;
+}
+
+.product-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
 }
 
 .product-image{
-width:100%;
-height:230px;
-object-fit:cover;
-border-radius:10px;
-background:#f4f4f4;
-display:block;
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  background:#f5f5f5;
 }
 
-.product h3{
-margin:18px 0 5px;
-font-size:18px;
+.product-info{
+  padding:16px;
 }
 
-.description{
-color:#777;
-font-size:13px;
-min-height:38px;
+.product-name{
+  font-size:18px;
+  font-weight:600;
+  margin-bottom:7px;
 }
 
-.price{
-font-size:20px;
-font-weight:700;
-margin:12px;
+.product-category{
+  color:#777;
+  font-size:13px;
+  margin-bottom:10px;
 }
 
-.category{
-color:#888;
-font-size:12px;
-margin-bottom:10px;
+.product-price{
+  font-size:19px;
+  font-weight:700;
+  margin-bottom:14px;
 }
 
-.option-label{
-display:block;
-text-align:left;
-color:#555;
-font-size:12px;
-margin:8px 0 4px;
+.product-btn{
+  width:100%;
+  border:0;
+  background:#171717;
+  color:#fff;
+  padding:11px;
+  border-radius:7px;
 }
 
-.option-select{
-width:100%;
-padding:10px;
-background:#fff;
-color:#222;
-border:1px solid #ccc;
-border-radius:7px;
-font-family:inherit;
+.product-btn:hover{
+  background:#333;
 }
 
-.add{
-background:#171717;
-color:#fff;
-border:0;
-padding:11px 20px;
-border-radius:7px;
-cursor:pointer;
-font-family:inherit;
-font-weight:700;
-width:100%;
-margin-top:10px;
-}
-
-.loading,
-.no-products{
-text-align:center;
-color:#777;
-grid-column:1/-1;
-padding:40px;
+.empty{
+  text-align:center;
+  color:#777;
+  padding:45px 10px;
+  border:1px dashed #ccc;
+  border-radius:10px;
 }
 
 .contact{
-background:#fafafa;
-color:#171717;
-text-align:center;
-border-top:1px solid #e5e5e5;
-border-bottom:1px solid #e5e5e5;
+  background:#fafafa;
+  border-top:1px solid #eee;
 }
 
-.contact p{
-color:#777;
+.contact-box{
+  text-align:center;
 }
 
-footer{
-background:#fff;
-color:#777;
-text-align:center;
-padding:25px;
-border-top:1px solid #e5e5e5;
+.contact-box h2{
+  margin-bottom:12px;
 }
 
-#cartBox{
-display:none;
-position:fixed;
-right:0;
-top:0;
-width:420px;
-max-width:100%;
-height:100%;
-background:#fff;
-color:#171717;
-z-index:50;
-padding:25px;
-overflow-y:auto;
-box-shadow:-5px 0 25px rgba(0,0,0,.12);
-border-left:1px solid #ddd;
+.contact-box p{
+  color:#666;
 }
 
-.close-btn{
-background:#eee;
-color:#222;
-border:0;
-padding:9px 14px;
-border-radius:7px;
-cursor:pointer;
-font-family:inherit;
+.footer{
+  padding:25px 20px;
+  text-align:center;
+  border-top:1px solid #eee;
+  color:#777;
+  font-size:14px;
 }
 
-.cart-item{
-border-bottom:1px solid #e5e5e5;
-padding:15px 0;
+/* MODALS */
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:2000;
+  background:rgba(0,0,0,.45);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 
-.cart-options{
-color:#777;
-font-size:13px;
-margin-top:5px;
+.modal-box{
+  width:100%;
+  max-width:520px;
+  max-height:90vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:14px;
+  padding:25px;
+  box-shadow:0 20px 60px rgba(0,0,0,.2);
 }
 
-.quantity{
-display:flex;
-align-items:center;
-gap:10px;
-margin-top:10px;
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
 }
 
-.quantity button{
-border:0;
-background:#171717;
-color:#fff;
-width:30px;
-height:30px;
-border-radius:5px;
-cursor:pointer;
-font-weight:bold;
+.modal-header h2{
+  font-size:23px;
 }
 
-.remove{
-background:#b91c1c!important;
-color:#fff!important;
-width:auto!important;
-padding:5px 10px;
+.close{
+  border:0;
+  background:#f2f2f2;
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  font-size:20px;
 }
 
-.checkout-btn{
-width:100%;
-background:#171717;
-color:#fff;
-border:0;
-padding:14px;
-border-radius:8px;
-cursor:pointer;
-font-size:16px;
-font-family:inherit;
-font-weight:700;
-margin-top:10px;
+.form-group{
+  margin-bottom:15px;
 }
 
-#checkoutBox,
-#adminBox,
-#settingsBox,
-#authBox{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.35);
-z-index:60;
-overflow-y:auto;
-padding:30px 15px;
+.form-group label{
+  display:block;
+  font-weight:600;
+  margin-bottom:7px;
 }
 
-.checkout-card,
-.admin-card,
-.settings-card,
-.auth-card{
-background:#fff;
-color:#171717;
-border:1px solid #ddd;
-max-width:650px;
-margin:auto;
-border-radius:14px;
-padding:25px;
-box-shadow:0 15px 50px rgba(0,0,0,.15);
+.input,
+select,
+textarea{
+  width:100%;
+  border:1px solid #d8d8d8;
+  border-radius:8px;
+  padding:11px 12px;
+  background:#fff;
+  outline:none;
 }
 
-.settings-card{
-max-width:560px;
+.input:focus,
+select:focus,
+textarea:focus{
+  border-color:#999;
 }
 
-.auth-card{
-max-width:500px;
+textarea{
+  min-height:100px;
+  resize:vertical;
 }
 
-.input{
-width:100%;
-padding:13px;
-margin:7px 0;
-background:#fff;
-color:#171717;
-border:1px solid #ccc;
-border-radius:7px;
-font-size:15px;
-font-family:inherit;
+.primary-btn{
+  width:100%;
+  background:#171717;
+  color:#fff;
+  border:0;
+  padding:12px;
+  border-radius:8px;
+  font-weight:600;
 }
 
-.input::placeholder{
-color:#999;
+.secondary-btn{
+  width:100%;
+  background:#f2f2f2;
+  color:#222;
+  border:0;
+  padding:12px;
+  border-radius:8px;
+  font-weight:600;
+  margin-top:8px;
 }
 
-.order-summary{
-background:#f7f7f7;
-padding:15px;
-border-radius:8px;
-margin:15px 0;
+.settings-item{
+  border:1px solid #e5e5e5;
+  border-radius:10px;
+  padding:16px;
+  margin-bottom:12px;
 }
 
-.payment{
-border:1px solid #ddd;
-border-radius:8px;
-padding:15px;
-margin:15px 0;
+.settings-item h3{
+  margin-bottom:5px;
 }
 
-.payment p{
-color:#222;
+.settings-item p{
+  color:#777;
+  font-size:14px;
+  margin-bottom:12px;
 }
 
-.place-order{
-width:100%;
-background:#171717;
-color:#fff;
-border:0;
-padding:15px;
-border-radius:8px;
-cursor:pointer;
-font-size:17px;
-font-family:inherit;
-font-weight:700;
+.language-row{
+  display:flex;
+  gap:10px;
 }
 
-.cancel{
-width:100%;
-background:#eee;
-color:#222;
-border:0;
-padding:12px;
-border-radius:8px;
-cursor:pointer;
-margin-top:8px;
-font-family:inherit;
+.language-btn{
+  flex:1;
+  border:1px solid #ddd;
+  background:#fff;
+  padding:10px;
+  border-radius:8px;
 }
 
-.success-icon{
-font-size:70px;
-text-align:center;
-}
-
-.admin-card{
-max-width:720px;
-}
-
-.admin-card h2{
-text-align:left;
-margin-top:0;
+.language-btn.active{
+  background:#171717;
+  color:#fff;
 }
 
 .admin-note{
-color:#777;
-font-size:13px;
+  font-size:13px;
+  color:#777;
+  margin-top:7px;
 }
 
-.chip-row{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-margin:8px 0;
+.admin-panel{
+  display:none;
 }
 
-.chip{
-background:#f1f1f1;
-border:1px solid #ddd;
-border-radius:20px;
-padding:6px 10px;
-font-size:13px;
+.admin-product{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  border:1px solid #eee;
+  padding:12px;
+  border-radius:9px;
+  margin-bottom:10px;
 }
 
-.chip button{
-background:none;
-border:0;
-color:#222;
-cursor:pointer;
-margin-left:5px;
+.admin-product img{
+  width:60px;
+  height:60px;
+  object-fit:cover;
+  border-radius:7px;
 }
 
-.add-row{
-display:flex;
-gap:8px;
+.admin-product-info{
+  flex:1;
 }
 
-.add-row .input{
-margin:0;
+.delete-btn{
+  border:0;
+  background:#f1f1f1;
+  padding:8px 10px;
+  border-radius:7px;
 }
 
-.admin-submit{
-width:100%;
-background:#171717;
-color:#fff;
-border:0;
-padding:14px;
-border-radius:8px;
-cursor:pointer;
-font-weight:700;
-font-family:inherit;
-margin-top:12px;
+.delete-btn:hover{
+  background:#ddd;
 }
 
-.divider{
-border:0;
-border-top:1px solid #e5e5e5;
-margin:20px 0;
+/* CART */
+.cart-drawer{
+  position:fixed;
+  top:0;
+  right:-430px;
+  z-index:3000;
+  width:420px;
+  max-width:100%;
+  height:100%;
+  background:#fff;
+  box-shadow:-10px 0 35px rgba(0,0,0,.15);
+  transition:.25s;
+  display:flex;
+  flex-direction:column;
 }
 
-.small-btn{
-background:#171717;
-color:#fff;
-border:0;
-padding:10px 12px;
-border-radius:7px;
-cursor:pointer;
-font-family:inherit;
+body.urdu .cart-drawer{
+  right:auto;
+  left:-430px;
 }
 
-.admin-products{
-margin-top:20px;
+.cart-drawer.open{
+  right:0;
 }
 
-.admin-product-row{
-border:1px solid #ddd;
-padding:12px;
-border-radius:8px;
-margin:8px 0;
-display:flex;
-justify-content:space-between;
-gap:10px;
-align-items:center;
+body.urdu .cart-drawer.open{
+  right:auto;
+  left:0;
 }
 
-.danger{
-background:#b91c1c!important;
-color:#fff!important;
-border:0;
-padding:8px 12px;
-border-radius:7px;
-cursor:pointer;
+.cart-head{
+  padding:20px;
+  border-bottom:1px solid #eee;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.modal-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
+.cart-items{
+  flex:1;
+  overflow:auto;
+  padding:15px;
 }
 
-.modal-top h2{
-margin:0;
-text-align:left;
+.cart-item{
+  display:flex;
+  gap:12px;
+  border-bottom:1px solid #eee;
+  padding:13px 0;
 }
 
-.settings-row{
-padding:18px 0;
-border-bottom:1px solid #e5e5e5;
+.cart-item img{
+  width:70px;
+  height:70px;
+  object-fit:cover;
+  border-radius:7px;
 }
 
-.language-select{
-width:100%;
-padding:12px;
-margin-top:8px;
-border:1px solid #ccc;
-border-radius:8px;
-background:#fff;
-font-family:inherit;
-font-size:15px;
+.cart-item-info{
+  flex:1;
 }
 
-.settings-note{
-color:#777;
-font-size:13px;
-margin:8px 0 0;
+.qty-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:8px;
 }
 
-.admin-email-box{
-padding-top:20px;
+.qty-btn{
+  border:1px solid #ddd;
+  background:#fff;
+  width:27px;
+  height:27px;
+  border-radius:5px;
 }
 
-.admin-email{
-background:#f6f6f6;
-border:1px solid #ddd;
-padding:12px;
-border-radius:8px;
-margin-top:8px;
-font-weight:600;
-word-break:break-word;
+.cart-foot{
+  padding:18px;
+  border-top:1px solid #eee;
 }
 
-.signup-button{
-width:100%;
-background:#171717;
-color:#fff;
-border:0;
-padding:14px;
-border-radius:8px;
-cursor:pointer;
-font-weight:700;
-font-family:inherit;
-font-size:15px;
-margin-top:12px;
+.total-row{
+  display:flex;
+  justify-content:space-between;
+  font-weight:700;
+  font-size:18px;
+  margin-bottom:13px;
 }
 
-.signup-only{
-text-align:center;
-color:#777;
-font-size:12px;
-margin-top:7px;
+/* CHECKOUT */
+.summary{
+  background:#f8f8f8;
+  border-radius:9px;
+  padding:14px;
+  margin-bottom:16px;
 }
 
-#successBox{
-display:none;
-text-align:center;
-padding:40px 20px;
+.summary-line{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:7px;
 }
 
-.auth-status{
-color:#777;
-font-size:14px;
+.success{
+  text-align:center;
+  padding:30px 10px;
 }
 
-.auth-error{
-color:#b91c1c;
-font-size:13px;
-min-height:18px;
+.success-icon{
+  font-size:50px;
+  margin-bottom:10px;
 }
 
-@media(max-width:1000px){
-.products{
-grid-template-columns:repeat(3,1fr);
-}
+/* SEARCH */
+.search-wrap{
+  margin-bottom:25px;
 }
 
+.search-input{
+  width:100%;
+  border:1px solid #ddd;
+  padding:13px 15px;
+  border-radius:9px;
+  outline:none;
+}
+
+/* RESPONSIVE */
 @media(max-width:800px){
-.products{
-grid-template-columns:repeat(2,1fr);
-}
+  .header{
+    padding:0 12px;
+  }
 
-nav{
-display:none;
-}
+  .nav{
+    display:none;
+  }
 
-.hero h1{
-font-size:40px;
-}
+  .hero h1{
+    font-size:36px;
+  }
 
-.settings-btn,
-.admin-btn,
-.cart-btn{
-font-size:12px;
-padding:9px;
-}
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .product-image{
+    height:210px;
+  }
 }
 
 @media(max-width:500px){
-.products{
-grid-template-columns:1fr;
-}
-
-header{
-padding:10px 15px;
-}
-
-.logo-image{
-width:42px;
-height:42px;
-}
-
-.logo-text{
-font-size:18px;
-}
-
-.hero{
-padding:70px 20px;
-}
-
-.hero h1{
-font-size:35px;
-}
-
-section{
-padding:50px 20px;
-}
-
-.header-actions{
-gap:5px;
-}
-
-.settings-btn,
-.admin-btn,
-.cart-btn{
-padding:8px;
-}
+  .product-grid{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<header class="header">
+  <a href="#" class="logo">
+    <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5" y="5" width="90" height="90" rx="20" fill="#171717"/>
+      <path d="M25 32h50v42H25z" fill="none" stroke="#d2ad62" stroke-width="6"/>
+      <path d="M35 32c0-9 6-15 15-15s15 6 15 15" fill="none" stroke="#d2ad62" stroke-width="6"/>
+      <path d="M35 50h30M35 62h22" stroke="#d2ad62" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+    <span>Kifal Noon <span>Libas</span></span>
+  </a>
 
-<a href="#home" class="logo">
+  <nav class="nav">
+    <button onclick="scrollToSection('home')" data-i18n="home">Home</button>
+    <button onclick="scrollToSection('products')" data-i18n="products">Products</button>
+    <button onclick="scrollToSection('contact')" data-i18n="contact">Contact</button>
+  </nav>
 
-<svg class="logo-image" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-<rect width="100" height="100" rx="22" fill="#ffffff"/>
-<path d="M25 25V75M25 50L63 25M25 50L63 75"
-stroke="#171717"
-stroke-width="8"
-fill="none"
-stroke-linecap="round"
-stroke-linejoin="round"/>
-<path d="M72 25V75"
-stroke="#171717"
-stroke-width="8"
-stroke-linecap="round"/>
-</svg>
-
-<div class="logo-text">Kifal Noon Libas</div>
-
-</a>
-
-<nav>
-<a href="#home" data-i18n="home">Home</a>
-<a href="#products" data-i18n="products">Products</a>
-<a href="#contact" data-i18n="contact">Contact</a>
-</nav>
-
-<div class="header-actions">
-<button id="adminButton" class="admin-btn" onclick="openAdmin()" data-i18n="adminPanel">Admin Panel</button>
-<button class="settings-btn" onclick="openSettings()" data-i18n="settings">Settings</button>
-<button class="cart-btn" onclick="openCart()" data-i18n="cart">Cart (<span id="count">0</span>)</button>
-</div>
-
+  <div style="display:flex;gap:7px;align-items:center;">
+    <button class="header-btn" onclick="openSettings()" data-i18n="settings">Settings</button>
+    <button id="adminButton" class="header-btn" style="display:none" onclick="openAdmin()" data-i18n="adminPanel">Admin Panel</button>
+    <button class="cart-btn" onclick="openCart()">
+      🛒 <span data-i18n="cart">Cart</span> (<span id="cartCount">0</span>)
+    </button>
+  </div>
 </header>
 
+<main>
+
 <section class="hero" id="home">
-<h1 data-i18n="welcome">Welcome to Kifal Noon Libas</h1>
-<p data-i18n="heroText">Quality clothing. Great prices. Easy ordering.</p>
-<a href="#products" class="shop-btn" data-i18n="shopNow">Shop Now</a>
+  <div>
+    <h1>
+      <span data-i18n="welcome">Welcome to</span><br>
+      <span>Kifal Noon Libas</span>
+    </h1>
+
+    <p data-i18n="heroText">
+      Discover beautiful clothing and shop your favorite styles online.
+    </p>
+
+    <a href="#products" class="main-btn" data-i18n="shopNow">
+      Shop Now
+    </a>
+  </div>
 </section>
 
-<section id="products">
-<h2 data-i18n="ourProducts">Our Products</h2>
+<section class="section" id="products">
+  <div class="container">
 
-<div class="products" id="productsContainer">
-<div class="loading" data-i18n="loading">Loading products...</div>
-</div>
+    <div class="section-title">
+      <h2 data-i18n="ourProducts">Our Products</h2>
+      <span id="productCount">0 Products</span>
+    </div>
 
+    <div class="search-wrap">
+      <input
+        id="searchInput"
+        class="search-input"
+        type="search"
+        placeholder="Search products..."
+        data-i18n-placeholder="search"
+        oninput="renderProducts()"
+      >
+    </div>
+
+    <div id="productGrid" class="product-grid"></div>
+
+    <div id="noProducts" class="empty" style="display:none" data-i18n="noProducts">
+      No products available yet.
+    </div>
+
+  </div>
 </section>
 
-<section class="contact" id="contact">
-<h2 data-i18n="contactTitle">Contact Kifal Noon Libas</h2>
-<p data-i18n="contactText">Thank you for shopping with Kifal Noon Libas.</p>
+<section class="section contact" id="contact">
+  <div class="container contact-box">
+    <h2 data-i18n="contactTitle">Contact Us</h2>
+    <p data-i18n="contactText">
+      For orders or questions, please contact us.
+    </p>
+  </div>
 </section>
 
-<footer>
-© 2026 Kifal Noon Libas. All Rights Reserved.
+</main>
+
+<footer class="footer">
+  © 2026 Kifal Noon Libas. <span data-i18n="rights">All rights reserved.</span>
 </footer>
 
 
-<!-- CART -->
+<!-- SETTINGS -->
+<div class="modal" id="settingsModal">
+  <div class="modal-box">
 
-<div id="cartBox">
+    <div class="modal-header">
+      <h2 data-i18n="settings">Settings</h2>
+      <button class="close" onclick="closeModal('settingsModal')">×</button>
+    </div>
 
-<button class="close-btn" onclick="closeCart()" data-i18n="close">Close</button>
+    <div class="settings-item">
+      <h3 data-i18n="languageTitle">🌐 Language</h3>
+      <p data-i18n="languageText">
+        Choose the language you want to use.
+      </p>
 
-<h2 data-i18n="yourCart">Your Cart</h2>
+      <div class="language-row">
+        <button id="englishBtn" class="language-btn active" onclick="setLanguage('en')">
+          English
+        </button>
 
-<div id="items"></div>
+        <button id="urduBtn" class="language-btn" onclick="setLanguage('ur')">
+          اردو
+        </button>
+      </div>
+    </div>
 
-<h3>
-<span data-i18n="total">Total</span>:
-Rs. <span id="total">0</span>
-</h3>
+    <div class="settings-item">
+      <h3 data-i18n="storeAdmin">Store Admin</h3>
+      <p data-i18n="adminOnly">
+        Only for Store Admin
+      </p>
 
-<button class="checkout-btn" onclick="openCheckout()" data-i18n="checkout">
-Proceed to Checkout
-</button>
+      <button class="primary-btn" onclick="openSignup()" data-i18n="signUp">
+        Sign Up
+      </button>
 
+      <div class="admin-note" data-i18n="adminNote">
+        This option is only for the store administrator.
+      </div>
+    </div>
+
+  </div>
 </div>
+
+
+<!-- SIGN UP -->
+<div class="modal" id="signupModal">
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h2 data-i18n="adminSignup">Store Admin Sign Up</h2>
+      <button class="close" onclick="closeModal('signupModal')">×</button>
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="adminEmail">Admin Email</label>
+
+      <!-- IMPORTANT: blank by default -->
+      <input
+        id="authEmail"
+        class="input"
+        type="email"
+        placeholder="Enter admin email"
+      >
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="password">Password</label>
+      <input
+        id="authPassword"
+        class="input"
+        type="password"
+        placeholder="Enter password"
+      >
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="confirmPassword">Confirm Password</label>
+      <input
+        id="authPassword2"
+        class="input"
+        type="password"
+        placeholder="Confirm password"
+      >
+    </div>
+
+    <p id="signupMessage" style="margin-bottom:12px;"></p>
+
+    <button class="primary-btn" onclick="submitSignup()" data-i18n="createAccount">
+      Create Admin Account
+    </button>
+
+  </div>
+</div>
+
+
+<!-- ADMIN LOGIN -->
+<div class="modal" id="loginModal">
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h2 data-i18n="adminLogin">Admin Login</h2>
+      <button class="close" onclick="closeModal('loginModal')">×</button>
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="email">Email</label>
+      <input id="loginEmail" class="input" type="email">
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="password">Password</label>
+      <input id="loginPassword" class="input" type="password">
+    </div>
+
+    <p id="loginMessage"></p>
+
+    <button class="primary-btn" onclick="loginAdmin()" data-i18n="login">
+      Login
+    </button>
+
+  </div>
+</div>
+
+
+<!-- ADMIN PANEL -->
+<div class="modal" id="adminModal">
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h2 data-i18n="adminPanel">Admin Panel</h2>
+      <button class="close" onclick="closeModal('adminModal')">×</button>
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="productName">Product Name</label>
+      <input id="productName" class="input">
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="category">Category</label>
+      <input id="productCategory" class="input">
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="price">Price</label>
+      <input id="productPrice" class="input" type="number">
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="description">Description</label>
+      <textarea id="productDescription"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="sizes">Sizes</label>
+      <input id="productSizes" class="input" placeholder="S, M, L, XL">
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="colors">Colors</label>
+      <input id="productColors" class="input" placeholder="Black, White">
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="image">Product Image</label>
+      <input id="productImage" class="input" type="file" accept="image/*">
+    </div>
+
+    <button class="primary-btn" onclick="addProduct()" data-i18n="addProduct">
+      Add Product
+    </button>
+
+    <hr style="margin:25px 0;border:0;border-top:1px solid #eee;">
+
+    <h3 style="margin-bottom:15px;" data-i18n="currentProducts">
+      Current Products
+    </h3>
+
+    <div id="adminProducts"></div>
+
+    <button class="secondary-btn" onclick="logoutAdmin()" data-i18n="logout">
+      Logout
+    </button>
+
+  </div>
+</div>
+
+
+<!-- CART -->
+<aside class="cart-drawer" id="cartDrawer">
+
+  <div class="cart-head">
+    <h2 data-i18n="cart">Cart</h2>
+    <button class="close" onclick="closeCart()">×</button>
+  </div>
+
+  <div id="cartItems" class="cart-items"></div>
+
+  <div class="cart-foot">
+    <div class="total-row">
+      <span data-i18n="total">Total</span>
+      <span>Rs. <span id="cartTotal">0</span></span>
+    </div>
+
+    <button class="primary-btn" onclick="openCheckout()" data-i18n="checkout">
+      Checkout
+    </button>
+  </div>
+
+</aside>
 
 
 <!-- CHECKOUT -->
-
-<div id="checkoutBox">
-
-<div class="checkout-card">
-
-<div id="checkoutContent">
-
-<div class="modal-top">
-<h2 data-i18n="checkoutTitle">Checkout</h2>
-<button class="close-btn" onclick="closeCheckout()" data-i18n="close">Close</button>
-</div>
-
-<p data-i18n="deliveryDetails">Please enter your delivery details.</p>
-
-<input id="name" class="input" data-i18n-placeholder="fullName" placeholder="Full Name">
-
-<input id="phone" class="input" data-i18n-placeholder="phone" placeholder="Phone Number" type="tel">
-
-<input id="city" class="input" data-i18n-placeholder="city" placeholder="City">
-
-<textarea id="address"
-class="input"
-data-i18n-placeholder="address"
-placeholder="Complete Delivery Address"
-rows="4"></textarea>
-
-<div class="order-summary">
-
-<h3 data-i18n="orderSummary">Order Summary</h3>
-
-<div id="checkoutItems"></div>
-
-<hr>
-
-<strong>
-<span data-i18n="total">Total</span>:
-Rs. <span id="checkoutTotal">0</span>
-</strong>
-
-</div>
-
-<div class="payment">
-
-<strong data-i18n="paymentMethod">Payment Method</strong>
-
-<p data-i18n="cod">Cash on Delivery</p>
-
-<small data-i18n="payDelivery">Pay when your order is delivered to you.</small>
-
-</div>
-
-<button class="place-order" onclick="placeOrder()" data-i18n="placeOrder">
-Place Order
-</button>
-
-<button class="cancel" onclick="closeCheckout()" data-i18n="cancel">
-Cancel
-</button>
-
-</div>
-
-
-<div id="successBox">
-
-<div class="success-icon">✓</div>
-
-<h2 data-i18n="orderPlaced">Order Placed!</h2>
-
-<p data-i18n="thankYou">Thank you for shopping with Kifal Noon Libas.</p>
-
-<p data-i18n="orderReceived">Your order has been received successfully.</p>
-
-<strong data-i18n="paymentCOD">Payment: Cash on Delivery</strong>
-
-<br><br>
-
-<button class="checkout-btn" onclick="finishOrder()" data-i18n="continueShopping">
-Continue Shopping
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- SETTINGS -->
-
-<div id="settingsBox">
-
-<div class="settings-card">
-
-<div class="modal-top">
-
-<h2 data-i18n="settings">Settings</h2>
-
-<button class="close-btn" onclick="closeSettings()" data-i18n="close">
-Close
-</button>
-
-</div>
-
-
-<div class="settings-row">
-
-<strong data-i18n="languages">Languages</strong>
-
-<select id="languageSelect" class="language-select" onchange="changeLanguage()">
-
-<option value="en">English</option>
-<option value="ur">Urdu</option>
-
-</select>
-
-<p class="settings-note" data-i18n="languageNote">
-Choose your preferred website language.
-</p>
-
-</div>
-
-
-<div class="admin-email-box">
-
-<strong data-i18n="storeAdminEmail">
-Store Admin Email
-</strong>
-
-<div class="admin-email">
-kifal.noon.libas.120@gmail.com
-</div>
-
-<button class="signup-button" onclick="openAuth()">
-<span data-i18n="signUp">Sign Up</span>
-</button>
-
-<div class="signup-only" data-i18n="onlyAdmin">
-Only for Store Admin
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- AUTH -->
-
-<div id="authBox">
-
-<div class="auth-card">
-
-<div class="modal-top">
-
-<h2 data-i18n="adminSignUp">Store Admin Sign Up</h2>
-
-<button class="close-btn" onclick="closeAuth()" data-i18n="close">
-Close
-</button>
-
-</div>
-
-<p class="auth-status" data-i18n="adminOnlyMessage">
-This sign up is only for the Store Admin.
-</p>
-
-<input
-id="authEmail"
-class="input"
-type="email"
-value="kifal.noon.libas.120@gmail.com"
-readonly
->
-
-<input
-id="authPassword"
-class="input"
-type="password"
-data-i18n-placeholder="password"
-placeholder="Password"
->
-
-<input
-id="authPassword2"
-class="input"
-type="password"
-data-i18n-placeholder="confirmPassword"
-placeholder="Confirm Password"
->
-
-<div id="authError" class="auth-error"></div>
-
-<button class="place-order" onclick="submitSignup()" data-i18n="signUp">
-Sign Up
-</button>
-
-</div>
-
-</div>
-
-
-<!-- ADMIN -->
-
-<div id="adminBox">
-
-<div class="admin-card">
-
-<div class="modal-top">
-
-<h2 data-i18n="adminPanel">
-Admin Panel
-</h2>
-
-<button class="close-btn" onclick="closeAdmin()" data-i18n="close">
-Close
-</button>
-
-</div>
-
-<p class="admin-note">
-Admin account: kifal.noon.libas.120@gmail.com
-</p>
-
-<hr class="divider">
-
-<input
-id="productName"
-class="input"
-data-i18n-placeholder="productName"
-placeholder="Product Name"
->
-
-<input
-id="productCategory"
-class="input"
-data-i18n-placeholder="category"
-placeholder="Category (e.g. Clothing)"
->
-
-<input
-id="productPrice"
-class="input"
-type="number"
-min="0"
-data-i18n-placeholder="price"
-placeholder="Price"
->
-
-<textarea
-id="productDescription"
-class="input"
-rows="3"
-data-i18n-placeholder="description"
-placeholder="Product Description"></textarea>
-
-<label class="option-label" data-i18n="sizes">Sizes</label>
-
-<div class="add-row">
-
-<input
-id="sizeInput"
-class="input"
-data-i18n-placeholder="sizesExample"
-placeholder="e.g. S, M, L, XL"
->
-
-<button class="small-btn" onclick="addSize()" data-i18n="addSize">
-Add Size
-</button>
-
-</div>
-
-<div id="sizeChips" class="chip-row"></div>
-
-<label class="option-label" data-i18n="colors">Colors</label>
-
-<div class="add-row">
-
-<input
-id="colorInput"
-class="input"
-data-i18n-placeholder="colorsExample"
-placeholder="e.g. Black, White, Blue"
->
-
-<button class="small-btn" onclick="addColor()" data-i18n="addColor">
-Add Color
-</button>
-
-</div>
-
-<div id="colorChips" class="chip-row"></div>
-
-<label class="option-label" data-i18n="productImage">
-Product Image
-</label>
-
-<input
-id="productImage"
-class="input"
-type="file"
-accept="image/*"
->
-
-<button class="admin-submit" onclick="addProduct()" data-i18n="addProduct">
-Add Product
-</button>
-
-<hr class="divider">
-
-<h3 data-i18n="currentProducts">
-Current Products
-</h3>
-
-<div id="adminProducts" class="admin-products">
-Loading...
-</div>
-
-</div>
-
+<div class="modal" id="checkoutModal">
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h2 data-i18n="checkout">Checkout</h2>
+      <button class="close" onclick="closeModal('checkoutModal')">×</button>
+    </div>
+
+    <div id="checkoutForm">
+
+      <div class="summary">
+        <div id="checkoutSummary"></div>
+
+        <div class="summary-line">
+          <strong data-i18n="total">Total</strong>
+          <strong>Rs. <span id="checkoutTotal">0</span></strong>
+        </div>
+
+        <div style="margin-top:10px;">
+          <strong data-i18n="cod">Cash on Delivery</strong>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="fullName">Full Name</label>
+        <input id="orderName" class="input">
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="phone">Phone</label>
+        <input id="orderPhone" class="input" type="tel">
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="city">City</label>
+        <input id="orderCity" class="input">
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="address">Complete Delivery Address</label>
+        <textarea id="orderAddress"></textarea>
+      </div>
+
+      <p id="orderMessage"></p>
+
+      <button class="primary-btn" onclick="placeOrder()" data-i18n="placeOrder">
+        Place Order
+      </button>
+
+    </div>
+
+    <div id="orderSuccess" class="success" style="display:none;">
+      <div class="success-icon">✓</div>
+      <h2 data-i18n="orderPlaced">Order Placed!</h2>
+      <p style="margin-top:8px;color:#666;" data-i18n="thankYou">
+        Thank you for your order.
+      </p>
+      <button class="primary-btn" style="margin-top:18px;" onclick="closeModal('checkoutModal')" data-i18n="close">
+        Close
+      </button>
+    </div>
+
+  </div>
 </div>
 
 
 <script>
+/* =========================================================
+   SUPABASE
+   ========================================================= */
 
-/* =====================================================
-   KIFAL NOON LIBAS SUPABASE
-===================================================== */
+const SUPABASE_URL = "PASTE_NEW_KIFAL_SUPABASE_URL_HERE";
+const SUPABASE_KEY = "PASTE_NEW_KIFAL_SUPABASE_PUBLISHABLE_KEY_HERE";
 
-const SUPABASE_URL="PASTE_NEW_KIFAL_SUPABASE_URL_HERE";
+const ADMIN_EMAIL = "kifal.noon.libas.120@gmail.com";
 
-const SUPABASE_KEY="PASTE_NEW_KIFAL_SUPABASE_PUBLISHABLE_KEY_HERE";
-
-const ADMIN_EMAIL="kifal.noon.libas.120@gmail.com";
-
-const supabaseClient=window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
 );
 
 
-let cart=[];
-let sizes=[];
-let colors=[];
+/* =========================================================
+   TRANSLATIONS
+   ========================================================= */
 
+const translations = {
 
-/* =====================================================
-   LANGUAGE
-===================================================== */
+  en:{
+    home:"Home",
+    products:"Products",
+    contact:"Contact",
+    settings:"Settings",
+    adminPanel:"Admin Panel",
+    cart:"Cart",
+    welcome:"Welcome to",
+    heroText:"Discover beautiful clothing and shop your favorite styles online.",
+    shopNow:"Shop Now",
+    ourProducts:"Our Products",
+    search:"Search products...",
+    noProducts:"No products available yet.",
+    contactTitle:"Contact Us",
+    contactText:"For orders or questions, please contact us.",
+    rights:"All rights reserved.",
+    languageTitle:"🌐 Language",
+    languageText:"Choose the language you want to use.",
+    storeAdmin:"Store Admin",
+    adminOnly:"Only for Store Admin",
+    signUp:"Sign Up",
+    adminNote:"This option is only for the store administrator.",
+    adminSignup:"Store Admin Sign Up",
+    adminEmail:"Admin Email",
+    password:"Password",
+    confirmPassword:"Confirm Password",
+    createAccount:"Create Admin Account",
+    adminLogin:"Admin Login",
+    email:"Email",
+    login:"Login",
+    productName:"Product Name",
+    category:"Category",
+    price:"Price",
+    description:"Description",
+    sizes:"Sizes",
+    colors:"Colors",
+    image:"Product Image",
+    addProduct:"Add Product",
+    currentProducts:"Current Products",
+    logout:"Logout",
+    total:"Total",
+    checkout:"Checkout",
+    cod:"Cash on Delivery",
+    fullName:"Full Name",
+    phone:"Phone",
+    city:"City",
+    address:"Complete Delivery Address",
+    placeOrder:"Place Order",
+    orderPlaced:"Order Placed!",
+    thankYou:"Thank you for your order.",
+    close:"Close"
+  },
 
-const translations={
-
-en:{
-home:"Home",
-products:"Products",
-contact:"Contact",
-adminPanel:"Admin Panel",
-settings:"Settings",
-cart:"Cart",
-welcome:"Welcome to Kifal Noon Libas",
-heroText:"Quality clothing. Great prices. Easy ordering.",
-shopNow:"Shop Now",
-ourProducts:"Our Products",
-loading:"Loading products...",
-contactTitle:"Contact Kifal Noon Libas",
-contactText:"Thank you for shopping with Kifal Noon Libas.",
-close:"Close",
-yourCart:"Your Cart",
-total:"Total",
-checkout:"Proceed to Checkout",
-checkoutTitle:"Checkout",
-deliveryDetails:"Please enter your delivery details.",
-fullName:"Full Name",
-phone:"Phone Number",
-city:"City",
-address:"Complete Delivery Address",
-orderSummary:"Order Summary",
-paymentMethod:"Payment Method",
-cod:"Cash on Delivery",
-payDelivery:"Pay when your order is delivered to you.",
-placeOrder:"Place Order",
-cancel:"Cancel",
-orderPlaced:"Order Placed!",
-thankYou:"Thank you for shopping with Kifal Noon Libas.",
-orderReceived:"Your order has been received successfully.",
-paymentCOD:"Payment: Cash on Delivery",
-continueShopping:"Continue Shopping",
-languages:"Languages",
-languageNote:"Choose your preferred website language.",
-storeAdminEmail:"Store Admin Email",
-signUp:"Sign Up",
-onlyAdmin:"Only for Store Admin",
-adminSignUp:"Store Admin Sign Up",
-adminOnlyMessage:"This sign up is only for the Store Admin.",
-password:"Password",
-confirmPassword:"Confirm Password",
-productName:"Product Name",
-category:"Category (e.g. Clothing)",
-price:"Price",
-description:"Product Description",
-sizes:"Sizes",
-sizesExample:"e.g. S, M, L, XL",
-addSize:"Add Size",
-colors:"Colors",
-colorsExample:"e.g. Black, White, Blue",
-addColor:"Add Color",
-productImage:"Product Image",
-addProduct:"Add Product",
-currentProducts:"Current Products",
-selectSize:"Select Size",
-selectColor:"Select Color",
-addToCart:"Add to Cart",
-remove:"Remove",
-emptyCart:"Your cart is empty.",
-noProducts:"No products available yet.",
-loginRequired:"Please sign up as the Store Admin first.",
-passwordMismatch:"Passwords do not match.",
-passwordShort:"Password must be at least 6 characters.",
-signupSuccess:"Sign up successful. You can now use the Admin Panel.",
-signupError:"Unable to create the admin account.",
-notAdmin:"Only the Store Admin email is allowed."
-},
-
-ur:{
-home:"Home",
-products:"Products",
-contact:"Rabita",
-adminPanel:"Admin Panel",
-settings:"Settings",
-cart:"Cart",
-welcome:"Kifal Noon Libas mein khush aamdeed",
-heroText:"Behtareen kapray. Munasib prices. Asaan ordering.",
-shopNow:"Abhi Shopping Karein",
-ourProducts:"Hamari Products",
-loading:"Products load ho rahi hain...",
-contactTitle:"Kifal Noon Libas se Rabita",
-contactText:"Kifal Noon Libas se shopping karne ka shukriya.",
-close:"Band Karein",
-yourCart:"Aap ka Cart",
-total:"Kul",
-checkout:"Checkout par Jayein",
-checkoutTitle:"Checkout",
-deliveryDetails:"Delivery ki details enter karein.",
-fullName:"Poora Naam",
-phone:"Phone Number",
-city:"Shehar",
-address:"Mukammal Delivery Address",
-orderSummary:"Order Summary",
-paymentMethod:"Payment Method",
-cod:"Cash on Delivery",
-payDelivery:"Order deliver hone par payment karein.",
-placeOrder:"Order Place Karein",
-cancel:"Cancel",
-orderPlaced:"Order Place Ho Gaya!",
-thankYou:"Kifal Noon Libas se shopping karne ka shukriya.",
-orderReceived:"Aap ka order successfully receive ho gaya hai.",
-paymentCOD:"Payment: Cash on Delivery",
-continueShopping:"Shopping Jari Rakhein",
-languages:"Languages",
-languageNote:"Apni pasand ki website language select karein.",
-storeAdminEmail:"Store Admin Email",
-signUp:"Sign Up",
-onlyAdmin:"Only for Store Admin",
-adminSignUp:"Store Admin Sign Up",
-adminOnlyMessage:"Yeh Sign Up sirf Store Admin ke liye hai.",
-password:"Password",
-confirmPassword:"Password Dobara Likhein",
-productName:"Product Name",
-category:"Category (e.g. Clothing)",
-price:"Price",
-description:"Product Description",
-sizes:"Sizes",
-sizesExample:"e.g. S, M, L, XL",
-addSize:"Size Add Karein",
-colors:"Colors",
-colorsExample:"e.g. Black, White, Blue",
-addColor:"Color Add Karein",
-productImage:"Product Image",
-addProduct:"Product Add Karein",
-currentProducts:"Current Products",
-selectSize:"Size Select Karein",
-selectColor:"Color Select Karein",
-addToCart:"Cart mein Add Karein",
-remove:"Remove",
-emptyCart:"Aap ka cart khaali hai.",
-noProducts:"Abhi koi product available nahi.",
-loginRequired:"Pehle Store Admin ke taur par Sign Up karein.",
-passwordMismatch:"Passwords match nahi kar rahe.",
-passwordShort:"Password kam az kam 6 characters ka hona chahiye.",
-signupSuccess:"Sign Up successful. Ab aap Admin Panel use kar sakte hain.",
-signupError:"Admin account create nahi ho saka.",
-notAdmin:"Sirf Store Admin email allowed hai."
-}
+  ur:{
+    home:"ہوم",
+    products:"پروڈکٹس",
+    contact:"رابطہ",
+    settings:"سیٹنگز",
+    adminPanel:"ایڈمن پینل",
+    cart:"کارٹ",
+    welcome:"خوش آمدید",
+    heroText:"خوبصورت کپڑے دریافت کریں اور اپنی پسند کے اسٹائل آن لائن خریدیں۔",
+    shopNow:"خریداری کریں",
+    ourProducts:"ہماری پروڈکٹس",
+    search:"پروڈکٹس تلاش کریں...",
+    noProducts:"ابھی کوئی پروڈکٹ دستیاب نہیں۔",
+    contactTitle:"ہم سے رابطہ کریں",
+    contactText:"آرڈر یا کسی سوال کے لیے ہم سے رابطہ کریں۔",
+    rights:"تمام حقوق محفوظ ہیں۔",
+    languageTitle:"🌐 زبان",
+    languageText:"وہ زبان منتخب کریں جو آپ استعمال کرنا چاہتے ہیں۔",
+    storeAdmin:"اسٹور ایڈمن",
+    adminOnly:"صرف اسٹور ایڈمن کے لیے",
+    signUp:"سائن اپ",
+    adminNote:"یہ آپشن صرف اسٹور ایڈمن کے لیے ہے۔",
+    adminSignup:"اسٹور ایڈمن سائن اپ",
+    adminEmail:"ایڈمن ای میل",
+    password:"پاس ورڈ",
+    confirmPassword:"پاس ورڈ دوبارہ درج کریں",
+    createAccount:"ایڈمن اکاؤنٹ بنائیں",
+    adminLogin:"ایڈمن لاگ اِن",
+    email:"ای میل",
+    login:"لاگ اِن",
+    productName:"پروڈکٹ کا نام",
+    category:"کیٹیگری",
+    price:"قیمت",
+    description:"تفصیل",
+    sizes:"سائز",
+    colors:"رنگ",
+    image:"پروڈکٹ کی تصویر",
+    addProduct:"پروڈکٹ شامل کریں",
+    currentProducts:"موجودہ پروڈکٹس",
+    logout:"لاگ آؤٹ",
+    total:"کل",
+    checkout:"چیک آؤٹ",
+    cod:"کیش آن ڈیلیوری",
+    fullName:"پورا نام",
+    phone:"فون نمبر",
+    city:"شہر",
+    address:"مکمل ڈیلیوری ایڈریس",
+    placeOrder:"آرڈر کریں",
+    orderPlaced:"آرڈر مکمل ہو گیا!",
+    thankYou:"آپ کے آرڈر کا شکریہ۔",
+    close:"بند کریں"
+  }
 
 };
 
+let currentLanguage = localStorage.getItem("kifalLanguage") || "en";
 
-function currentLanguage(){
+let products = [];
+let cart = [];
 
-return localStorage.getItem("kifalLanguage")||"en";
 
+/* =========================================================
+   LANGUAGE
+   ========================================================= */
+
+function setLanguage(lang){
+
+  currentLanguage = lang;
+
+  localStorage.setItem("kifalLanguage",lang);
+
+  document.documentElement.lang = lang === "ur" ? "ur" : "en";
+  document.documentElement.dir = lang === "ur" ? "rtl" : "ltr";
+
+  document.body.classList.toggle("urdu",lang === "ur");
+
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+
+    if(translations[lang][key]){
+      el.textContent = translations[lang][key];
+    }
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
+    const key = el.getAttribute("data-i18n-placeholder");
+
+    if(translations[lang][key]){
+      el.placeholder = translations[lang][key];
+    }
+  });
+
+  document.getElementById("englishBtn").classList.toggle("active",lang==="en");
+  document.getElementById("urduBtn").classList.toggle("active",lang==="ur");
+
+  renderProducts();
+  renderCart();
 }
-
 
 function t(key){
-
-const lang=currentLanguage();
-
-return translations[lang][key]||translations.en[key]||key;
-
+  return translations[currentLanguage][key] || key;
 }
 
 
-function applyLanguage(){
+/* =========================================================
+   MODALS
+   ========================================================= */
 
-const lang=currentLanguage();
-
-document.documentElement.lang=lang;
-
-document.body.classList.toggle("urdu",lang==="ur");
-
-document.querySelectorAll("[data-i18n]").forEach(el=>{
-
-const key=el.getAttribute("data-i18n");
-
-el.textContent=t(key);
-
-});
-
-document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
-
-const key=el.getAttribute("data-i18n-placeholder");
-
-el.placeholder=t(key);
-
-});
-
-const select=document.getElementById("languageSelect");
-
-if(select){
-select.value=lang;
+function openModal(id){
+  document.getElementById(id).style.display="flex";
 }
 
+function closeModal(id){
+  document.getElementById(id).style.display="none";
 }
 
+function openSettings(){
+  openModal("settingsModal");
+}
 
-function changeLanguage(){
+function openSignup(){
+  closeModal("settingsModal");
 
-const value=document.getElementById("languageSelect").value;
+  /*
+    IMPORTANT:
+    Email field is deliberately EMPTY.
+    Admin email is NOT displayed or pre-filled.
+  */
 
-localStorage.setItem("kifalLanguage",value);
+  document.getElementById("authEmail").value="";
+  document.getElementById("authPassword").value="";
+  document.getElementById("authPassword2").value="";
+  document.getElementById("signupMessage").textContent="";
 
-applyLanguage();
+  openModal("signupModal");
+}
 
-loadProducts();
-
+function scrollToSection(id){
+  document.getElementById(id)?.scrollIntoView({
+    behavior:"smooth"
+  });
 }
 
 
-applyLanguage();
-
-
-/* =====================================================
-   HELPERS
-===================================================== */
-
-function esc(v){
-
-return String(v??"").replace(/[&<>'"]/g,c=>({
-
-'&':'&amp;',
-'<':'&lt;',
-'>':'&gt;',
-"'":'&#39;',
-'"':'&quot;'
-
-}[c]));
-
-}
-
-
-function arr(v){
-
-return Array.isArray(v)
-?v
-:(typeof v==="string"&&v.trim()
-?v.split(",").map(x=>x.trim()).filter(Boolean)
-:[]);
-
-}
-
-
-/* =====================================================
+/* =========================================================
    PRODUCTS
-===================================================== */
+   ========================================================= */
 
 async function loadProducts(){
 
-const container=document.getElementById("productsContainer");
+  const {data,error} = await supabaseClient
+    .from("products")
+    .select("*")
+    .order("created_at",{ascending:false});
 
-try{
+  if(error){
+    console.error(error);
+    products=[];
+  }else{
+    products=data || [];
+  }
 
-const {data,error}=await supabaseClient
-.from("products")
-.select("*")
-.order("created_at",{ascending:false});
-
-if(error){
-
-console.error(error);
-
-container.innerHTML=
-`<div class="no-products">${t("noProducts")}</div>`;
-
-return;
-
+  renderProducts();
+  renderAdminProducts();
 }
 
-if(!data||!data.length){
+function renderProducts(){
 
-container.innerHTML=
-`<div class="no-products">${t("noProducts")}</div>`;
+  const grid = document.getElementById("productGrid");
+  const noProducts = document.getElementById("noProducts");
+  const search = (document.getElementById("searchInput")?.value || "")
+    .trim()
+    .toLowerCase();
 
-return;
+  const filtered = products.filter(product=>{
 
-}
+    const text = [
+      product.name,
+      product.category,
+      product.description
+    ].join(" ").toLowerCase();
 
-container.innerHTML="";
+    return text.includes(search);
+  });
 
-data.forEach(product=>{
+  document.getElementById("productCount").textContent =
+    `${filtered.length} ${currentLanguage==="ur" ? "پروڈکٹس" : "Products"}`;
 
-const image=product.image_url||
-"https://via.placeholder.com/600x500/f4f4f4/222222?text=Kifal+Noon+Libas";
+  grid.innerHTML="";
 
-const ps=arr(product.sizes);
-const pc=arr(product.colors);
-const price=Number(product.price||0);
+  if(!filtered.length){
+    noProducts.style.display="block";
+    return;
+  }
 
-const card=document.createElement("div");
+  noProducts.style.display="none";
 
-card.className="product";
+  filtered.forEach(product=>{
 
+    const card=document.createElement("div");
+    card.className="product-card";
 
-let sizeHtml=ps.length
-?`
-<label class="option-label">${t("sizes")}</label>
+    const sizes = Array.isArray(product.sizes)
+      ? product.sizes.join(", ")
+      : "";
 
-<select class="option-select size-select">
+    const colors = Array.isArray(product.colors)
+      ? product.colors.join(", ")
+      : "";
 
-<option value="">${t("selectSize")}</option>
+    card.innerHTML=`
 
-${ps.map(x=>`
-<option value="${esc(x)}">${esc(x)}</option>
-`).join("")}
+      <img
+        class="product-image"
+        src="${escapeHtml(product.image_url || "")}"
+        alt="${escapeHtml(product.name || "")}"
+      >
 
-</select>
-`
-:"";
+      <div class="product-info">
 
+        <div class="product-name">
+          ${escapeHtml(product.name || "")}
+        </div>
 
-let colorHtml=pc.length
-?`
-<label class="option-label">${t("colors")}</label>
+        <div class="product-category">
+          ${escapeHtml(product.category || "")}
+        </div>
 
-<select class="option-select color-select">
+        <div class="product-price">
+          Rs. ${Number(product.price || 0).toLocaleString()}
+        </div>
 
-<option value="">${t("selectColor")}</option>
+        ${
+          sizes
+          ? `<div style="font-size:13px;color:#777;margin-bottom:5px;">
+               ${currentLanguage==="ur" ? "سائز:" : "Sizes:"} ${escapeHtml(sizes)}
+             </div>`
+          : ""
+        }
 
-${pc.map(x=>`
-<option value="${esc(x)}">${esc(x)}</option>
-`).join("")}
+        ${
+          colors
+          ? `<div style="font-size:13px;color:#777;margin-bottom:12px;">
+               ${currentLanguage==="ur" ? "رنگ:" : "Colors:"} ${escapeHtml(colors)}
+             </div>`
+          : ""
+        }
 
-</select>
-`
-:"";
+        <button
+          class="product-btn"
+          onclick="addToCart('${product.id}')"
+        >
+          ${currentLanguage==="ur" ? "کارٹ میں شامل کریں" : "Add to Cart"}
+        </button>
 
+      </div>
+    `;
 
-card.innerHTML=`
-
-<img
-class="product-image"
-src="${esc(image)}"
-alt="${esc(product.name||"Product")}"
-onerror="this.src='https://via.placeholder.com/600x500/f4f4f4/222222?text=Kifal+Noon+Libas'"
->
-
-<h3>${esc(product.name||"Product")}</h3>
-
-<div class="category">
-${esc(product.category||"")}
-</div>
-
-<div class="description">
-${esc(product.description||"")}
-</div>
-
-<div class="price">
-Rs. ${price.toLocaleString()}
-</div>
-
-${sizeHtml}
-${colorHtml}
-
-<button class="add">
-${t("addToCart")}
-</button>
-
-`;
-
-
-card.querySelector(".add").addEventListener("click",()=>{
-
-const size=card.querySelector(".size-select")?.value||"";
-
-const color=card.querySelector(".color-select")?.value||"";
-
-if(ps.length&&!size){
-
-alert(t("selectSize"));
-
-return;
-
-}
-
-if(pc.length&&!color){
-
-alert(t("selectColor"));
-
-return;
-
-}
-
-addToCart(product.name,price,size,color);
-
-});
-
-container.appendChild(card);
-
-});
-
-}catch(e){
-
-console.error(e);
-
-container.innerHTML=
-`<div class="no-products">${t("noProducts")}</div>`;
-
-}
-
+    grid.appendChild(card);
+  });
 }
 
 
-/* =====================================================
+/* =========================================================
    CART
-===================================================== */
+   ========================================================= */
 
-function addToCart(name,price,size="",color=""){
+function addToCart(id){
 
-let existing=cart.find(
-x=>x.name===name&&x.size===size&&x.color===color
-);
+  const product = products.find(p=>String(p.id)===String(id));
 
-if(existing)
-existing.quantity++;
-else
-cart.push({
-name,
-price,
-size,
-color,
-quantity:1
-});
+  if(!product)return;
 
-updateCart();
+  const existing = cart.find(item=>String(item.id)===String(id));
 
-alert(name+" added to cart!");
+  if(existing){
+    existing.qty++;
+  }else{
+    cart.push({
+      id:product.id,
+      name:product.name,
+      price:Number(product.price)||0,
+      image_url:product.image_url,
+      qty:1
+    });
+  }
 
+  saveCart();
+  renderCart();
 }
 
-
-function updateCart(){
-
-let count=0;
-let total=0;
-
-cart.forEach(i=>{
-
-count+=i.quantity;
-
-total+=i.price*i.quantity;
-
-});
-
-document.getElementById("count").innerText=count;
-
-document.getElementById("total").innerText=
-total.toLocaleString();
-
+function saveCart(){
+  localStorage.setItem("kifalCart",JSON.stringify(cart));
 }
 
+function loadCart(){
+
+  try{
+    cart=JSON.parse(localStorage.getItem("kifalCart")) || [];
+  }catch{
+    cart=[];
+  }
+
+  renderCart();
+}
+
+function changeQty(id,amount){
+
+  const item=cart.find(i=>String(i.id)===String(id));
+
+  if(!item)return;
+
+  item.qty+=amount;
+
+  if(item.qty<=0){
+    cart=cart.filter(i=>String(i.id)!==String(id));
+  }
+
+  saveCart();
+  renderCart();
+}
+
+function cartTotal(){
+
+  return cart.reduce(
+    (sum,item)=>sum+(item.price*item.qty),
+    0
+  );
+}
+
+function renderCart(){
+
+  const box=document.getElementById("cartItems");
+
+  document.getElementById("cartCount").textContent =
+    cart.reduce((sum,item)=>sum+item.qty,0);
+
+  document.getElementById("cartTotal").textContent =
+    cartTotal().toLocaleString();
+
+  if(!cart.length){
+
+    box.innerHTML=`
+      <div class="empty">
+        ${currentLanguage==="ur" ? "آپ کی کارٹ خالی ہے۔" : "Your cart is empty."}
+      </div>
+    `;
+
+    return;
+  }
+
+  box.innerHTML="";
+
+  cart.forEach(item=>{
+
+    const div=document.createElement("div");
+    div.className="cart-item";
+
+    div.innerHTML=`
+
+      <img src="${escapeHtml(item.image_url || "")}" alt="">
+
+      <div class="cart-item-info">
+
+        <strong>${escapeHtml(item.name)}</strong>
+
+        <div style="margin-top:4px;">
+          Rs. ${item.price.toLocaleString()}
+        </div>
+
+        <div class="qty-row">
+
+          <button
+            class="qty-btn"
+            onclick="changeQty('${item.id}',-1)"
+          >−</button>
+
+          <span>${item.qty}</span>
+
+          <button
+            class="qty-btn"
+            onclick="changeQty('${item.id}',1)"
+          >+</button>
+
+        </div>
+
+      </div>
+    `;
+
+    box.appendChild(div);
+  });
+}
 
 function openCart(){
-
-let html="";
-
-if(!cart.length){
-
-html=`<p>${t("emptyCart")}</p>`;
-
-}else{
-
-cart.forEach((item,index)=>{
-
-html+=`
-
-<div class="cart-item">
-
-<strong>${esc(item.name)}</strong>
-
-<br>
-
-Rs. ${item.price.toLocaleString()}
-
-${item.size
-?`<div class="cart-options">${t("sizes")}: ${esc(item.size)}</div>`
-:""}
-
-${item.color
-?`<div class="cart-options">${t("colors")}: ${esc(item.color)}</div>`
-:""}
-
-<div class="quantity">
-
-<button onclick="changeQuantity(${index},-1)">−</button>
-
-<span>${item.quantity}</span>
-
-<button onclick="changeQuantity(${index},1)">+</button>
-
-<button class="remove" onclick="removeItem(${index})">
-${t("remove")}
-</button>
-
-</div>
-
-</div>
-
-`;
-
-});
-
+  document.getElementById("cartDrawer").classList.add("open");
 }
-
-document.getElementById("items").innerHTML=html;
-
-document.getElementById("cartBox").style.display="block";
-
-updateCart();
-
-}
-
 
 function closeCart(){
-
-document.getElementById("cartBox").style.display="none";
-
+  document.getElementById("cartDrawer").classList.remove("open");
 }
 
 
-function changeQuantity(index,change){
-
-cart[index].quantity+=change;
-
-if(cart[index].quantity<=0)
-cart.splice(index,1);
-
-updateCart();
-
-openCart();
-
-}
-
-
-function removeItem(index){
-
-cart.splice(index,1);
-
-updateCart();
-
-openCart();
-
-}
-
-
-/* =====================================================
+/* =========================================================
    CHECKOUT
-===================================================== */
+   ========================================================= */
 
 function openCheckout(){
 
-if(!cart.length){
+  if(!cart.length){
 
-alert(t("emptyCart"));
+    alert(
+      currentLanguage==="ur"
+      ? "آپ کی کارٹ خالی ہے۔"
+      : "Your cart is empty."
+    );
 
-return;
+    return;
+  }
 
+  closeCart();
+
+  document.getElementById("checkoutForm").style.display="block";
+  document.getElementById("orderSuccess").style.display="none";
+
+  document.getElementById("checkoutTotal").textContent =
+    cartTotal().toLocaleString();
+
+  const summary=document.getElementById("checkoutSummary");
+
+  summary.innerHTML="";
+
+  cart.forEach(item=>{
+
+    const line=document.createElement("div");
+    line.className="summary-line";
+
+    line.innerHTML=`
+      <span>${escapeHtml(item.name)} × ${item.qty}</span>
+      <span>Rs. ${(item.price*item.qty).toLocaleString()}</span>
+    `;
+
+    summary.appendChild(line);
+  });
+
+  openModal("checkoutModal");
 }
-
-let html="";
-let total=0;
-
-cart.forEach(i=>{
-
-let sub=i.price*i.quantity;
-
-total+=sub;
-
-html+=`
-
-<p>
-
-<strong>${esc(i.name)}</strong>
-× ${i.quantity}
-
-${i.size
-?`<br>${t("sizes")}: ${esc(i.size)}`
-:""}
-
-${i.color
-?`<br>${t("colors")}: ${esc(i.color)}`
-:""}
-
-<br>
-
-<strong>Rs. ${sub.toLocaleString()}</strong>
-
-</p>
-
-`;
-
-});
-
-document.getElementById("checkoutItems").innerHTML=html;
-
-document.getElementById("checkoutTotal").innerText=
-total.toLocaleString();
-
-document.getElementById("checkoutBox").style.display="block";
-
-closeCart();
-
-}
-
-
-function closeCheckout(){
-
-document.getElementById("checkoutBox").style.display="none";
-
-}
-
 
 async function placeOrder(){
 
-const name=document.getElementById("name").value.trim();
+  if(!cart.length)return;
 
-const phone=document.getElementById("phone").value.trim();
+  const name=document.getElementById("orderName").value.trim();
+  const phone=document.getElementById("orderPhone").value.trim();
+  const city=document.getElementById("orderCity").value.trim();
+  const address=document.getElementById("orderAddress").value.trim();
 
-const city=document.getElementById("city").value.trim();
+  const message=document.getElementById("orderMessage");
 
-const address=document.getElementById("address").value.trim();
+  if(!name || !phone || !city || !address){
 
-if(!name||!phone||!city||!address){
+    message.style.color="#b00020";
+    message.textContent =
+      currentLanguage==="ur"
+      ? "براہ کرم تمام معلومات مکمل کریں۔"
+      : "Please complete all information.";
 
-alert(t("deliveryDetails"));
+    return;
+  }
 
-return;
+  message.textContent="";
 
-}
+  const orderItems=cart.map(item=>({
+    id:item.id,
+    name:item.name,
+    price:item.price,
+    qty:item.qty
+  }));
 
-if(phone.length<10){
+  const {error}=await supabaseClient
+    .from("orders")
+    .insert([{
+      name,
+      phone,
+      city,
+      address,
+      total:cartTotal(),
+      status:"Pending",
+      items:orderItems
+    }]);
 
-alert("Please enter a valid phone number.");
+  if(error){
 
-return;
+    console.error(error);
 
-}
+    message.style.color="#b00020";
+    message.textContent =
+      currentLanguage==="ur"
+      ? "آرڈر مکمل نہیں ہو سکا۔ دوبارہ کوشش کریں۔"
+      : "Order could not be placed. Please try again.";
 
-let total=cart.reduce(
-(s,i)=>s+i.price*i.quantity,
-0
-);
+    return;
+  }
 
-try{
+  cart=[];
+  saveCart();
+  renderCart();
 
-const payload={
-name,
-phone,
-city,
-address,
-total,
-status:"new",
-items:cart
-};
-
-const result=await supabaseClient
-.from("orders")
-.insert(payload);
-
-if(result.error){
-
-console.error(result.error);
-
-alert("Unable to place order.");
-
-return;
-
-}
-
-document.getElementById("checkoutContent").style.display="none";
-
-document.getElementById("successBox").style.display="block";
-
-}catch(e){
-
-console.error(e);
-
-alert("Connection error.");
-
-}
-
+  document.getElementById("checkoutForm").style.display="none";
+  document.getElementById("orderSuccess").style.display="block";
 }
 
 
-function finishOrder(){
+/* =========================================================
+   ADMIN AUTH
+   ========================================================= */
 
-cart=[];
+async function getCurrentUser(){
 
-updateCart();
+  const {data}=await supabaseClient.auth.getUser();
 
-document.getElementById("name").value="";
-
-document.getElementById("phone").value="";
-
-document.getElementById("city").value="";
-
-document.getElementById("address").value="";
-
-document.getElementById("checkoutContent").style.display="block";
-
-document.getElementById("successBox").style.display="none";
-
-closeCheckout();
-
+  return data?.user || null;
 }
-
-
-/* =====================================================
-   SETTINGS
-===================================================== */
-
-function openSettings(){
-
-document.getElementById("settingsBox").style.display="block";
-
-applyLanguage();
-
-}
-
-
-function closeSettings(){
-
-document.getElementById("settingsBox").style.display="none";
-
-}
-
-
-/* =====================================================
-   AUTH / ADMIN SIGN UP
-===================================================== */
-
-function openAuth(){
-
-closeSettings();
-
-document.getElementById("authError").innerText="";
-
-document.getElementById("authPassword").value="";
-
-document.getElementById("authPassword2").value="";
-
-document.getElementById("authBox").style.display="block";
-
-}
-
-
-function closeAuth(){
-
-document.getElementById("authBox").style.display="none";
-
-}
-
-
-async function submitSignup(){
-
-const email=ADMIN_EMAIL;
-
-const password=document.getElementById("authPassword").value;
-
-const password2=document.getElementById("authPassword2").value;
-
-const errorBox=document.getElementById("authError");
-
-errorBox.innerText="";
-
-if(password!==password2){
-
-errorBox.innerText=t("passwordMismatch");
-
-return;
-
-}
-
-if(password.length<6){
-
-errorBox.innerText=t("passwordShort");
-
-return;
-
-}
-
-try{
-
-const {data,error}=await supabaseClient.auth.signUp({
-
-email,
-password
-
-});
-
-if(error){
-
-console.error(error);
-
-errorBox.innerText=error.message;
-
-return;
-
-}
-
-alert(t("signupSuccess"));
-
-closeAuth();
-
-await updateAdminButton();
-
-}catch(e){
-
-console.error(e);
-
-errorBox.innerText=t("signupError");
-
-}
-
-}
-
 
 async function checkAdmin(){
 
-const {
-data:{session}
-}=await supabaseClient.auth.getSession();
+  const user=await getCurrentUser();
 
-if(
-!session||
-String(session.user.email||"").toLowerCase()!==ADMIN_EMAIL.toLowerCase()
-){
+  if(!user)return false;
 
-return false;
-
+  return (
+    user.email &&
+    user.email.toLowerCase()===ADMIN_EMAIL.toLowerCase()
+  );
 }
-
-return true;
-
-}
-
 
 async function updateAdminButton(){
 
-const allowed=await checkAdmin();
+  const allowed=await checkAdmin();
 
-const button=document.getElementById("adminButton");
-
-button.style.display=allowed?"block":"none";
-
+  document.getElementById("adminButton").style.display =
+    allowed ? "block" : "none";
 }
 
+async function submitSignup(){
+
+  const email=document.getElementById("authEmail").value
+    .trim()
+    .toLowerCase();
+
+  const password=document.getElementById("authPassword").value;
+  const password2=document.getElementById("authPassword2").value;
+
+  const message=document.getElementById("signupMessage");
+
+  /*
+    Admin email is checked here.
+    It is NOT automatically inserted into the form.
+  */
+
+  if(email !== ADMIN_EMAIL.toLowerCase()){
+
+    message.style.color="#b00020";
+    message.textContent =
+      currentLanguage==="ur"
+      ? "صرف اسٹور ایڈمن اکاؤنٹ بنایا جا سکتا ہے۔"
+      : "Only the store admin account can be created.";
+
+    return;
+  }
+
+  if(password.length<6){
+
+    message.style.color="#b00020";
+    message.textContent =
+      currentLanguage==="ur"
+      ? "پاس ورڈ کم از کم 6 حروف کا ہونا چاہیے۔"
+      : "Password must be at least 6 characters.";
+
+    return;
+  }
+
+  if(password!==password2){
+
+    message.style.color="#b00020";
+    message.textContent =
+      currentLanguage==="ur"
+      ? "پاس ورڈ ایک جیسے نہیں ہیں۔"
+      : "Passwords do not match.";
+
+    return;
+  }
+
+  const {error}=await supabaseClient.auth.signUp({
+    email,
+    password
+  });
+
+  if(error){
+
+    message.style.color="#b00020";
+    message.textContent=error.message;
+    return;
+  }
+
+  message.style.color="green";
+  message.textContent =
+    currentLanguage==="ur"
+    ? "اکاؤنٹ بن گیا۔ اگر تصدیقی ای میل آئے تو اسے verify کریں۔"
+    : "Account created. Verify the email if Supabase sends a confirmation email.";
+}
+
+async function loginAdmin(){
+
+  const email=document.getElementById("loginEmail").value
+    .trim()
+    .toLowerCase();
+
+  const password=document.getElementById("loginPassword").value;
+
+  const message=document.getElementById("loginMessage");
+
+  if(email!==ADMIN_EMAIL.toLowerCase()){
+
+    message.style.color="#b00020";
+    message.textContent =
+      currentLanguage==="ur"
+      ? "یہ ایڈمن اکاؤنٹ نہیں ہے۔"
+      : "This is not the store admin account.";
+
+    return;
+  }
+
+  const {error}=await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if(error){
+
+    message.style.color="#b00020";
+    message.textContent=error.message;
+    return;
+  }
+
+  closeModal("loginModal");
+
+  await updateAdminButton();
+
+  openAdmin();
+}
+
+async function logoutAdmin(){
+
+  await supabaseClient.auth.signOut();
+
+  closeModal("adminModal");
+
+  await updateAdminButton();
+}
 
 async function openAdmin(){
 
-const allowed=await checkAdmin();
+  const allowed=await checkAdmin();
 
-if(!allowed){
+  if(!allowed){
 
-alert(t("loginRequired"));
+    openModal("loginModal");
+    return;
+  }
 
-return;
+  await renderAdminProducts();
 
-}
-
-document.getElementById("adminBox").style.display="block";
-
-loadAdminProducts();
-
+  openModal("adminModal");
 }
 
 
-function closeAdmin(){
-
-document.getElementById("adminBox").style.display="none";
-
-}
-
-
-/* =====================================================
-   ADMIN SIZES / COLORS
-===================================================== */
-
-function addSize(){
-
-const input=document.getElementById("sizeInput");
-
-const value=input.value.trim();
-
-if(!value)return;
-
-if(!sizes.includes(value))
-sizes.push(value);
-
-input.value="";
-
-renderSizes();
-
-}
-
-
-function renderSizes(){
-
-document.getElementById("sizeChips").innerHTML=
-sizes.map((x,i)=>`
-
-<div class="chip">
-
-${esc(x)}
-
-<button onclick="removeSize(${i})">×</button>
-
-</div>
-
-`).join("");
-
-}
-
-
-function removeSize(index){
-
-sizes.splice(index,1);
-
-renderSizes();
-
-}
-
-
-function addColor(){
-
-const input=document.getElementById("colorInput");
-
-const value=input.value.trim();
-
-if(!value)return;
-
-if(!colors.includes(value))
-colors.push(value);
-
-input.value="";
-
-renderColors();
-
-}
-
-
-function renderColors(){
-
-document.getElementById("colorChips").innerHTML=
-colors.map((x,i)=>`
-
-<div class="chip">
-
-${esc(x)}
-
-<button onclick="removeColor(${i})">×</button>
-
-</div>
-
-`).join("");
-
-}
-
-
-function removeColor(index){
-
-colors.splice(index,1);
-
-renderColors();
-
-}
-
-
-/* =====================================================
+/* =========================================================
    ADD PRODUCT
-===================================================== */
+   ========================================================= */
 
 async function addProduct(){
 
-const allowed=await checkAdmin();
+  const allowed=await checkAdmin();
 
-if(!allowed){
+  if(!allowed){
 
-alert(t("notAdmin"));
+    alert(
+      currentLanguage==="ur"
+      ? "صرف ایڈمن پروڈکٹ شامل کر سکتا ہے۔"
+      : "Only the admin can add products."
+    );
 
-return;
+    return;
+  }
 
-}
+  const name=document.getElementById("productName").value.trim();
+  const category=document.getElementById("productCategory").value.trim();
+  const price=Number(document.getElementById("productPrice").value);
+  const description=document.getElementById("productDescription").value.trim();
 
-const name=document.getElementById("productName").value.trim();
+  const sizes=document.getElementById("productSizes").value
+    .split(",")
+    .map(x=>x.trim())
+    .filter(Boolean);
 
-const category=document.getElementById("productCategory").value.trim();
+  const colors=document.getElementById("productColors").value
+    .split(",")
+    .map(x=>x.trim())
+    .filter(Boolean);
 
-const price=Number(document.getElementById("productPrice").value);
+  const imageFile=document.getElementById("productImage").files[0];
 
-const description=document.getElementById("productDescription").value.trim();
+  if(!name || !category || !price || !imageFile){
 
-const imageFile=document.getElementById("productImage").files[0];
+    alert(
+      currentLanguage==="ur"
+      ? "نام، کیٹیگری، قیمت اور تصویر ضروری ہیں۔"
+      : "Name, category, price and image are required."
+    );
 
-if(!name||!category||!price||!description||!imageFile){
+    return;
+  }
 
-alert("Please complete all product details.");
+  const extension=imageFile.name.split(".").pop();
+  const fileName=`${Date.now()}-${Math.random().toString(36).slice(2)}.${extension}`;
 
-return;
+  const {error:uploadError}=await supabaseClient
+    .storage
+    .from("product-images")
+    .upload(fileName,imageFile);
 
-}
+  if(uploadError){
 
-try{
+    console.error(uploadError);
 
-const fileName=
-Date.now()+"-"+imageFile.name.replace(/\s+/g,"-");
+    alert(uploadError.message);
+    return;
+  }
 
-const upload=
-await supabaseClient.storage
-.from("product-images")
-.upload(fileName,imageFile);
+  const {data:urlData}=supabaseClient
+    .storage
+    .from("product-images")
+    .getPublicUrl(fileName);
 
-if(upload.error){
+  const imageUrl=urlData.publicUrl;
 
-console.error(upload.error);
+  const {error}=await supabaseClient
+    .from("products")
+    .insert([{
+      name,
+      category,
+      price,
+      description,
+      image_url:imageUrl,
+      sizes,
+      colors
+    }]);
 
-alert("Image upload failed.");
+  if(error){
 
-return;
+    console.error(error);
 
-}
+    alert(error.message);
+    return;
+  }
 
-const publicUrl=
-supabaseClient.storage
-.from("product-images")
-.getPublicUrl(fileName)
-.data.publicUrl;
+  document.getElementById("productName").value="";
+  document.getElementById("productCategory").value="";
+  document.getElementById("productPrice").value="";
+  document.getElementById("productDescription").value="";
+  document.getElementById("productSizes").value="";
+  document.getElementById("productColors").value="";
+  document.getElementById("productImage").value="";
 
+  alert(
+    currentLanguage==="ur"
+    ? "پروڈکٹ کامیابی سے شامل ہو گئی۔"
+    : "Product added successfully."
+  );
 
-const {error}=await supabaseClient
-.from("products")
-.insert({
-
-name,
-category,
-price,
-description,
-image_url:publicUrl,
-sizes,
-colors
-
-});
-
-if(error){
-
-console.error(error);
-
-alert("Product could not be added.");
-
-return;
-
-}
-
-alert("Product added successfully.");
-
-document.getElementById("productName").value="";
-
-document.getElementById("productCategory").value="";
-
-document.getElementById("productPrice").value="";
-
-document.getElementById("productDescription").value="";
-
-document.getElementById("productImage").value="";
-
-sizes=[];
-
-colors=[];
-
-renderSizes();
-
-renderColors();
-
-loadProducts();
-
-loadAdminProducts();
-
-}catch(e){
-
-console.error(e);
-
-alert("Connection error.");
-
-}
-
+  await loadProducts();
 }
 
 
-/* =====================================================
-   ADMIN PRODUCT LIST
-===================================================== */
+/* =========================================================
+   ADMIN PRODUCTS
+   ========================================================= */
 
-async function loadAdminProducts(){
+async function renderAdminProducts(){
 
-const container=document.getElementById("adminProducts");
+  const box=document.getElementById("adminProducts");
 
-try{
+  if(!box)return;
 
-const allowed=await checkAdmin();
+  const allowed=await checkAdmin();
 
-if(!allowed){
+  if(!allowed){
+    box.innerHTML="";
+    return;
+  }
 
-container.innerHTML="<p>Admin access required.</p>";
+  box.innerHTML="";
 
-return;
+  if(!products.length){
 
+    box.innerHTML=`
+      <div class="empty">
+        ${currentLanguage==="ur"
+          ? "ابھی کوئی پروڈکٹ نہیں۔"
+          : "No products yet."
+        }
+      </div>
+    `;
+
+    return;
+  }
+
+  products.forEach(product=>{
+
+    const row=document.createElement("div");
+    row.className="admin-product";
+
+    row.innerHTML=`
+
+      <img src="${escapeHtml(product.image_url || "")}" alt="">
+
+      <div class="admin-product-info">
+
+        <strong>${escapeHtml(product.name || "")}</strong>
+
+        <div style="font-size:13px;color:#777;">
+          Rs. ${Number(product.price || 0).toLocaleString()}
+        </div>
+
+      </div>
+
+      <button
+        class="delete-btn"
+        onclick="deleteProduct('${product.id}')"
+      >
+        ${currentLanguage==="ur" ? "حذف" : "Delete"}
+      </button>
+    `;
+
+    box.appendChild(row);
+  });
 }
-
-const {data,error}=await supabaseClient
-.from("products")
-.select("*")
-.order("created_at",{ascending:false});
-
-if(error){
-
-console.error(error);
-
-container.innerHTML="<p>Unable to load products.</p>";
-
-return;
-
-}
-
-if(!data||!data.length){
-
-container.innerHTML=`<p>${t("noProducts")}</p>`;
-
-return;
-
-}
-
-container.innerHTML=data.map(product=>`
-
-<div class="admin-product-row">
-
-<div>
-
-<strong>${esc(product.name)}</strong>
-
-<br>
-
-<small>
-Rs. ${Number(product.price||0).toLocaleString()}
-</small>
-
-</div>
-
-<button
-class="danger"
-onclick="deleteProduct('${product.id}')"
->
-${t("remove")}
-</button>
-
-</div>
-
-`).join("");
-
-}catch(e){
-
-console.error(e);
-
-container.innerHTML="<p>Connection error.</p>";
-
-}
-
-}
-
-
-/* =====================================================
-   DELETE PRODUCT
-===================================================== */
 
 async function deleteProduct(id){
 
-const allowed=await checkAdmin();
+  const allowed=await checkAdmin();
 
-if(!allowed){
+  if(!allowed)return;
 
-alert(t("notAdmin"));
+  const confirmText =
+    currentLanguage==="ur"
+    ? "کیا آپ واقعی یہ پروڈکٹ حذف کرنا چاہتے ہیں؟"
+    : "Are you sure you want to delete this product?";
 
-return;
+  if(!confirm(confirmText))return;
 
-}
+  const {error}=await supabaseClient
+    .from("products")
+    .delete()
+    .eq("id",id);
 
-if(!confirm("Delete this product?")){
+  if(error){
 
-return;
+    alert(error.message);
+    return;
+  }
 
-}
-
-const {error}=await supabaseClient
-.from("products")
-.delete()
-.eq("id",id);
-
-if(error){
-
-console.error(error);
-
-alert("Product could not be deleted.");
-
-return;
-
-}
-
-loadProducts();
-
-loadAdminProducts();
-
+  await loadProducts();
 }
 
 
-/* =====================================================
+/* =========================================================
+   HELPERS
+   ========================================================= */
+
+function escapeHtml(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+/* =========================================================
+   AUTH STATE
+   ========================================================= */
+
+supabaseClient.auth.onAuthStateChange(()=>{
+  setTimeout(updateAdminButton,100);
+});
+
+
+/* =========================================================
    START
-===================================================== */
+   ========================================================= */
 
+loadCart();
+setLanguage(currentLanguage);
 loadProducts();
-
 updateAdminButton();
 
 </script>
