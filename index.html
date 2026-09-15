@@ -8,354 +8,686 @@
 <meta name="description" content="Kifal Noon Libas - Quality clothing at great prices. Shop online with easy ordering and Cash on Delivery.">
 <meta name="keywords" content="Kifal Noon Libas, clothing, clothes, online clothing store, Pakistan, fashion, dresses">
 <meta name="author" content="Kifal Noon Libas">
-<meta name="robots" content="index, follow">
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23000'/%3E%3Cpath d='M25 25v50M25 50l38-25M25 50l38 25' stroke='%23fff' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M70 25v50' stroke='%23fff' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E">
-
-<meta property="og:title" content="Kifal Noon Libas | Online Clothing Store">
-<meta property="og:description" content="Quality clothing. Great prices. Easy ordering.">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Kifal Noon Libas">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23ffffff'/%3E%3Cpath d='M25 25v50M25 50l38-25M25 50l38 25' stroke='%23111111' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M70 25v50' stroke='%23111111' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:'Poppins',sans-serif;background:#000;color:#fff}
+*{
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#ffffff;
+color:#171717;
+}
+
+body.urdu{
+font-family:'Noto Naskh Arabic','Poppins',sans-serif;
+}
 
 header{
-background:#000;color:#fff;padding:12px 6%;display:flex;align-items:center;
-justify-content:space-between;position:sticky;top:0;z-index:20;
-border-bottom:1px solid #222
+background:#ffffff;
+color:#171717;
+padding:12px 6%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+position:sticky;
+top:0;
+z-index:20;
+border-bottom:1px solid #e5e5e5;
+box-shadow:0 2px 12px rgba(0,0,0,.05);
 }
 
 .logo{
-display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff
+display:flex;
+align-items:center;
+gap:12px;
+text-decoration:none;
+color:#171717;
 }
 
 .logo-image{
-width:52px;height:52px;object-fit:contain;display:block;border-radius:12px;
-background:#111
+width:52px;
+height:52px;
+object-fit:contain;
+display:block;
+border-radius:12px;
+background:#ffffff;
+border:1px solid #e5e5e5;
 }
 
 .logo-text{
-font-size:22px;font-weight:800;letter-spacing:.5px
+font-size:22px;
+font-weight:800;
+letter-spacing:.5px;
 }
 
 nav a{
-color:#fff;text-decoration:none;margin:0 10px;font-size:14px
+color:#333;
+text-decoration:none;
+margin:0 10px;
+font-size:14px;
+font-weight:500;
 }
 
-.cart-btn,.settings-btn,.auth-btn{
-background:#fff;color:#000;border:0;padding:10px 14px;border-radius:8px;
-cursor:pointer;font-weight:700;font-family:inherit
+nav a:hover{
+color:#000;
 }
 
 .header-actions{
-display:flex;align-items:center;gap:8px
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.cart-btn,
+.admin-btn,
+.settings-btn{
+background:#171717;
+color:#fff;
+border:0;
+padding:10px 14px;
+border-radius:8px;
+cursor:pointer;
+font-weight:700;
+font-family:inherit;
 }
 
 .admin-btn{
-display:none;background:#fff;color:#000;border:0;padding:10px 14px;
-border-radius:8px;cursor:pointer;font-weight:700;font-family:inherit
+display:none;
 }
 
 .hero{
-padding:110px 8%;text-align:center;background:#000;border-bottom:1px solid #222
+padding:110px 8%;
+text-align:center;
+background:#fafafa;
+border-bottom:1px solid #e8e8e8;
 }
 
 .hero h1{
-font-size:55px;margin:0 0 15px;font-weight:800
+font-size:55px;
+margin:0 0 15px;
+font-weight:800;
 }
 
 .hero p{
-font-size:18px;color:#aaa
+font-size:18px;
+color:#666;
 }
 
 .shop-btn{
-display:inline-block;background:#fff;color:#000;padding:14px 28px;
-border-radius:8px;text-decoration:none;margin-top:15px;font-weight:700
+display:inline-block;
+background:#171717;
+color:#fff;
+padding:14px 28px;
+border-radius:8px;
+text-decoration:none;
+margin-top:15px;
+font-weight:700;
 }
 
 section{
-padding:70px 7%
+padding:70px 7%;
 }
 
 h2{
-text-align:center;font-size:36px;margin-bottom:40px
+text-align:center;
+font-size:36px;
+margin-bottom:40px;
 }
 
 .products{
-display:grid;grid-template-columns:repeat(4,1fr);gap:22px
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:22px;
 }
 
 .product{
-background:#111;border:1px solid #222;border-radius:14px;padding:18px;
-text-align:center;overflow:hidden;transition:.2s
+background:#fff;
+border:1px solid #e4e4e4;
+border-radius:14px;
+padding:18px;
+text-align:center;
+overflow:hidden;
+transition:.2s;
+box-shadow:0 3px 15px rgba(0,0,0,.04);
 }
 
 .product:hover{
-transform:translateY(-4px);border-color:#444
+transform:translateY(-4px);
+box-shadow:0 8px 25px rgba(0,0,0,.08);
 }
 
 .product-image{
-width:100%;height:230px;object-fit:cover;border-radius:10px;
-background:#1a1a1a;display:block
+width:100%;
+height:230px;
+object-fit:cover;
+border-radius:10px;
+background:#f4f4f4;
+display:block;
 }
 
 .product h3{
-margin:18px 0 5px;font-size:18px
+margin:18px 0 5px;
+font-size:18px;
 }
 
 .description{
-color:#999;font-size:13px;min-height:38px
+color:#777;
+font-size:13px;
+min-height:38px;
 }
 
 .price{
-font-size:20px;font-weight:700;margin:12px
+font-size:20px;
+font-weight:700;
+margin:12px;
 }
 
 .category{
-color:#888;font-size:12px;margin-bottom:10px
+color:#888;
+font-size:12px;
+margin-bottom:10px;
 }
 
 .option-label{
-display:block;text-align:left;color:#aaa;font-size:12px;margin:8px 0 4px
+display:block;
+text-align:left;
+color:#555;
+font-size:12px;
+margin:8px 0 4px;
 }
 
 .option-select{
-width:100%;padding:10px;background:#151515;color:#fff;
-border:1px solid #333;border-radius:7px;font-family:inherit
+width:100%;
+padding:10px;
+background:#fff;
+color:#222;
+border:1px solid #ccc;
+border-radius:7px;
+font-family:inherit;
 }
 
 .add{
-background:#fff;color:#000;border:0;padding:11px 20px;border-radius:7px;
-cursor:pointer;font-family:inherit;font-weight:700;width:100%;margin-top:10px
+background:#171717;
+color:#fff;
+border:0;
+padding:11px 20px;
+border-radius:7px;
+cursor:pointer;
+font-family:inherit;
+font-weight:700;
+width:100%;
+margin-top:10px;
 }
 
-.loading,.no-products{
-text-align:center;color:#aaa;grid-column:1/-1;padding:40px
+.loading,
+.no-products{
+text-align:center;
+color:#777;
+grid-column:1/-1;
+padding:40px;
 }
 
 .contact{
-background:#050505;color:#fff;text-align:center;
-border-top:1px solid #222;border-bottom:1px solid #222
+background:#fafafa;
+color:#171717;
+text-align:center;
+border-top:1px solid #e5e5e5;
+border-bottom:1px solid #e5e5e5;
 }
 
 .contact p{
-color:#aaa
+color:#777;
 }
 
 footer{
-background:#000;color:#666;text-align:center;padding:25px
+background:#fff;
+color:#777;
+text-align:center;
+padding:25px;
+border-top:1px solid #e5e5e5;
 }
 
 #cartBox{
-display:none;position:fixed;right:0;top:0;width:420px;max-width:100%;
-height:100%;background:#0b0b0b;color:#fff;z-index:50;padding:25px;
-overflow-y:auto;box-shadow:-5px 0 20px #000;border-left:1px solid #222
+display:none;
+position:fixed;
+right:0;
+top:0;
+width:420px;
+max-width:100%;
+height:100%;
+background:#fff;
+color:#171717;
+z-index:50;
+padding:25px;
+overflow-y:auto;
+box-shadow:-5px 0 25px rgba(0,0,0,.12);
+border-left:1px solid #ddd;
 }
 
 .close-btn{
-background:#222;color:#fff;border:0;padding:9px 14px;border-radius:7px;
-cursor:pointer;font-family:inherit
+background:#eee;
+color:#222;
+border:0;
+padding:9px 14px;
+border-radius:7px;
+cursor:pointer;
+font-family:inherit;
 }
 
 .cart-item{
-border-bottom:1px solid #333;padding:15px 0
+border-bottom:1px solid #e5e5e5;
+padding:15px 0;
 }
 
 .cart-options{
-color:#aaa;font-size:13px;margin-top:5px
+color:#777;
+font-size:13px;
+margin-top:5px;
 }
 
 .quantity{
-display:flex;align-items:center;gap:10px;margin-top:10px
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:10px;
 }
 
 .quantity button{
-border:0;background:#fff;color:#000;width:30px;height:30px;
-border-radius:5px;cursor:pointer;font-weight:bold
+border:0;
+background:#171717;
+color:#fff;
+width:30px;
+height:30px;
+border-radius:5px;
+cursor:pointer;
+font-weight:bold;
 }
 
 .remove{
-background:#b91c1c!important;color:#fff!important;width:auto!important;
-padding:5px 10px
+background:#b91c1c!important;
+color:#fff!important;
+width:auto!important;
+padding:5px 10px;
 }
 
 .checkout-btn{
-width:100%;background:#fff;color:#000;border:0;padding:14px;
-border-radius:8px;cursor:pointer;font-size:16px;font-family:inherit;
-font-weight:700;margin-top:10px
+width:100%;
+background:#171717;
+color:#fff;
+border:0;
+padding:14px;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+font-family:inherit;
+font-weight:700;
+margin-top:10px;
 }
 
-#checkoutBox,#adminBox,#settingsBox{
-display:none;position:fixed;inset:0;background:#000e;z-index:60;
-overflow-y:auto;padding:30px 15px
+#checkoutBox,
+#adminBox,
+#settingsBox,
+#authBox{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.35);
+z-index:60;
+overflow-y:auto;
+padding:30px 15px;
 }
 
-.checkout-card,.admin-card,.settings-card{
-background:#0d0d0d;color:#fff;border:1px solid #333;max-width:650px;
-margin:auto;border-radius:14px;padding:25px
+.checkout-card,
+.admin-card,
+.settings-card,
+.auth-card{
+background:#fff;
+color:#171717;
+border:1px solid #ddd;
+max-width:650px;
+margin:auto;
+border-radius:14px;
+padding:25px;
+box-shadow:0 15px 50px rgba(0,0,0,.15);
+}
+
+.settings-card{
+max-width:560px;
+}
+
+.auth-card{
+max-width:500px;
 }
 
 .input{
-width:100%;padding:13px;margin:7px 0;background:#151515;color:#fff;
-border:1px solid #333;border-radius:7px;font-size:15px;font-family:inherit
+width:100%;
+padding:13px;
+margin:7px 0;
+background:#fff;
+color:#171717;
+border:1px solid #ccc;
+border-radius:7px;
+font-size:15px;
+font-family:inherit;
 }
 
 .input::placeholder{
-color:#777
+color:#999;
 }
 
 .order-summary{
-background:#151515;padding:15px;border-radius:8px;margin:15px 0
+background:#f7f7f7;
+padding:15px;
+border-radius:8px;
+margin:15px 0;
 }
 
 .payment{
-border:1px solid #444;border-radius:8px;padding:15px;margin:15px 0
+border:1px solid #ddd;
+border-radius:8px;
+padding:15px;
+margin:15px 0;
 }
 
 .payment p{
-color:#fff
+color:#222;
 }
 
 .place-order{
-width:100%;background:#fff;color:#000;border:0;padding:15px;
-border-radius:8px;cursor:pointer;font-size:17px;font-family:inherit;
-font-weight:700
+width:100%;
+background:#171717;
+color:#fff;
+border:0;
+padding:15px;
+border-radius:8px;
+cursor:pointer;
+font-size:17px;
+font-family:inherit;
+font-weight:700;
 }
 
 .cancel{
-width:100%;background:#222;color:#fff;border:0;padding:12px;
-border-radius:8px;cursor:pointer;margin-top:8px;font-family:inherit
+width:100%;
+background:#eee;
+color:#222;
+border:0;
+padding:12px;
+border-radius:8px;
+cursor:pointer;
+margin-top:8px;
+font-family:inherit;
 }
 
 .success-icon{
-font-size:70px;text-align:center
+font-size:70px;
+text-align:center;
 }
 
 .admin-card{
-max-width:720px
+max-width:720px;
 }
 
-.admin-card h2,.settings-card h2{
-text-align:left;margin-top:0
+.admin-card h2{
+text-align:left;
+margin-top:0;
 }
 
-.admin-note,.settings-note{
-color:#aaa;font-size:13px
+.admin-note{
+color:#777;
+font-size:13px;
 }
 
 .chip-row{
-display:flex;flex-wrap:wrap;gap:8px;margin:8px 0
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin:8px 0;
 }
 
 .chip{
-background:#222;border:1px solid #444;border-radius:20px;
-padding:6px 10px;font-size:13px
+background:#f1f1f1;
+border:1px solid #ddd;
+border-radius:20px;
+padding:6px 10px;
+font-size:13px;
 }
 
 .chip button{
-background:none;border:0;color:#fff;cursor:pointer;margin-left:5px
+background:none;
+border:0;
+color:#222;
+cursor:pointer;
+margin-left:5px;
 }
 
 .add-row{
-display:flex;gap:8px
+display:flex;
+gap:8px;
 }
 
 .add-row .input{
-margin:0
+margin:0;
 }
 
 .admin-submit{
-width:100%;background:#fff;color:#000;border:0;padding:14px;
-border-radius:8px;cursor:pointer;font-weight:700;font-family:inherit;
-margin-top:12px
+width:100%;
+background:#171717;
+color:#fff;
+border:0;
+padding:14px;
+border-radius:8px;
+cursor:pointer;
+font-weight:700;
+font-family:inherit;
+margin-top:12px;
 }
 
 .divider{
-border:0;border-top:1px solid #333;margin:20px 0
+border:0;
+border-top:1px solid #e5e5e5;
+margin:20px 0;
 }
 
 .small-btn{
-background:#222;color:#fff;border:0;padding:10px 12px;
-border-radius:7px;cursor:pointer;font-family:inherit
+background:#171717;
+color:#fff;
+border:0;
+padding:10px 12px;
+border-radius:7px;
+cursor:pointer;
+font-family:inherit;
 }
 
 .admin-products{
-margin-top:20px
+margin-top:20px;
 }
 
 .admin-product-row{
-border:1px solid #333;padding:12px;border-radius:8px;margin:8px 0;
-display:flex;justify-content:space-between;gap:10px;align-items:center
+border:1px solid #ddd;
+padding:12px;
+border-radius:8px;
+margin:8px 0;
+display:flex;
+justify-content:space-between;
+gap:10px;
+align-items:center;
 }
 
 .danger{
-background:#b91c1c!important;color:#fff!important
+background:#b91c1c!important;
+color:#fff!important;
+border:0;
+padding:8px 12px;
+border-radius:7px;
+cursor:pointer;
 }
 
 .modal-top{
-display:flex;justify-content:space-between;align-items:center
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
 .modal-top h2{
-margin:0;text-align:left
-}
-
-#successBox{
-display:none;text-align:center;padding:40px 20px
+margin:0;
+text-align:left;
 }
 
 .settings-row{
-border:1px solid #333;border-radius:10px;padding:15px;margin:12px 0
-}
-
-.settings-row strong{
-display:block;margin-bottom:8px
+padding:18px 0;
+border-bottom:1px solid #e5e5e5;
 }
 
 .language-select{
-width:100%;padding:12px;background:#151515;color:#fff;
-border:1px solid #333;border-radius:8px;font-family:inherit
+width:100%;
+padding:12px;
+margin-top:8px;
+border:1px solid #ccc;
+border-radius:8px;
+background:#fff;
+font-family:inherit;
+font-size:15px;
+}
+
+.settings-note{
+color:#777;
+font-size:13px;
+margin:8px 0 0;
 }
 
 .admin-email-box{
-background:#151515;border:1px solid #333;border-radius:10px;
-padding:15px;margin-top:20px
-}
-
-.admin-email-box strong{
-display:block;margin-bottom:5px
+padding-top:20px;
 }
 
 .admin-email{
-color:#aaa;word-break:break-all
+background:#f6f6f6;
+border:1px solid #ddd;
+padding:12px;
+border-radius:8px;
+margin-top:8px;
+font-weight:600;
+word-break:break-word;
+}
+
+.signup-button{
+width:100%;
+background:#171717;
+color:#fff;
+border:0;
+padding:14px;
+border-radius:8px;
+cursor:pointer;
+font-weight:700;
+font-family:inherit;
+font-size:15px;
+margin-top:12px;
+}
+
+.signup-only{
+text-align:center;
+color:#777;
+font-size:12px;
+margin-top:7px;
+}
+
+#successBox{
+display:none;
+text-align:center;
+padding:40px 20px;
+}
+
+.auth-status{
+color:#777;
+font-size:14px;
+}
+
+.auth-error{
+color:#b91c1c;
+font-size:13px;
+min-height:18px;
+}
+
+@media(max-width:1000px){
+.products{
+grid-template-columns:repeat(3,1fr);
+}
 }
 
 @media(max-width:800px){
-.products{grid-template-columns:repeat(2,1fr)}
-nav{display:none}
-.hero h1{font-size:40px}
-.admin-btn,.settings-btn,.cart-btn{font-size:12px;padding:9px}
+.products{
+grid-template-columns:repeat(2,1fr);
+}
+
+nav{
+display:none;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+.settings-btn,
+.admin-btn,
+.cart-btn{
+font-size:12px;
+padding:9px;
+}
 }
 
 @media(max-width:500px){
-.products{grid-template-columns:1fr}
-header{padding:10px 15px}
-.logo-image{width:42px;height:42px}
-.logo-text{font-size:18px}
-.hero{padding:70px 20px}
-.hero h1{font-size:35px}
-section{padding:50px 20px}
-.header-actions{gap:5px}
-.admin-btn,.settings-btn,.cart-btn{padding:8px}
+.products{
+grid-template-columns:1fr;
+}
+
+header{
+padding:10px 15px;
+}
+
+.logo-image{
+width:42px;
+height:42px;
+}
+
+.logo-text{
+font-size:18px;
+}
+
+.hero{
+padding:70px 20px;
+}
+
+.hero h1{
+font-size:35px;
+}
+
+section{
+padding:50px 20px;
+}
+
+.header-actions{
+gap:5px;
+}
+
+.settings-btn,
+.admin-btn,
+.cart-btn{
+padding:8px;
+}
 }
 </style>
 </head>
@@ -367,49 +699,55 @@ section{padding:50px 20px}
 <a href="#home" class="logo">
 
 <svg class="logo-image" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-<rect width="100" height="100" rx="22" fill="#111"/>
+<rect width="100" height="100" rx="22" fill="#ffffff"/>
 <path d="M25 25V75M25 50L63 25M25 50L63 75"
-stroke="#fff" stroke-width="8" fill="none"
-stroke-linecap="round" stroke-linejoin="round"/>
+stroke="#171717"
+stroke-width="8"
+fill="none"
+stroke-linecap="round"
+stroke-linejoin="round"/>
 <path d="M72 25V75"
-stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+stroke="#171717"
+stroke-width="8"
+stroke-linecap="round"/>
 </svg>
 
 <div class="logo-text">Kifal Noon Libas</div>
+
 </a>
 
 <nav>
-<a href="#home">Home</a>
-<a href="#products">Products</a>
-<a href="#contact">Contact</a>
+<a href="#home" data-i18n="home">Home</a>
+<a href="#products" data-i18n="products">Products</a>
+<a href="#contact" data-i18n="contact">Contact</a>
 </nav>
 
 <div class="header-actions">
-<button id="adminButton" class="admin-btn" onclick="openAdmin()">Admin Panel</button>
-<button class="settings-btn" onclick="openSettings()">Settings</button>
-<button class="cart-btn" onclick="openCart()">Cart (<span id="count">0</span>)</button>
+<button id="adminButton" class="admin-btn" onclick="openAdmin()" data-i18n="adminPanel">Admin Panel</button>
+<button class="settings-btn" onclick="openSettings()" data-i18n="settings">Settings</button>
+<button class="cart-btn" onclick="openCart()" data-i18n="cart">Cart (<span id="count">0</span>)</button>
 </div>
 
 </header>
 
 <section class="hero" id="home">
-<h1>Welcome to Kifal Noon Libas</h1>
-<p>Quality clothing. Great prices. Easy ordering.</p>
-<a href="#products" class="shop-btn">Shop Now</a>
+<h1 data-i18n="welcome">Welcome to Kifal Noon Libas</h1>
+<p data-i18n="heroText">Quality clothing. Great prices. Easy ordering.</p>
+<a href="#products" class="shop-btn" data-i18n="shopNow">Shop Now</a>
 </section>
 
 <section id="products">
-<h2>Our Products</h2>
+<h2 data-i18n="ourProducts">Our Products</h2>
 
 <div class="products" id="productsContainer">
-<div class="loading">Loading products...</div>
+<div class="loading" data-i18n="loading">Loading products...</div>
 </div>
 
 </section>
 
 <section class="contact" id="contact">
-<h2>Contact Kifal Noon Libas</h2>
-<p>Thank you for shopping with Kifal Noon Libas.</p>
+<h2 data-i18n="contactTitle">Contact Kifal Noon Libas</h2>
+<p data-i18n="contactText">Thank you for shopping with Kifal Noon Libas.</p>
 </section>
 
 <footer>
@@ -421,15 +759,18 @@ stroke="#fff" stroke-width="8" stroke-linecap="round"/>
 
 <div id="cartBox">
 
-<button class="close-btn" onclick="closeCart()">Close</button>
+<button class="close-btn" onclick="closeCart()" data-i18n="close">Close</button>
 
-<h2>Your Cart</h2>
+<h2 data-i18n="yourCart">Your Cart</h2>
 
 <div id="items"></div>
 
-<h3>Total: Rs. <span id="total">0</span></h3>
+<h3>
+<span data-i18n="total">Total</span>:
+Rs. <span id="total">0</span>
+</h3>
 
-<button class="checkout-btn" onclick="openCheckout()">
+<button class="checkout-btn" onclick="openCheckout()" data-i18n="checkout">
 Proceed to Checkout
 </button>
 
@@ -445,48 +786,54 @@ Proceed to Checkout
 <div id="checkoutContent">
 
 <div class="modal-top">
-<h2>Checkout</h2>
-<button class="close-btn" onclick="closeCheckout()">Close</button>
+<h2 data-i18n="checkoutTitle">Checkout</h2>
+<button class="close-btn" onclick="closeCheckout()" data-i18n="close">Close</button>
 </div>
 
-<p>Please enter your delivery details.</p>
+<p data-i18n="deliveryDetails">Please enter your delivery details.</p>
 
-<input id="name" class="input" placeholder="Full Name">
+<input id="name" class="input" data-i18n-placeholder="fullName" placeholder="Full Name">
 
-<input id="phone" class="input" placeholder="Phone Number" type="tel">
+<input id="phone" class="input" data-i18n-placeholder="phone" placeholder="Phone Number" type="tel">
 
-<input id="city" class="input" placeholder="City">
+<input id="city" class="input" data-i18n-placeholder="city" placeholder="City">
 
-<textarea id="address" class="input"
-placeholder="Complete Delivery Address" rows="4"></textarea>
+<textarea id="address"
+class="input"
+data-i18n-placeholder="address"
+placeholder="Complete Delivery Address"
+rows="4"></textarea>
 
 <div class="order-summary">
 
-<h3>Order Summary</h3>
+<h3 data-i18n="orderSummary">Order Summary</h3>
 
 <div id="checkoutItems"></div>
 
 <hr>
 
-<strong>Total: Rs. <span id="checkoutTotal">0</span></strong>
+<strong>
+<span data-i18n="total">Total</span>:
+Rs. <span id="checkoutTotal">0</span>
+</strong>
 
 </div>
 
 <div class="payment">
 
-<strong>Payment Method</strong>
+<strong data-i18n="paymentMethod">Payment Method</strong>
 
-<p>Cash on Delivery</p>
+<p data-i18n="cod">Cash on Delivery</p>
 
-<small>Pay when your order is delivered to you.</small>
+<small data-i18n="payDelivery">Pay when your order is delivered to you.</small>
 
 </div>
 
-<button class="place-order" onclick="placeOrder()">
+<button class="place-order" onclick="placeOrder()" data-i18n="placeOrder">
 Place Order
 </button>
 
-<button class="cancel" onclick="closeCheckout()">
+<button class="cancel" onclick="closeCheckout()" data-i18n="cancel">
 Cancel
 </button>
 
@@ -497,17 +844,17 @@ Cancel
 
 <div class="success-icon">✓</div>
 
-<h2>Order Placed!</h2>
+<h2 data-i18n="orderPlaced">Order Placed!</h2>
 
-<p>Thank you for shopping with Kifal Noon Libas.</p>
+<p data-i18n="thankYou">Thank you for shopping with Kifal Noon Libas.</p>
 
-<p>Your order has been received successfully.</p>
+<p data-i18n="orderReceived">Your order has been received successfully.</p>
 
-<strong>Payment: Cash on Delivery</strong>
+<strong data-i18n="paymentCOD">Payment: Cash on Delivery</strong>
 
 <br><br>
 
-<button class="checkout-btn" onclick="finishOrder()">
+<button class="checkout-btn" onclick="finishOrder()" data-i18n="continueShopping">
 Continue Shopping
 </button>
 
@@ -526,28 +873,27 @@ Continue Shopping
 
 <div class="modal-top">
 
-<h2>Settings</h2>
+<h2 data-i18n="settings">Settings</h2>
 
-<button class="close-btn" onclick="closeSettings()">
+<button class="close-btn" onclick="closeSettings()" data-i18n="close">
 Close
 </button>
 
 </div>
 
+
 <div class="settings-row">
 
-<strong>Languages</strong>
+<strong data-i18n="languages">Languages</strong>
 
-<select id="languageSelect"
-class="language-select"
-onchange="changeLanguage()">
+<select id="languageSelect" class="language-select" onchange="changeLanguage()">
 
 <option value="en">English</option>
 <option value="ur">Urdu</option>
 
 </select>
 
-<p class="settings-note">
+<p class="settings-note" data-i18n="languageNote">
 Choose your preferred website language.
 </p>
 
@@ -556,18 +902,78 @@ Choose your preferred website language.
 
 <div class="admin-email-box">
 
-<strong>Store Admin Email</strong>
+<strong data-i18n="storeAdminEmail">
+Store Admin Email
+</strong>
 
 <div class="admin-email">
-kifal.noon.libas.store@gmail.com
+kifal.noon.libas.120@gmail.com
 </div>
 
-<p class="settings-note">
-Only this account is allowed to access the Store Admin Panel
-and add or delete clothing products.
+<button class="signup-button" onclick="openAuth()">
+<span data-i18n="signUp">Sign Up</span>
+</button>
+
+<div class="signup-only" data-i18n="onlyAdmin">
+Only for Store Admin
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- AUTH -->
+
+<div id="authBox">
+
+<div class="auth-card">
+
+<div class="modal-top">
+
+<h2 data-i18n="adminSignUp">Store Admin Sign Up</h2>
+
+<button class="close-btn" onclick="closeAuth()" data-i18n="close">
+Close
+</button>
+
+</div>
+
+<p class="auth-status" data-i18n="adminOnlyMessage">
+This sign up is only for the Store Admin.
 </p>
 
-</div>
+<input
+id="authEmail"
+class="input"
+type="email"
+value="kifal.noon.libas.120@gmail.com"
+readonly
+>
+
+<input
+id="authPassword"
+class="input"
+type="password"
+data-i18n-placeholder="password"
+placeholder="Password"
+>
+
+<input
+id="authPassword2"
+class="input"
+type="password"
+data-i18n-placeholder="confirmPassword"
+placeholder="Confirm Password"
+>
+
+<div id="authError" class="auth-error"></div>
+
+<button class="place-order" onclick="submitSignup()" data-i18n="signUp">
+Sign Up
+</button>
 
 </div>
 
@@ -582,39 +988,64 @@ and add or delete clothing products.
 
 <div class="modal-top">
 
-<h2>Admin Panel</h2>
+<h2 data-i18n="adminPanel">
+Admin Panel
+</h2>
 
-<button class="close-btn" onclick="closeAdmin()">
+<button class="close-btn" onclick="closeAdmin()" data-i18n="close">
 Close
 </button>
 
 </div>
 
 <p class="admin-note">
-Admin account: kifal.noon.libas.store@gmail.com
+Admin account: kifal.noon.libas.120@gmail.com
 </p>
 
 <hr class="divider">
 
-<input id="productName" class="input" placeholder="Product Name">
+<input
+id="productName"
+class="input"
+data-i18n-placeholder="productName"
+placeholder="Product Name"
+>
 
-<input id="productCategory" class="input"
-placeholder="Category (e.g. Clothing)">
+<input
+id="productCategory"
+class="input"
+data-i18n-placeholder="category"
+placeholder="Category (e.g. Clothing)"
+>
 
-<input id="productPrice" class="input"
-type="number" min="0" placeholder="Price">
+<input
+id="productPrice"
+class="input"
+type="number"
+min="0"
+data-i18n-placeholder="price"
+placeholder="Price"
+>
 
-<textarea id="productDescription" class="input"
-rows="3" placeholder="Product Description"></textarea>
+<textarea
+id="productDescription"
+class="input"
+rows="3"
+data-i18n-placeholder="description"
+placeholder="Product Description"></textarea>
 
-<label class="option-label">Sizes</label>
+<label class="option-label" data-i18n="sizes">Sizes</label>
 
 <div class="add-row">
 
-<input id="sizeInput" class="input"
-placeholder="e.g. S, M, L, XL">
+<input
+id="sizeInput"
+class="input"
+data-i18n-placeholder="sizesExample"
+placeholder="e.g. S, M, L, XL"
+>
 
-<button class="small-btn" onclick="addSize()">
+<button class="small-btn" onclick="addSize()" data-i18n="addSize">
 Add Size
 </button>
 
@@ -622,14 +1053,18 @@ Add Size
 
 <div id="sizeChips" class="chip-row"></div>
 
-<label class="option-label">Colors</label>
+<label class="option-label" data-i18n="colors">Colors</label>
 
 <div class="add-row">
 
-<input id="colorInput" class="input"
-placeholder="e.g. Black, White, Blue">
+<input
+id="colorInput"
+class="input"
+data-i18n-placeholder="colorsExample"
+placeholder="e.g. Black, White, Blue"
+>
 
-<button class="small-btn" onclick="addColor()">
+<button class="small-btn" onclick="addColor()" data-i18n="addColor">
 Add Color
 </button>
 
@@ -637,18 +1072,26 @@ Add Color
 
 <div id="colorChips" class="chip-row"></div>
 
-<label class="option-label">Product Image</label>
+<label class="option-label" data-i18n="productImage">
+Product Image
+</label>
 
-<input id="productImage" class="input"
-type="file" accept="image/*">
+<input
+id="productImage"
+class="input"
+type="file"
+accept="image/*"
+>
 
-<button class="admin-submit" onclick="addProduct()">
+<button class="admin-submit" onclick="addProduct()" data-i18n="addProduct">
 Add Product
 </button>
 
 <hr class="divider">
 
-<h3>Current Products</h3>
+<h3 data-i18n="currentProducts">
+Current Products
+</h3>
 
 <div id="adminProducts" class="admin-products">
 Loading...
@@ -661,25 +1104,15 @@ Loading...
 
 <script>
 
-/*
-====================================================
-KIFAL NOON LIBAS - NEW SUPABASE CONNECTION
-====================================================
-
-IMPORTANT:
-Replace ONLY these two values after creating the
-new Kifal Noon Libas Supabase project.
-
-RR Brothers Supabase connection has been removed.
-====================================================
-*/
+/* =====================================================
+   KIFAL NOON LIBAS SUPABASE
+===================================================== */
 
 const SUPABASE_URL="PASTE_NEW_KIFAL_SUPABASE_URL_HERE";
 
 const SUPABASE_KEY="PASTE_NEW_KIFAL_SUPABASE_PUBLISHABLE_KEY_HERE";
 
-const ADMIN_EMAIL="kifal.noon.libas.store@gmail.com";
-
+const ADMIN_EMAIL="kifal.noon.libas.120@gmail.com";
 
 const supabaseClient=window.supabase.createClient(
 SUPABASE_URL,
@@ -691,6 +1124,226 @@ let cart=[];
 let sizes=[];
 let colors=[];
 
+
+/* =====================================================
+   LANGUAGE
+===================================================== */
+
+const translations={
+
+en:{
+home:"Home",
+products:"Products",
+contact:"Contact",
+adminPanel:"Admin Panel",
+settings:"Settings",
+cart:"Cart",
+welcome:"Welcome to Kifal Noon Libas",
+heroText:"Quality clothing. Great prices. Easy ordering.",
+shopNow:"Shop Now",
+ourProducts:"Our Products",
+loading:"Loading products...",
+contactTitle:"Contact Kifal Noon Libas",
+contactText:"Thank you for shopping with Kifal Noon Libas.",
+close:"Close",
+yourCart:"Your Cart",
+total:"Total",
+checkout:"Proceed to Checkout",
+checkoutTitle:"Checkout",
+deliveryDetails:"Please enter your delivery details.",
+fullName:"Full Name",
+phone:"Phone Number",
+city:"City",
+address:"Complete Delivery Address",
+orderSummary:"Order Summary",
+paymentMethod:"Payment Method",
+cod:"Cash on Delivery",
+payDelivery:"Pay when your order is delivered to you.",
+placeOrder:"Place Order",
+cancel:"Cancel",
+orderPlaced:"Order Placed!",
+thankYou:"Thank you for shopping with Kifal Noon Libas.",
+orderReceived:"Your order has been received successfully.",
+paymentCOD:"Payment: Cash on Delivery",
+continueShopping:"Continue Shopping",
+languages:"Languages",
+languageNote:"Choose your preferred website language.",
+storeAdminEmail:"Store Admin Email",
+signUp:"Sign Up",
+onlyAdmin:"Only for Store Admin",
+adminSignUp:"Store Admin Sign Up",
+adminOnlyMessage:"This sign up is only for the Store Admin.",
+password:"Password",
+confirmPassword:"Confirm Password",
+productName:"Product Name",
+category:"Category (e.g. Clothing)",
+price:"Price",
+description:"Product Description",
+sizes:"Sizes",
+sizesExample:"e.g. S, M, L, XL",
+addSize:"Add Size",
+colors:"Colors",
+colorsExample:"e.g. Black, White, Blue",
+addColor:"Add Color",
+productImage:"Product Image",
+addProduct:"Add Product",
+currentProducts:"Current Products",
+selectSize:"Select Size",
+selectColor:"Select Color",
+addToCart:"Add to Cart",
+remove:"Remove",
+emptyCart:"Your cart is empty.",
+noProducts:"No products available yet.",
+loginRequired:"Please sign up as the Store Admin first.",
+passwordMismatch:"Passwords do not match.",
+passwordShort:"Password must be at least 6 characters.",
+signupSuccess:"Sign up successful. You can now use the Admin Panel.",
+signupError:"Unable to create the admin account.",
+notAdmin:"Only the Store Admin email is allowed."
+},
+
+ur:{
+home:"Home",
+products:"Products",
+contact:"Rabita",
+adminPanel:"Admin Panel",
+settings:"Settings",
+cart:"Cart",
+welcome:"Kifal Noon Libas mein khush aamdeed",
+heroText:"Behtareen kapray. Munasib prices. Asaan ordering.",
+shopNow:"Abhi Shopping Karein",
+ourProducts:"Hamari Products",
+loading:"Products load ho rahi hain...",
+contactTitle:"Kifal Noon Libas se Rabita",
+contactText:"Kifal Noon Libas se shopping karne ka shukriya.",
+close:"Band Karein",
+yourCart:"Aap ka Cart",
+total:"Kul",
+checkout:"Checkout par Jayein",
+checkoutTitle:"Checkout",
+deliveryDetails:"Delivery ki details enter karein.",
+fullName:"Poora Naam",
+phone:"Phone Number",
+city:"Shehar",
+address:"Mukammal Delivery Address",
+orderSummary:"Order Summary",
+paymentMethod:"Payment Method",
+cod:"Cash on Delivery",
+payDelivery:"Order deliver hone par payment karein.",
+placeOrder:"Order Place Karein",
+cancel:"Cancel",
+orderPlaced:"Order Place Ho Gaya!",
+thankYou:"Kifal Noon Libas se shopping karne ka shukriya.",
+orderReceived:"Aap ka order successfully receive ho gaya hai.",
+paymentCOD:"Payment: Cash on Delivery",
+continueShopping:"Shopping Jari Rakhein",
+languages:"Languages",
+languageNote:"Apni pasand ki website language select karein.",
+storeAdminEmail:"Store Admin Email",
+signUp:"Sign Up",
+onlyAdmin:"Only for Store Admin",
+adminSignUp:"Store Admin Sign Up",
+adminOnlyMessage:"Yeh Sign Up sirf Store Admin ke liye hai.",
+password:"Password",
+confirmPassword:"Password Dobara Likhein",
+productName:"Product Name",
+category:"Category (e.g. Clothing)",
+price:"Price",
+description:"Product Description",
+sizes:"Sizes",
+sizesExample:"e.g. S, M, L, XL",
+addSize:"Size Add Karein",
+colors:"Colors",
+colorsExample:"e.g. Black, White, Blue",
+addColor:"Color Add Karein",
+productImage:"Product Image",
+addProduct:"Product Add Karein",
+currentProducts:"Current Products",
+selectSize:"Size Select Karein",
+selectColor:"Color Select Karein",
+addToCart:"Cart mein Add Karein",
+remove:"Remove",
+emptyCart:"Aap ka cart khaali hai.",
+noProducts:"Abhi koi product available nahi.",
+loginRequired:"Pehle Store Admin ke taur par Sign Up karein.",
+passwordMismatch:"Passwords match nahi kar rahe.",
+passwordShort:"Password kam az kam 6 characters ka hona chahiye.",
+signupSuccess:"Sign Up successful. Ab aap Admin Panel use kar sakte hain.",
+signupError:"Admin account create nahi ho saka.",
+notAdmin:"Sirf Store Admin email allowed hai."
+}
+
+};
+
+
+function currentLanguage(){
+
+return localStorage.getItem("kifalLanguage")||"en";
+
+}
+
+
+function t(key){
+
+const lang=currentLanguage();
+
+return translations[lang][key]||translations.en[key]||key;
+
+}
+
+
+function applyLanguage(){
+
+const lang=currentLanguage();
+
+document.documentElement.lang=lang;
+
+document.body.classList.toggle("urdu",lang==="ur");
+
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+
+const key=el.getAttribute("data-i18n");
+
+el.textContent=t(key);
+
+});
+
+document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
+
+const key=el.getAttribute("data-i18n-placeholder");
+
+el.placeholder=t(key);
+
+});
+
+const select=document.getElementById("languageSelect");
+
+if(select){
+select.value=lang;
+}
+
+}
+
+
+function changeLanguage(){
+
+const value=document.getElementById("languageSelect").value;
+
+localStorage.setItem("kifalLanguage",value);
+
+applyLanguage();
+
+loadProducts();
+
+}
+
+
+applyLanguage();
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
 
 function esc(v){
 
@@ -711,14 +1364,16 @@ function arr(v){
 
 return Array.isArray(v)
 ?v
-:(typeof v==='string'&&v.trim()
-?v.split(',').map(x=>x.trim()).filter(Boolean)
+:(typeof v==="string"&&v.trim()
+?v.split(",").map(x=>x.trim()).filter(Boolean)
 :[]);
 
 }
 
 
-/* PRODUCTS */
+/* =====================================================
+   PRODUCTS
+===================================================== */
 
 async function loadProducts(){
 
@@ -736,7 +1391,7 @@ if(error){
 console.error(error);
 
 container.innerHTML=
-'<div class="no-products">Unable to load products.</div>';
+`<div class="no-products">${t("noProducts")}</div>`;
 
 return;
 
@@ -745,7 +1400,7 @@ return;
 if(!data||!data.length){
 
 container.innerHTML=
-'<div class="no-products">No products available yet.</div>';
+`<div class="no-products">${t("noProducts")}</div>`;
 
 return;
 
@@ -756,12 +1411,10 @@ container.innerHTML="";
 data.forEach(product=>{
 
 const image=product.image_url||
-"https://via.placeholder.com/600x500/111111/ffffff?text=Kifal+Noon+Libas";
+"https://via.placeholder.com/600x500/f4f4f4/222222?text=Kifal+Noon+Libas";
 
 const ps=arr(product.sizes);
-
 const pc=arr(product.colors);
-
 const price=Number(product.price||0);
 
 const card=document.createElement("div");
@@ -770,29 +1423,47 @@ card.className="product";
 
 
 let sizeHtml=ps.length
-?`<label class="option-label">Size</label>
+?`
+<label class="option-label">${t("sizes")}</label>
+
 <select class="option-select size-select">
-<option value="">Select Size</option>
-${ps.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}
-</select>`
+
+<option value="">${t("selectSize")}</option>
+
+${ps.map(x=>`
+<option value="${esc(x)}">${esc(x)}</option>
+`).join("")}
+
+</select>
+`
 :"";
 
 
 let colorHtml=pc.length
-?`<label class="option-label">Color</label>
+?`
+<label class="option-label">${t("colors")}</label>
+
 <select class="option-select color-select">
-<option value="">Select Color</option>
-${pc.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}
-</select>`
+
+<option value="">${t("selectColor")}</option>
+
+${pc.map(x=>`
+<option value="${esc(x)}">${esc(x)}</option>
+`).join("")}
+
+</select>
+`
 :"";
 
 
 card.innerHTML=`
 
-<img class="product-image"
+<img
+class="product-image"
 src="${esc(image)}"
-alt="${esc(product.name||'Product')}"
-onerror="this.src='https://via.placeholder.com/600x500/111111/ffffff?text=Kifal+Noon+Libas'">
+alt="${esc(product.name||"Product")}"
+onerror="this.src='https://via.placeholder.com/600x500/f4f4f4/222222?text=Kifal+Noon+Libas'"
+>
 
 <h3>${esc(product.name||"Product")}</h3>
 
@@ -812,7 +1483,7 @@ ${sizeHtml}
 ${colorHtml}
 
 <button class="add">
-Add to Cart
+${t("addToCart")}
 </button>
 
 `;
@@ -820,35 +1491,29 @@ Add to Cart
 
 card.querySelector(".add").addEventListener("click",()=>{
 
-const size=
-card.querySelector(".size-select")?.value||"";
+const size=card.querySelector(".size-select")?.value||"";
 
-const color=
-card.querySelector(".color-select")?.value||"";
-
+const color=card.querySelector(".color-select")?.value||"";
 
 if(ps.length&&!size){
 
-alert("Please select a size.");
+alert(t("selectSize"));
 
 return;
 
 }
-
 
 if(pc.length&&!color){
 
-alert("Please select a color.");
+alert(t("selectColor"));
 
 return;
 
 }
-
 
 addToCart(product.name,price,size,color);
 
 });
-
 
 container.appendChild(card);
 
@@ -859,14 +1524,16 @@ container.appendChild(card);
 console.error(e);
 
 container.innerHTML=
-'<div class="no-products">Connection error. Please try again.</div>';
+`<div class="no-products">${t("noProducts")}</div>`;
 
 }
 
 }
 
 
-/* CART */
+/* =====================================================
+   CART
+===================================================== */
 
 function addToCart(name,price,size="",color=""){
 
@@ -875,11 +1542,8 @@ x=>x.name===name&&x.size===size&&x.color===color
 );
 
 if(existing)
-
 existing.quantity++;
-
 else
-
 cart.push({
 name,
 price,
@@ -898,7 +1562,6 @@ alert(name+" added to cart!");
 function updateCart(){
 
 let count=0;
-
 let total=0;
 
 cart.forEach(i=>{
@@ -908,7 +1571,6 @@ count+=i.quantity;
 total+=i.price*i.quantity;
 
 });
-
 
 document.getElementById("count").innerText=count;
 
@@ -922,11 +1584,11 @@ function openCart(){
 
 let html="";
 
-if(!cart.length)
+if(!cart.length){
 
-html="<p>Your cart is empty.</p>";
+html=`<p>${t("emptyCart")}</p>`;
 
-else
+}else{
 
 cart.forEach((item,index)=>{
 
@@ -941,28 +1603,23 @@ html+=`
 Rs. ${item.price.toLocaleString()}
 
 ${item.size
-?`<div class="cart-options">Size: ${esc(item.size)}</div>`
+?`<div class="cart-options">${t("sizes")}: ${esc(item.size)}</div>`
 :""}
 
 ${item.color
-?`<div class="cart-options">Color: ${esc(item.color)}</div>`
+?`<div class="cart-options">${t("colors")}: ${esc(item.color)}</div>`
 :""}
 
 <div class="quantity">
 
-<button onclick="changeQuantity(${index},-1)">
-−
-</button>
+<button onclick="changeQuantity(${index},-1)">−</button>
 
 <span>${item.quantity}</span>
 
-<button onclick="changeQuantity(${index},1)">
-+
-</button>
+<button onclick="changeQuantity(${index},1)">+</button>
 
-<button class="remove"
-onclick="removeItem(${index})">
-Remove
+<button class="remove" onclick="removeItem(${index})">
+${t("remove")}
 </button>
 
 </div>
@@ -973,6 +1630,7 @@ Remove
 
 });
 
+}
 
 document.getElementById("items").innerHTML=html;
 
@@ -995,7 +1653,6 @@ function changeQuantity(index,change){
 cart[index].quantity+=change;
 
 if(cart[index].quantity<=0)
-
 cart.splice(index,1);
 
 updateCart();
@@ -1016,30 +1673,28 @@ openCart();
 }
 
 
-/* CHECKOUT */
+/* =====================================================
+   CHECKOUT
+===================================================== */
 
 function openCheckout(){
 
 if(!cart.length){
 
-alert("Your cart is empty!");
+alert(t("emptyCart"));
 
 return;
 
 }
 
-
 let html="";
-
 let total=0;
-
 
 cart.forEach(i=>{
 
 let sub=i.price*i.quantity;
 
 total+=sub;
-
 
 html+=`
 
@@ -1049,11 +1704,11 @@ html+=`
 × ${i.quantity}
 
 ${i.size
-?`<br>Size: ${esc(i.size)}`
+?`<br>${t("sizes")}: ${esc(i.size)}`
 :""}
 
 ${i.color
-?`<br>Color: ${esc(i.color)}`
+?`<br>${t("colors")}: ${esc(i.color)}`
 :""}
 
 <br>
@@ -1065,7 +1720,6 @@ ${i.color
 `;
 
 });
-
 
 document.getElementById("checkoutItems").innerHTML=html;
 
@@ -1096,15 +1750,13 @@ const city=document.getElementById("city").value.trim();
 
 const address=document.getElementById("address").value.trim();
 
-
 if(!name||!phone||!city||!address){
 
-alert("Please fill in all delivery details.");
+alert(t("deliveryDetails"));
 
 return;
 
 }
-
 
 if(phone.length<10){
 
@@ -1114,17 +1766,14 @@ return;
 
 }
 
-
 let total=cart.reduce(
 (s,i)=>s+i.price*i.quantity,
 0
 );
 
-
 try{
 
-let payload={
-
+const payload={
 name,
 phone,
 city,
@@ -1132,40 +1781,31 @@ address,
 total,
 status:"new",
 items:cart
-
 };
 
-
-let result=await supabaseClient
+const result=await supabaseClient
 .from("orders")
 .insert(payload);
-
 
 if(result.error){
 
 console.error(result.error);
 
-alert(
-"Unable to save your order. Please try again."
-);
+alert("Unable to place order.");
 
 return;
 
 }
 
+document.getElementById("checkoutContent").style.display="none";
 
-document.getElementById("checkoutContent")
-.style.display="none";
-
-document.getElementById("successBox")
-.style.display="block";
-
+document.getElementById("successBox").style.display="block";
 
 }catch(e){
 
 console.error(e);
 
-alert("Connection error. Please try again.");
+alert("Connection error.");
 
 }
 
@@ -1178,73 +1818,142 @@ cart=[];
 
 updateCart();
 
-document.getElementById("checkoutBox")
-.style.display="none";
+document.getElementById("name").value="";
 
-document.getElementById("checkoutContent")
-.style.display="block";
+document.getElementById("phone").value="";
 
-document.getElementById("successBox")
-.style.display="none";
+document.getElementById("city").value="";
 
+document.getElementById("address").value="";
 
-["name","phone","city","address"].forEach(
-id=>document.getElementById(id).value=""
-);
+document.getElementById("checkoutContent").style.display="block";
+
+document.getElementById("successBox").style.display="none";
+
+closeCheckout();
 
 }
 
 
-/* SETTINGS */
+/* =====================================================
+   SETTINGS
+===================================================== */
 
 function openSettings(){
 
-document.getElementById("settingsBox")
-.style.display="block";
+document.getElementById("settingsBox").style.display="block";
+
+applyLanguage();
 
 }
 
 
 function closeSettings(){
 
-document.getElementById("settingsBox")
-.style.display="none";
+document.getElementById("settingsBox").style.display="none";
 
 }
 
 
-function changeLanguage(){
+/* =====================================================
+   AUTH / ADMIN SIGN UP
+===================================================== */
 
-const language=
-document.getElementById("languageSelect").value;
+function openAuth(){
 
-if(language==="ur"){
+closeSettings();
 
-alert(
-"Urdu language selected. Full Urdu translation can be added later."
-);
+document.getElementById("authError").innerText="";
 
-}else{
+document.getElementById("authPassword").value="";
 
-alert("English language selected.");
+document.getElementById("authPassword2").value="";
+
+document.getElementById("authBox").style.display="block";
+
+}
+
+
+function closeAuth(){
+
+document.getElementById("authBox").style.display="none";
+
+}
+
+
+async function submitSignup(){
+
+const email=ADMIN_EMAIL;
+
+const password=document.getElementById("authPassword").value;
+
+const password2=document.getElementById("authPassword2").value;
+
+const errorBox=document.getElementById("authError");
+
+errorBox.innerText="";
+
+if(password!==password2){
+
+errorBox.innerText=t("passwordMismatch");
+
+return;
+
+}
+
+if(password.length<6){
+
+errorBox.innerText=t("passwordShort");
+
+return;
+
+}
+
+try{
+
+const {data,error}=await supabaseClient.auth.signUp({
+
+email,
+password
+
+});
+
+if(error){
+
+console.error(error);
+
+errorBox.innerText=error.message;
+
+return;
+
+}
+
+alert(t("signupSuccess"));
+
+closeAuth();
+
+await updateAdminButton();
+
+}catch(e){
+
+console.error(e);
+
+errorBox.innerText=t("signupError");
 
 }
 
 }
 
-
-/* ADMIN */
 
 async function checkAdmin(){
 
-const {data:{session}}=
-await supabaseClient.auth.getSession();
-
+const {
+data:{session}
+}=await supabaseClient.auth.getSession();
 
 if(
 !session||
-String(session.user.email||"").toLowerCase()
-!==ADMIN_EMAIL.toLowerCase()
+String(session.user.email||"").toLowerCase()!==ADMIN_EMAIL.toLowerCase()
 ){
 
 return false;
@@ -1256,21 +1965,30 @@ return true;
 }
 
 
+async function updateAdminButton(){
+
+const allowed=await checkAdmin();
+
+const button=document.getElementById("adminButton");
+
+button.style.display=allowed?"block":"none";
+
+}
+
+
 async function openAdmin(){
 
 const allowed=await checkAdmin();
 
 if(!allowed){
 
-alert("Admin access denied.");
+alert(t("loginRequired"));
 
 return;
 
 }
 
-
-document.getElementById("adminBox")
-.style.display="block";
+document.getElementById("adminBox").style.display="block";
 
 loadAdminProducts();
 
@@ -1279,124 +1997,108 @@ loadAdminProducts();
 
 function closeAdmin(){
 
-document.getElementById("adminBox")
-.style.display="none";
+document.getElementById("adminBox").style.display="none";
 
 }
 
 
+/* =====================================================
+   ADMIN SIZES / COLORS
+===================================================== */
+
 function addSize(){
 
-const v=document.getElementById("sizeInput")
-.value.trim();
+const input=document.getElementById("sizeInput");
 
-if(!v)return;
+const value=input.value.trim();
 
+if(!value)return;
 
-v.split(",")
-.map(x=>x.trim())
-.filter(Boolean)
-.forEach(x=>{
+if(!sizes.includes(value))
+sizes.push(value);
 
-if(!sizes.includes(x))
+input.value="";
 
-sizes.push(x);
+renderSizes();
 
-});
+}
 
 
-document.getElementById("sizeInput").value="";
+function renderSizes(){
+
+document.getElementById("sizeChips").innerHTML=
+sizes.map((x,i)=>`
+
+<div class="chip">
+
+${esc(x)}
+
+<button onclick="removeSize(${i})">×</button>
+
+</div>
+
+`).join("");
+
+}
 
 
-renderChips(
-"sizeChips",
-sizes,
-"removeSize"
-);
+function removeSize(index){
+
+sizes.splice(index,1);
+
+renderSizes();
 
 }
 
 
 function addColor(){
 
-const v=document.getElementById("colorInput")
-.value.trim();
+const input=document.getElementById("colorInput");
 
-if(!v)return;
+const value=input.value.trim();
 
+if(!value)return;
 
-v.split(",")
-.map(x=>x.trim())
-.filter(Boolean)
-.forEach(x=>{
+if(!colors.includes(value))
+colors.push(value);
 
-if(!colors.includes(x))
+input.value="";
 
-colors.push(x);
-
-});
-
-
-document.getElementById("colorInput").value="";
-
-
-renderChips(
-"colorChips",
-colors,
-"removeColor"
-);
+renderColors();
 
 }
 
 
-function renderChips(id,list,fn){
+function renderColors(){
 
-document.getElementById(id).innerHTML=
+document.getElementById("colorChips").innerHTML=
+colors.map((x,i)=>`
 
-list.map((x,i)=>
-
-`<span class="chip">
+<div class="chip">
 
 ${esc(x)}
 
-<button onclick="${fn}(${i})">
-×
-</button>
+<button onclick="removeColor(${i})">×</button>
 
-</span>`
+</div>
 
-).join("");
+`).join("");
 
 }
 
 
-function removeSize(i){
+function removeColor(index){
 
-sizes.splice(i,1);
+colors.splice(index,1);
 
-renderChips(
-"sizeChips",
-sizes,
-"removeSize"
-);
+renderColors();
 
 }
 
 
-function removeColor(i){
-
-colors.splice(i,1);
-
-renderChips(
-"colorChips",
-colors,
-"removeColor"
-);
-
-}
-
-
-/* ADD PRODUCT */
+/* =====================================================
+   ADD PRODUCT
+===================================================== */
 
 async function addProduct(){
 
@@ -1404,99 +2106,58 @@ const allowed=await checkAdmin();
 
 if(!allowed){
 
-alert("Admin access denied.");
+alert(t("notAdmin"));
 
 return;
 
 }
 
+const name=document.getElementById("productName").value.trim();
 
-const name=
-document.getElementById("productName")
-.value.trim();
+const category=document.getElementById("productCategory").value.trim();
 
+const price=Number(document.getElementById("productPrice").value);
 
-const category=
-document.getElementById("productCategory")
-.value.trim();
+const description=document.getElementById("productDescription").value.trim();
 
+const imageFile=document.getElementById("productImage").files[0];
 
-const price=
-Number(
-document.getElementById("productPrice").value
-);
+if(!name||!category||!price||!description||!imageFile){
 
-
-const description=
-document.getElementById("productDescription")
-.value.trim();
-
-
-const file=
-document.getElementById("productImage")
-.files[0];
-
-
-if(!name||!category||!price||!file){
-
-alert(
-"Please fill Product Name, Category, Price and Image."
-);
+alert("Please complete all product details.");
 
 return;
 
 }
-
 
 try{
 
-let imageUrl="";
-
-
-const ext=
-(file.name.split(".").pop()||"jpg")
-.toLowerCase();
-
-
-const path=
-`${Date.now()}-${Math.random()
-.toString(36).slice(2)}.${ext}`;
-
+const fileName=
+Date.now()+"-"+imageFile.name.replace(/\s+/g,"-");
 
 const upload=
 await supabaseClient.storage
 .from("product-images")
-.upload(
-path,
-file,
-{upsert:false}
-);
-
+.upload(fileName,imageFile);
 
 if(upload.error){
 
-alert(
-"Image upload failed: "+
-upload.error.message
-);
+console.error(upload.error);
+
+alert("Image upload failed.");
 
 return;
 
 }
 
-
-const pub=
+const publicUrl=
 supabaseClient.storage
 .from("product-images")
-.getPublicUrl(path);
+.getPublicUrl(fileName)
+.data.publicUrl;
 
 
-imageUrl=
-pub.data.publicUrl;
-
-
-const {error}=
-await supabaseClient
+const {error}=await supabaseClient
 .from("products")
 .insert({
 
@@ -1504,29 +2165,23 @@ name,
 category,
 price,
 description,
-image_url:imageUrl,
+image_url:publicUrl,
 sizes,
 colors
 
 });
 
-
 if(error){
 
 console.error(error);
 
-alert(
-"Product save failed: "+
-error.message
-);
+alert("Product could not be added.");
 
 return;
 
 }
 
-
-alert("Product added successfully!");
-
+alert("Product added successfully.");
 
 document.getElementById("productName").value="";
 
@@ -1538,124 +2193,113 @@ document.getElementById("productDescription").value="";
 
 document.getElementById("productImage").value="";
 
-
 sizes=[];
 
 colors=[];
 
+renderSizes();
 
-renderChips(
-"sizeChips",
-sizes,
-"removeSize"
-);
+renderColors();
 
-
-renderChips(
-"colorChips",
-colors,
-"removeColor"
-);
-
-
-await loadProducts();
+loadProducts();
 
 loadAdminProducts();
-
 
 }catch(e){
 
 console.error(e);
 
-alert(
-"Connection error. Please try again."
-);
+alert("Connection error.");
 
 }
 
 }
 
 
-/* ADMIN PRODUCTS */
+/* =====================================================
+   ADMIN PRODUCT LIST
+===================================================== */
 
 async function loadAdminProducts(){
 
-const box=
-document.getElementById("adminProducts");
+const container=document.getElementById("adminProducts");
 
+try{
 
 const allowed=await checkAdmin();
 
 if(!allowed){
 
-box.innerHTML="Admin access required.";
+container.innerHTML="<p>Admin access required.</p>";
 
 return;
 
 }
 
-
-const {data,error}=
-await supabaseClient
+const {data,error}=await supabaseClient
 .from("products")
-.select("id,name,price")
+.select("*")
 .order("created_at",{ascending:false});
-
 
 if(error){
 
-box.innerHTML=
-"Unable to load products.";
+console.error(error);
+
+container.innerHTML="<p>Unable to load products.</p>";
 
 return;
 
 }
-
 
 if(!data||!data.length){
 
-box.innerHTML=
-"No products yet.";
+container.innerHTML=`<p>${t("noProducts")}</p>`;
 
 return;
 
 }
 
+container.innerHTML=data.map(product=>`
 
-box.innerHTML=
+<div class="admin-product-row">
 
-data.map(p=>
+<div>
 
-`<div class="admin-product-row">
+<strong>${esc(product.name)}</strong>
 
-<span>
+<br>
 
-${esc(p.name)}
+<small>
+Rs. ${Number(product.price||0).toLocaleString()}
+</small>
 
-—
-
-Rs. ${Number(p.price||0).toLocaleString()}
-
-</span>
-
+</div>
 
 <button
-class="small-btn danger"
-onclick="deleteProduct('${String(p.id)
-.replace(/'/g,"\\'")}')">
-
-Delete
-
+class="danger"
+onclick="deleteProduct('${product.id}')"
+>
+${t("remove")}
 </button>
 
-</div>`
+</div>
 
-).join("");
+`).join("");
+
+}catch(e){
+
+console.error(e);
+
+container.innerHTML="<p>Connection error.</p>";
+
+}
 
 }
 
 
-/* DELETE PRODUCT */
+/* =====================================================
+   DELETE PRODUCT
+===================================================== */
 
 async function deleteProduct(id){
 
@@ -1663,36 +2307,32 @@ const allowed=await checkAdmin();
 
 if(!allowed){
 
-alert("Admin access denied.");
+alert(t("notAdmin"));
 
 return;
 
 }
 
-
-if(!confirm("Delete this product?"))
+if(!confirm("Delete this product?")){
 
 return;
 
+}
 
-const {error}=
-await supabaseClient
+const {error}=await supabaseClient
 .from("products")
 .delete()
 .eq("id",id);
 
-
 if(error){
 
-alert(
-"Delete failed: "+
-error.message
-);
+console.error(error);
+
+alert("Product could not be deleted.");
 
 return;
 
 }
-
 
 loadProducts();
 
@@ -1701,9 +2341,13 @@ loadAdminProducts();
 }
 
 
-/* START */
+/* =====================================================
+   START
+===================================================== */
 
 loadProducts();
+
+updateAdminButton();
 
 </script>
 
