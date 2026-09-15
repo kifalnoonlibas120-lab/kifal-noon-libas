@@ -1058,7 +1058,10 @@ body.urdu .cart-drawer.open{
 const SUPABASE_URL = "PASTE_NEW_KIFAL_SUPABASE_URL_HERE";
 const SUPABASE_KEY = "PASTE_NEW_KIFAL_SUPABASE_PUBLISHABLE_KEY_HERE";
 
-const ADMIN_EMAIL = "kifal.noon.libas.120@gmail.com";
+const ADMIN_EMAILS = [
+  "kifal.noon.libas.120@gmail.com",
+  "uk7186979@gmail.com"
+];
 
 let supabaseClient = null;
 
@@ -1935,8 +1938,11 @@ async function checkAdmin(){
 
   return Boolean(
     user.email &&
-    user.email.toLowerCase()===
-    ADMIN_EMAIL.toLowerCase()
+    ADMIN_EMAILS.some(
+      email=>
+        user.email.toLowerCase()===
+        email.toLowerCase()
+    )
   );
 }
 
@@ -1986,7 +1992,10 @@ async function loginAdmin(){
   }
 
   if(
-    email!==ADMIN_EMAIL.toLowerCase()
+    !ADMIN_EMAILS.some(
+      adminEmail=>
+        email===adminEmail.toLowerCase()
+    )
   ){
 
     message.style.color="#b00020";
