@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -2175,7 +2176,7 @@ async function addProduct(){
   const {error:uploadError}=
     await supabaseClient
       .storage
-      .from("product-images")
+      .from("products")
       .upload(
         fileName,
         imageFile
@@ -2193,7 +2194,7 @@ async function addProduct(){
   const {data:urlData}=
     supabaseClient
       .storage
-      .from("product-images")
+      .from("products")
       .getPublicUrl(fileName);
 
   const imageUrl=
@@ -2429,3 +2430,6 @@ updateAdminButton();
 
 </body>
 </html>
+```
+
+**Commit message:** `Fix product image storage bucket name`
