@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -253,6 +252,22 @@ a{
   background:#333;
 }
 
+.buy-now-btn{
+  width:100%;
+  border:1px solid #171717;
+  background:#fff;
+  color:#171717;
+  padding:10px;
+  border-radius:7px;
+  margin-top:8px;
+  font-weight:600;
+}
+
+.buy-now-btn:hover{
+  background:#171717;
+  color:#fff;
+}
+
 .empty{
   text-align:center;
   color:#777;
@@ -287,6 +302,7 @@ a{
 }
 
 /* MODALS */
+
 .modal{
   position:fixed;
   inset:0;
@@ -369,6 +385,10 @@ textarea{
   padding:12px;
   border-radius:8px;
   font-weight:600;
+}
+
+.primary-btn:hover{
+  background:#333;
 }
 
 .secondary-btn{
@@ -459,7 +479,102 @@ textarea{
   background:#ddd;
 }
 
+/* DYNAMIC SIZE / COLOR */
+
+.dynamic-option-box{
+  display:flex;
+  gap:8px;
+  margin-bottom:8px;
+}
+
+.dynamic-option-box input{
+  flex:1;
+}
+
+.remove-option{
+  width:40px;
+  border:0;
+  background:#f1f1f1;
+  border-radius:7px;
+  font-size:18px;
+}
+
+.remove-option:hover{
+  background:#ddd;
+}
+
+.add-option-btn{
+  border:1px dashed #aaa;
+  background:#fff;
+  padding:9px 13px;
+  border-radius:7px;
+  width:100%;
+  margin-top:5px;
+}
+
+.add-option-btn:hover{
+  background:#f5f5f5;
+}
+
+/* PRODUCT SELECTION */
+
+.product-select-image{
+  width:100%;
+  max-height:280px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:15px;
+}
+
+.selected-product-price{
+  font-size:20px;
+  font-weight:700;
+  margin:8px 0 15px;
+}
+
+.option-group{
+  margin-top:14px;
+}
+
+.option-label{
+  display:block;
+  font-weight:600;
+  margin-bottom:8px;
+}
+
+.option-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.option-btn{
+  border:1px solid #d8d8d8;
+  background:#fff;
+  color:#171717;
+  padding:9px 14px;
+  border-radius:7px;
+}
+
+.option-btn:hover{
+  border-color:#171717;
+}
+
+.option-btn.selected{
+  background:#171717;
+  color:#fff;
+  border-color:#171717;
+}
+
+.selection-required{
+  color:#b00020;
+  font-size:13px;
+  margin-top:8px;
+  min-height:18px;
+}
+
 /* CART */
+
 .cart-drawer{
   position:fixed;
   top:0;
@@ -521,6 +636,13 @@ body.urdu .cart-drawer.open{
   flex:1;
 }
 
+.cart-options{
+  color:#666;
+  font-size:13px;
+  margin-top:5px;
+  line-height:1.5;
+}
+
 .qty-row{
   display:flex;
   align-items:center;
@@ -550,6 +672,7 @@ body.urdu .cart-drawer.open{
 }
 
 /* CHECKOUT */
+
 .summary{
   background:#f8f8f8;
   border-radius:9px;
@@ -560,7 +683,34 @@ body.urdu .cart-drawer.open{
 .summary-line{
   display:flex;
   justify-content:space-between;
+  gap:15px;
   margin-bottom:7px;
+}
+
+.summary-options{
+  color:#666;
+  font-size:13px;
+  margin-top:3px;
+}
+
+.payment-box{
+  border:1px solid #e3e3e3;
+  border-radius:9px;
+  padding:13px;
+  margin-top:12px;
+  background:#fff;
+}
+
+.payment-option{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.payment-note{
+  color:#777;
+  font-size:12px;
+  margin-top:6px;
 }
 
 .success{
@@ -574,6 +724,7 @@ body.urdu .cart-drawer.open{
 }
 
 /* SEARCH */
+
 .search-wrap{
   margin-bottom:25px;
 }
@@ -587,7 +738,9 @@ body.urdu .cart-drawer.open{
 }
 
 /* RESPONSIVE */
+
 @media(max-width:800px){
+
   .header{
     padding:0 12px;
   }
@@ -611,8 +764,17 @@ body.urdu .cart-drawer.open{
 }
 
 @media(max-width:500px){
+
   .product-grid{
     grid-template-columns:1fr;
+  }
+
+  .modal{
+    padding:10px;
+  }
+
+  .modal-box{
+    padding:18px;
   }
 }
 </style>
@@ -621,23 +783,60 @@ body.urdu .cart-drawer.open{
 <body>
 
 <header class="header">
+
   <a href="#" class="logo">
+
     <img
       class="logo-icon"
       src="https://i.ibb.co/SXq90jYC/Screenshot-2026-09-15-234146.png"
       alt="Kifal Noon Libas Logo"
     >
+
     <span>Kifal Noon <span>Libas</span></span>
+
   </a>
 
   <nav class="nav">
-    <button type="button" onclick="scrollToSection('home')" data-i18n="home">Home</button>
-    <button type="button" onclick="scrollToSection('products')" data-i18n="products">Products</button>
-    <button type="button" onclick="scrollToSection('contact')" data-i18n="contact">Contact</button>
+
+    <button
+      type="button"
+      onclick="scrollToSection('home')"
+      data-i18n="home"
+    >
+      Home
+    </button>
+
+    <button
+      type="button"
+      onclick="scrollToSection('products')"
+      data-i18n="products"
+    >
+      Products
+    </button>
+
+    <button
+      type="button"
+      onclick="scrollToSection('contact')"
+      data-i18n="contact"
+    >
+      Contact
+    </button>
+
   </nav>
 
-  <div class="header-actions" style="display:flex;gap:7px;align-items:center;">
-    <button type="button" class="header-btn" onclick="openSettings()" data-i18n="settings">Settings</button>
+  <div
+    class="header-actions"
+    style="display:flex;gap:7px;align-items:center;"
+  >
+
+    <button
+      type="button"
+      class="header-btn"
+      onclick="openSettings()"
+      data-i18n="settings"
+    >
+      Settings
+    </button>
 
     <button
       type="button"
@@ -650,16 +849,27 @@ body.urdu .cart-drawer.open{
       Admin Panel
     </button>
 
-    <button type="button" class="cart-btn" onclick="openCart()">
-      🛒 <span data-i18n="cart">Cart</span> (<span id="cartCount">0</span>)
+    <button
+      type="button"
+      class="cart-btn"
+      onclick="openCart()"
+    >
+      🛒
+      <span data-i18n="cart">Cart</span>
+      (<span id="cartCount">0</span>)
     </button>
+
   </div>
+
 </header>
+
 
 <main>
 
 <section class="hero" id="home">
+
   <div>
+
     <h1>
       <span data-i18n="welcome">Welcome to</span><br>
       <span>Kifal Noon Libas</span>
@@ -669,21 +879,37 @@ body.urdu .cart-drawer.open{
       Discover beautiful clothing and shop your favorite styles online.
     </p>
 
-    <a href="#products" class="main-btn" data-i18n="shopNow">
+    <a
+      href="#products"
+      class="main-btn"
+      data-i18n="shopNow"
+    >
       Shop Now
     </a>
+
   </div>
+
 </section>
 
+
 <section class="section" id="products">
+
   <div class="container">
 
     <div class="section-title">
-      <h2 data-i18n="ourProducts">Our Products</h2>
-      <span id="productCount">0 Products</span>
+
+      <h2 data-i18n="ourProducts">
+        Our Products
+      </h2>
+
+      <span id="productCount">
+        0 Products
+      </span>
+
     </div>
 
     <div class="search-wrap">
+
       <input
         id="searchInput"
         class="search-input"
@@ -692,50 +918,95 @@ body.urdu .cart-drawer.open{
         data-i18n-placeholder="search"
         oninput="renderProducts()"
       >
+
     </div>
 
-    <div id="productGrid" class="product-grid"></div>
+    <div
+      id="productGrid"
+      class="product-grid"
+    ></div>
 
-    <div id="noProducts" class="empty" style="display:none" data-i18n="noProducts">
+    <div
+      id="noProducts"
+      class="empty"
+      style="display:none"
+      data-i18n="noProducts"
+    >
       No products available yet.
     </div>
 
   </div>
+
 </section>
 
-<section class="section contact" id="contact">
+
+<section
+  class="section contact"
+  id="contact"
+>
+
   <div class="container contact-box">
-    <h2 data-i18n="contactTitle">Contact Us</h2>
+
+    <h2 data-i18n="contactTitle">
+      Contact Us
+    </h2>
+
     <p data-i18n="contactText">
       For orders or questions, please contact us.
     </p>
+
   </div>
+
 </section>
 
 </main>
 
+
 <footer class="footer">
-  © 2026 Kifal Noon Libas. <span data-i18n="rights">All rights reserved.</span>
+
+  © 2026 Kifal Noon Libas.
+  <span data-i18n="rights">
+    All rights reserved.
+  </span>
+
 </footer>
 
 
 <!-- SETTINGS -->
+
 <div class="modal" id="settingsModal">
+
   <div class="modal-box">
 
     <div class="modal-header">
-      <h2 data-i18n="settings">Settings</h2>
-      <button type="button" class="close" onclick="closeModal('settingsModal')">×</button>
+
+      <h2 data-i18n="settings">
+        Settings
+      </h2>
+
+      <button
+        type="button"
+        class="close"
+        onclick="closeModal('settingsModal')"
+      >
+        ×
+      </button>
+
     </div>
 
+
     <div class="settings-item">
-      <h3 data-i18n="languageTitle">🌐 Language</h3>
+
+      <h3 data-i18n="languageTitle">
+        🌐 Language
+      </h3>
 
       <p data-i18n="languageText">
         Choose the language you want to use.
       </p>
 
       <div class="language-row">
+
         <button
           type="button"
           id="englishBtn"
@@ -753,11 +1024,17 @@ body.urdu .cart-drawer.open{
         >
           اردو
         </button>
+
       </div>
+
     </div>
 
+
     <div class="settings-item">
-      <h3 data-i18n="storeAdmin">Store Admin</h3>
+
+      <h3 data-i18n="storeAdmin">
+        Store Admin
+      </h3>
 
       <p data-i18n="adminOnly">
         Only for Store Admin
@@ -772,21 +1049,31 @@ body.urdu .cart-drawer.open{
         Admin Login
       </button>
 
-      <div class="admin-note" data-i18n="adminNote">
+      <div
+        class="admin-note"
+        data-i18n="adminNote"
+      >
         This option is only for the store administrator.
       </div>
+
     </div>
 
   </div>
+
 </div>
 
 
 <!-- ADMIN LOGIN -->
+
 <div class="modal" id="loginModal">
+
   <div class="modal-box">
 
     <div class="modal-header">
-      <h2 data-i18n="adminLogin">Admin Login</h2>
+
+      <h2 data-i18n="adminLogin">
+        Admin Login
+      </h2>
 
       <button
         type="button"
@@ -795,33 +1082,47 @@ body.urdu .cart-drawer.open{
       >
         ×
       </button>
+
     </div>
 
+
     <div class="form-group">
-      <label data-i18n="email">Email</label>
+
+      <label data-i18n="email">
+        Email
+      </label>
 
       <input
         id="loginEmail"
         class="input"
         type="email"
-        placeholder=""
         autocomplete="username"
       >
+
     </div>
 
+
     <div class="form-group">
-      <label data-i18n="password">Password</label>
+
+      <label data-i18n="password">
+        Password
+      </label>
 
       <input
         id="loginPassword"
         class="input"
         type="password"
-        placeholder=""
         autocomplete="current-password"
       >
+
     </div>
 
-    <p id="loginMessage" style="margin-bottom:12px;"></p>
+
+    <p
+      id="loginMessage"
+      style="margin-bottom:12px;"
+    ></p>
+
 
     <button
       type="button"
@@ -833,15 +1134,21 @@ body.urdu .cart-drawer.open{
     </button>
 
   </div>
+
 </div>
 
 
 <!-- ADMIN PANEL -->
+
 <div class="modal" id="adminModal">
+
   <div class="modal-box">
 
     <div class="modal-header">
-      <h2 data-i18n="adminPanel">Admin Panel</h2>
+
+      <h2 data-i18n="adminPanel">
+        Admin Panel
+      </h2>
 
       <button
         type="button"
@@ -850,42 +1157,123 @@ body.urdu .cart-drawer.open{
       >
         ×
       </button>
+
     </div>
 
-    <div class="form-group">
-      <label data-i18n="productName">Product Name</label>
-      <input id="productName" class="input">
-    </div>
 
     <div class="form-group">
-      <label data-i18n="category">Category</label>
-      <input id="productCategory" class="input">
+
+      <label data-i18n="productName">
+        Product Name
+      </label>
+
+      <input
+        id="productName"
+        class="input"
+      >
+
     </div>
 
-    <div class="form-group">
-      <label data-i18n="price">Price</label>
-      <input id="productPrice" class="input" type="number">
-    </div>
 
     <div class="form-group">
-      <label data-i18n="description">Description</label>
-      <textarea id="productDescription"></textarea>
+
+      <label data-i18n="category">
+        Category
+      </label>
+
+      <input
+        id="productCategory"
+        class="input"
+      >
+
     </div>
 
-    <div class="form-group">
-      <label data-i18n="sizes">Sizes</label>
-      <input id="productSizes" class="input" placeholder="S, M, L, XL">
-    </div>
 
     <div class="form-group">
-      <label data-i18n="colors">Colors</label>
-      <input id="productColors" class="input" placeholder="Black, White">
+
+      <label data-i18n="price">
+        Price
+      </label>
+
+      <input
+        id="productPrice"
+        class="input"
+        type="number"
+      >
+
     </div>
 
+
     <div class="form-group">
-      <label data-i18n="image">Product Image</label>
-      <input id="productImage" class="input" type="file" accept="image/*">
+
+      <label data-i18n="description">
+        Description
+      </label>
+
+      <textarea
+        id="productDescription"
+      ></textarea>
+
     </div>
+
+
+    <!-- DYNAMIC SIZES -->
+
+    <div class="form-group">
+
+      <label data-i18n="sizes">
+        Sizes
+      </label>
+
+      <div id="sizesContainer"></div>
+
+      <button
+        type="button"
+        class="add-option-btn"
+        onclick="addSizeBox()"
+      >
+        + Add Size
+      </button>
+
+    </div>
+
+
+    <!-- DYNAMIC COLORS -->
+
+    <div class="form-group">
+
+      <label data-i18n="colors">
+        Colors
+      </label>
+
+      <div id="colorsContainer"></div>
+
+      <button
+        type="button"
+        class="add-option-btn"
+        onclick="addColorBox()"
+      >
+        + Add Color
+      </button>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label data-i18n="image">
+        Product Image
+      </label>
+
+      <input
+        id="productImage"
+        class="input"
+        type="file"
+        accept="image/*"
+      >
+
+    </div>
+
 
     <button
       type="button"
@@ -896,13 +1284,26 @@ body.urdu .cart-drawer.open{
       Add Product
     </button>
 
-    <hr style="margin:25px 0;border:0;border-top:1px solid #eee;">
 
-    <h3 style="margin-bottom:15px;" data-i18n="currentProducts">
+    <hr
+      style="
+        margin:25px 0;
+        border:0;
+        border-top:1px solid #eee;
+      "
+    >
+
+
+    <h3
+      style="margin-bottom:15px;"
+      data-i18n="currentProducts"
+    >
       Current Products
     </h3>
 
+
     <div id="adminProducts"></div>
+
 
     <button
       type="button"
@@ -914,14 +1315,94 @@ body.urdu .cart-drawer.open{
     </button>
 
   </div>
+
+</div>
+
+
+<!-- PRODUCT OPTIONS -->
+
+<div
+  class="modal"
+  id="productOptionsModal"
+>
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2 id="optionProductName">
+        Select Options
+      </h2>
+
+      <button
+        type="button"
+        class="close"
+        onclick="closeModal('productOptionsModal')"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <img
+      id="optionProductImage"
+      class="product-select-image"
+      src=""
+      alt=""
+    >
+
+
+    <div
+      id="optionProductPrice"
+      class="selected-product-price"
+    ></div>
+
+
+    <div
+      id="sizeSelection"
+      class="option-group"
+    ></div>
+
+
+    <div
+      id="colorSelection"
+      class="option-group"
+    ></div>
+
+
+    <p
+      id="selectionMessage"
+      class="selection-required"
+    ></p>
+
+
+    <button
+      type="button"
+      class="primary-btn"
+      onclick="confirmProductSelection()"
+      id="confirmSelectionButton"
+    >
+      Add to Cart
+    </button>
+
+  </div>
+
 </div>
 
 
 <!-- CART -->
-<aside class="cart-drawer" id="cartDrawer">
+
+<aside
+  class="cart-drawer"
+  id="cartDrawer"
+>
 
   <div class="cart-head">
-    <h2 data-i18n="cart">Cart</h2>
+
+    <h2 data-i18n="cart">
+      Cart
+    </h2>
 
     <button
       type="button"
@@ -930,18 +1411,33 @@ body.urdu .cart-drawer.open{
     >
       ×
     </button>
+
   </div>
 
-  <div id="cartItems" class="cart-items"></div>
+
+  <div
+    id="cartItems"
+    class="cart-items"
+  ></div>
+
 
   <div class="cart-foot">
+
     <div class="total-row">
-      <span data-i18n="total">Total</span>
+
+      <span data-i18n="total">
+        Total
+      </span>
 
       <span>
-        Rs. <span id="cartTotal">0</span>
+        Rs.
+        <span id="cartTotal">
+          0
+        </span>
       </span>
+
     </div>
+
 
     <button
       type="button"
@@ -951,17 +1447,26 @@ body.urdu .cart-drawer.open{
     >
       Checkout
     </button>
+
   </div>
 
 </aside>
 
 
 <!-- CHECKOUT -->
-<div class="modal" id="checkoutModal">
+
+<div
+  class="modal"
+  id="checkoutModal"
+>
+
   <div class="modal-box">
 
     <div class="modal-header">
-      <h2 data-i18n="checkout">Checkout</h2>
+
+      <h2 data-i18n="checkout">
+        Checkout
+      </h2>
 
       <button
         type="button"
@@ -970,7 +1475,9 @@ body.urdu .cart-drawer.open{
       >
         ×
       </button>
+
     </div>
+
 
     <div id="checkoutForm">
 
@@ -978,41 +1485,114 @@ body.urdu .cart-drawer.open{
 
         <div id="checkoutSummary"></div>
 
+
         <div class="summary-line">
-          <strong data-i18n="total">Total</strong>
+
+          <strong data-i18n="total">
+            Total
+          </strong>
 
           <strong>
-            Rs. <span id="checkoutTotal">0</span>
+            Rs.
+            <span id="checkoutTotal">
+              0
+            </span>
           </strong>
+
         </div>
 
-        <div style="margin-top:10px;">
-          <strong data-i18n="cod">Cash on Delivery</strong>
+
+        <div class="payment-box">
+
+          <div class="payment-option">
+
+            <input
+              type="radio"
+              name="paymentMethod"
+              id="codPayment"
+              value="cod"
+              checked
+            >
+
+            <label
+              for="codPayment"
+              data-i18n="cod"
+            >
+              Cash on Delivery
+            </label>
+
+          </div>
+
+
+          <div class="payment-note">
+            <span data-i18n="paymentNote">
+              Online payment gateway can be connected later.
+            </span>
+          </div>
+
         </div>
 
       </div>
 
-      <div class="form-group">
-        <label data-i18n="fullName">Full Name</label>
-        <input id="orderName" class="input">
-      </div>
 
       <div class="form-group">
-        <label data-i18n="phone">Phone</label>
-        <input id="orderPhone" class="input" type="tel">
+
+        <label data-i18n="fullName">
+          Full Name
+        </label>
+
+        <input
+          id="orderName"
+          class="input"
+        >
+
       </div>
 
-      <div class="form-group">
-        <label data-i18n="city">City</label>
-        <input id="orderCity" class="input">
-      </div>
 
       <div class="form-group">
-        <label data-i18n="address">Complete Delivery Address</label>
-        <textarea id="orderAddress"></textarea>
+
+        <label data-i18n="phone">
+          Phone
+        </label>
+
+        <input
+          id="orderPhone"
+          class="input"
+          type="tel"
+        >
+
       </div>
+
+
+      <div class="form-group">
+
+        <label data-i18n="city">
+          City
+        </label>
+
+        <input
+          id="orderCity"
+          class="input"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label data-i18n="address">
+          Complete Delivery Address
+        </label>
+
+        <textarea
+          id="orderAddress"
+        ></textarea>
+
+      </div>
+
 
       <p id="orderMessage"></p>
+
 
       <button
         type="button"
@@ -1025,9 +1605,16 @@ body.urdu .cart-drawer.open{
 
     </div>
 
-    <div id="orderSuccess" class="success" style="display:none;">
 
-      <div class="success-icon">✓</div>
+    <div
+      id="orderSuccess"
+      class="success"
+      style="display:none;"
+    >
+
+      <div class="success-icon">
+        ✓
+      </div>
 
       <h2 data-i18n="orderPlaced">
         Order Placed!
@@ -1053,16 +1640,21 @@ body.urdu .cart-drawer.open{
     </div>
 
   </div>
+
 </div>
 
 
 <script>
+
 /* =========================================================
    SUPABASE
    ========================================================= */
 
-const SUPABASE_URL = "https://noyfuzbkspgnliryiuhx.supabase.co";
-const SUPABASE_KEY = "sb_publishable_6K2eTWhv0LXXpUbfhJ3lTg_QrCzJ8F5";
+const SUPABASE_URL =
+  "https://noyfuzbkspgnliryiuhx.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_6K2eTWhv0LXXpUbfhJ3lTg_QrCzJ8F5";
 
 const ADMIN_EMAILS = [
   "kifal.noon.libas.120@gmail.com",
@@ -1072,19 +1664,29 @@ const ADMIN_EMAILS = [
 let supabaseClient = null;
 
 try{
+
   if(
     window.supabase &&
     SUPABASE_URL.startsWith("http") &&
     SUPABASE_KEY &&
     !SUPABASE_KEY.includes("PASTE_")
   ){
-    supabaseClient = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+
+    supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
   }
+
 }catch(error){
-  console.error("Supabase initialization error:",error);
+
+  console.error(
+    "Supabase initialization error:",
+    error
+  );
+
 }
 
 
@@ -1095,6 +1697,7 @@ try{
 const translations = {
 
   en:{
+
     home:"Home",
     products:"Products",
     contact:"Contact",
@@ -1102,23 +1705,38 @@ const translations = {
     adminPanel:"Admin Panel",
     cart:"Cart",
     welcome:"Welcome to",
-    heroText:"Discover beautiful clothing and shop your favorite styles online.",
+
+    heroText:
+      "Discover beautiful clothing and shop your favorite styles online.",
+
     shopNow:"Shop Now",
     ourProducts:"Our Products",
     search:"Search products...",
     noProducts:"No products available yet.",
+
     contactTitle:"Contact Us",
-    contactText:"For orders or questions, please contact us.",
+
+    contactText:
+      "For orders or questions, please contact us.",
+
     rights:"All rights reserved.",
+
     languageTitle:"🌐 Language",
-    languageText:"Choose the language you want to use.",
+
+    languageText:
+      "Choose the language you want to use.",
+
     storeAdmin:"Store Admin",
     adminOnly:"Only for Store Admin",
     adminLogin:"Admin Login",
-    adminNote:"This option is only for the store administrator.",
+
+    adminNote:
+      "This option is only for the store administrator.",
+
     password:"Password",
     email:"Email",
     login:"Login",
+
     productName:"Product Name",
     category:"Category",
     price:"Price",
@@ -1132,6 +1750,10 @@ const translations = {
     total:"Total",
     checkout:"Checkout",
     cod:"Cash on Delivery",
+
+    paymentNote:
+      "Online payment gateway can be connected later.",
+
     fullName:"Full Name",
     phone:"Phone",
     city:"City",
@@ -1139,34 +1761,61 @@ const translations = {
     placeOrder:"Place Order",
     orderPlaced:"Order Placed!",
     thankYou:"Thank you for your order.",
-    close:"Close"
+    close:"Close",
+
+    addProductToCart:"Add to Cart",
+    buyNow:"Buy Now",
+    selectSize:"Select Size",
+    selectColor:"Select Color",
+    selectRequired:"Please select all required options."
+
   },
 
+
   ur:{
+
     home:"ہوم",
     products:"پروڈکٹس",
     contact:"رابطہ",
     settings:"سیٹنگز",
     adminPanel:"ایڈمن پینل",
     cart:"کارٹ",
-    welcome:"کِفال نون لباس میں خوش آمدید",
-    heroText:"معیاری کپڑے، بہترین قیمتیں اور آسان آن لائن آرڈرنگ۔",
+
+    welcome:
+      "کِفال نون لباس میں خوش آمدید",
+
+    heroText:
+      "معیاری کپڑے، بہترین قیمتیں اور آسان آن لائن آرڈرنگ۔",
+
     shopNow:"ابھی خریداری کریں",
     ourProducts:"ہماری مصنوعات",
     search:"پروڈکٹس تلاش کریں...",
     noProducts:"ابھی کوئی پروڈکٹ دستیاب نہیں۔",
-    contactTitle:"کِفال نون لباس سے رابطہ",
-    contactText:"آرڈر یا کسی سوال کے لیے ہم سے رابطہ کریں۔",
+
+    contactTitle:
+      "کِفال نون لباس سے رابطہ",
+
+    contactText:
+      "آرڈر یا کسی سوال کے لیے ہم سے رابطہ کریں۔",
+
     rights:"تمام حقوق محفوظ ہیں۔",
+
     languageTitle:"🌐 زبان",
-    languageText:"اپنی پسند کی ویب سائٹ کی زبان منتخب کریں۔",
+
+    languageText:
+      "اپنی پسند کی ویب سائٹ کی زبان منتخب کریں۔",
+
     storeAdmin:"اسٹور ایڈمن",
     adminOnly:"صرف اسٹور ایڈمن کے لیے",
     adminLogin:"ایڈمن لاگ اِن",
-    adminNote:"یہ آپشن صرف اسٹور ایڈمن کے لیے ہے۔",
+
+    adminNote:
+      "یہ آپشن صرف اسٹور ایڈمن کے لیے ہے۔",
+
     password:"پاس ورڈ",
     email:"ای میل",
     login:"لاگ اِن",
+
     productName:"پروڈکٹ کا نام",
     category:"کیٹیگری",
     price:"قیمت",
@@ -1180,6 +1829,10 @@ const translations = {
     total:"کل",
     checkout:"چیک آؤٹ",
     cod:"کیش آن ڈیلیوری",
+
+    paymentNote:
+      "آن لائن پیمنٹ گیٹ وے بعد میں منسلک کیا جا سکتا ہے۔",
+
     fullName:"پورا نام",
     phone:"فون نمبر",
     city:"شہر",
@@ -1187,16 +1840,34 @@ const translations = {
     placeOrder:"آرڈر کریں",
     orderPlaced:"آرڈر ہو گیا!",
     thankYou:"آپ کے آرڈر کا شکریہ۔",
-    close:"بند کریں"
+    close:"بند کریں",
+
+    addProductToCart:"کارٹ میں شامل کریں",
+    buyNow:"ابھی خریدیں",
+    selectSize:"سائز منتخب کریں",
+    selectColor:"رنگ منتخب کریں",
+    selectRequired:"براہ کرم تمام ضروری آپشنز منتخب کریں۔"
+
   }
 
 };
+
 
 let currentLanguage =
   localStorage.getItem("kifalLanguage") || "en";
 
 let products = [];
 let cart = [];
+
+
+/* =========================================================
+   PRODUCT SELECTION STATE
+   ========================================================= */
+
+let selectedProductForCart = null;
+let selectedSize = "";
+let selectedColor = "";
+let selectionAction = "cart";
 
 
 /* =========================================================
@@ -1217,80 +1888,114 @@ function setLanguage(lang){
   );
 
   document.documentElement.lang =
-    currentLanguage==="ur" ? "ur" : "en";
+    currentLanguage==="ur"
+    ? "ur"
+    : "en";
 
   document.documentElement.dir =
-    currentLanguage==="ur" ? "rtl" : "ltr";
+    currentLanguage==="ur"
+    ? "rtl"
+    : "ltr";
 
   document.body.classList.toggle(
     "urdu",
     currentLanguage==="ur"
   );
 
-  document.querySelectorAll("[data-i18n]").forEach(el=>{
+  document
+    .querySelectorAll("[data-i18n]")
+    .forEach(el=>{
 
-    const key=el.getAttribute("data-i18n");
+      const key =
+        el.getAttribute("data-i18n");
 
-    if(
-      translations[currentLanguage] &&
-      translations[currentLanguage][key]
-    ){
-      el.textContent =
-        translations[currentLanguage][key];
-    }
+      if(
+        translations[currentLanguage] &&
+        translations[currentLanguage][key]
+      ){
 
-  });
+        el.textContent =
+          translations[currentLanguage][key];
 
-  document.querySelectorAll(
-    "[data-i18n-placeholder]"
-  ).forEach(el=>{
+      }
 
-    const key=el.getAttribute(
-      "data-i18n-placeholder"
+    });
+
+
+  document
+    .querySelectorAll(
+      "[data-i18n-placeholder]"
+    )
+    .forEach(el=>{
+
+      const key =
+        el.getAttribute(
+          "data-i18n-placeholder"
+        );
+
+      if(
+        translations[currentLanguage] &&
+        translations[currentLanguage][key]
+      ){
+
+        el.placeholder =
+          translations[currentLanguage][key];
+
+      }
+
+    });
+
+
+  const englishBtn =
+    document.getElementById(
+      "englishBtn"
     );
 
-    if(
-      translations[currentLanguage] &&
-      translations[currentLanguage][key]
-    ){
-      el.placeholder =
-        translations[currentLanguage][key];
-    }
+  const urduBtn =
+    document.getElementById(
+      "urduBtn"
+    );
 
-  });
-
-  const englishBtn=
-    document.getElementById("englishBtn");
-
-  const urduBtn=
-    document.getElementById("urduBtn");
 
   if(englishBtn){
+
     englishBtn.classList.toggle(
       "active",
       currentLanguage==="en"
     );
+
   }
 
+
   if(urduBtn){
+
     urduBtn.classList.toggle(
       "active",
       currentLanguage==="ur"
     );
+
   }
+
 
   renderProducts();
   renderCart();
   renderAdminProducts();
+
 }
+
+
+/* =========================================================
+   TRANSLATION HELPER
+   ========================================================= */
 
 function t(key){
 
-  return (
+  return(
     translations[currentLanguage]?.[key] ||
     translations.en[key] ||
     key
   );
+
 }
 
 
@@ -1300,55 +2005,85 @@ function t(key){
 
 function openModal(id){
 
-  const modal=document.getElementById(id);
+  const modal =
+    document.getElementById(id);
 
   if(modal){
     modal.style.display="flex";
   }
+
 }
+
 
 function closeModal(id){
 
-  const modal=document.getElementById(id);
+  const modal =
+    document.getElementById(id);
 
   if(modal){
     modal.style.display="none";
   }
+
 }
 
+
 function openSettings(){
+
   openModal("settingsModal");
+
 }
+
 
 function openLogin(){
 
   closeModal("settingsModal");
 
-  const email=
-    document.getElementById("loginEmail");
+  const email =
+    document.getElementById(
+      "loginEmail"
+    );
 
-  const password=
-    document.getElementById("loginPassword");
+  const password =
+    document.getElementById(
+      "loginPassword"
+    );
 
-  const message=
-    document.getElementById("loginMessage");
+  const message =
+    document.getElementById(
+      "loginMessage"
+    );
 
-  if(email)email.value="";
-  if(password)password.value="";
-  if(message)message.textContent="";
+
+  if(email){
+    email.value="";
+  }
+
+  if(password){
+    password.value="";
+  }
+
+  if(message){
+    message.textContent="";
+  }
 
   openModal("loginModal");
+
 }
+
 
 function scrollToSection(id){
 
-  const element=document.getElementById(id);
+  const element =
+    document.getElementById(id);
 
   if(element){
+
     element.scrollIntoView({
       behavior:"smooth"
     });
+
   }
+
 }
 
 
@@ -1368,10 +2103,21 @@ async function loadProducts(){
     return;
   }
 
-  const {data,error}=await supabaseClient
-    .from("products")
-    .select("*")
-    .order("created_at",{ascending:false});
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("products")
+      .select("*")
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
+
 
   if(error){
 
@@ -1381,49 +2127,76 @@ async function loadProducts(){
 
   }else{
 
-    products=data || [];
+    products =
+      data || [];
 
   }
 
+
   renderProducts();
   renderAdminProducts();
+
 }
+
+
+/* =========================================================
+   RENDER PRODUCTS
+   ========================================================= */
 
 function renderProducts(){
 
-  const grid=
-    document.getElementById("productGrid");
+  const grid =
+    document.getElementById(
+      "productGrid"
+    );
 
-  const noProducts=
-    document.getElementById("noProducts");
+  const noProducts =
+    document.getElementById(
+      "noProducts"
+    );
 
-  const count=
-    document.getElementById("productCount");
+  const count =
+    document.getElementById(
+      "productCount"
+    );
 
-  if(!grid || !noProducts)return;
 
-  const search=(
-    document.getElementById("searchInput")?.value || ""
-  )
-    .trim()
-    .toLowerCase();
+  if(!grid || !noProducts){
+    return;
+  }
 
-  const filtered=products.filter(product=>{
 
-    const text=[
-      product.name,
-      product.category,
-      product.description
-    ]
-      .join(" ")
+  const search =
+    (
+      document.getElementById(
+        "searchInput"
+      )?.value || ""
+    )
+      .trim()
       .toLowerCase();
 
-    return text.includes(search);
-  });
+
+  const filtered =
+    products.filter(product=>{
+
+      const text = [
+
+        product.name,
+        product.category,
+        product.description
+
+      ]
+        .join(" ")
+        .toLowerCase();
+
+      return text.includes(search);
+
+    });
+
 
   if(count){
 
-    count.textContent=
+    count.textContent =
       `${filtered.length} ${
         currentLanguage==="ur"
         ? "پروڈکٹس"
@@ -1432,7 +2205,9 @@ function renderProducts(){
 
   }
 
+
   grid.innerHTML="";
+
 
   if(!filtered.length){
 
@@ -1441,77 +2216,139 @@ function renderProducts(){
     return;
   }
 
+
   noProducts.style.display="none";
+
 
   filtered.forEach(product=>{
 
-    const card=
-      document.createElement("div");
+    const card =
+      document.createElement(
+        "div"
+      );
 
-    card.className="product-card";
+    card.className =
+      "product-card";
 
-    const sizes=
+
+    const sizes =
       Array.isArray(product.sizes)
-      ? product.sizes.join(", ")
-      : "";
+      ? product.sizes
+          .map(x=>String(x).trim())
+          .filter(Boolean)
+      : [];
 
-    const colors=
+
+    const colors =
       Array.isArray(product.colors)
-      ? product.colors.join(", ")
-      : "";
+      ? product.colors
+          .map(x=>String(x).trim())
+          .filter(Boolean)
+      : [];
 
-    card.innerHTML=`
+
+    const sizeText =
+      sizes.join(", ");
+
+
+    const colorText =
+      colors.join(", ");
+
+
+    card.innerHTML = `
 
       <img
         class="product-image"
-        src="${escapeHtml(product.image_url || "")}"
-        alt="${escapeHtml(product.name || "")}"
+        src="${escapeHtml(
+          product.image_url || ""
+        )}"
+        alt="${escapeHtml(
+          product.name || ""
+        )}"
       >
+
 
       <div class="product-info">
 
         <div class="product-name">
-          ${escapeHtml(product.name || "")}
+          ${escapeHtml(
+            product.name || ""
+          )}
         </div>
+
 
         <div class="product-category">
-          ${escapeHtml(product.category || "")}
+          ${escapeHtml(
+            product.category || ""
+          )}
         </div>
+
 
         <div class="product-price">
-          Rs. ${Number(product.price || 0).toLocaleString()}
+          Rs.
+          ${Number(
+            product.price || 0
+          ).toLocaleString()}
         </div>
 
+
         ${
-          sizes
-          ? `<div style="font-size:13px;color:#777;margin-bottom:5px;">
-               ${
-                 currentLanguage==="ur"
-                 ? "سائز:"
-                 : "Sizes:"
-               }
-               ${escapeHtml(sizes)}
-             </div>`
+          sizeText
+          ? `
+            <div
+              style="
+                font-size:13px;
+                color:#777;
+                margin-bottom:5px;
+              "
+            >
+              ${
+                currentLanguage==="ur"
+                ? "سائز:"
+                : "Sizes:"
+              }
+
+              ${escapeHtml(
+                sizeText
+              )}
+            </div>
+          `
           : ""
         }
 
+
         ${
-          colors
-          ? `<div style="font-size:13px;color:#777;margin-bottom:12px;">
-               ${
-                 currentLanguage==="ur"
-                 ? "رنگ:"
-                 : "Colors:"
-               }
-               ${escapeHtml(colors)}
-             </div>`
+          colorText
+          ? `
+            <div
+              style="
+                font-size:13px;
+                color:#777;
+                margin-bottom:12px;
+              "
+            >
+              ${
+                currentLanguage==="ur"
+                ? "رنگ:"
+                : "Colors:"
+              }
+
+              ${escapeHtml(
+                colorText
+              )}
+            </div>
+          `
           : ""
         }
+
 
         <button
           type="button"
           class="product-btn"
-          onclick="addToCart('${product.id}')"
+          data-product-id="${escapeHtml(
+            product.id
+          )}"
+          data-action="cart"
         >
           ${
             currentLanguage==="ur"
@@ -1520,11 +2357,539 @@ function renderProducts(){
           }
         </button>
 
+
+        <button
+          type="button"
+          class="buy-now-btn"
+          data-product-id="${escapeHtml(
+            product.id
+          )}"
+          data-action="buy"
+        >
+          ${
+            currentLanguage==="ur"
+            ? "ابھی خریدیں"
+            : "Buy Now"
+          }
+        </button>
+
       </div>
+
     `;
 
+
+    const cartButton =
+      card.querySelector(
+        '[data-action="cart"]'
+      );
+
+
+    const buyButton =
+      card.querySelector(
+        '[data-action="buy"]'
+      );
+
+
+    if(cartButton){
+
+      cartButton.addEventListener(
+        "click",
+        ()=>{
+          openProductOptions(
+            product.id,
+            "cart"
+          );
+        }
+      );
+
+    }
+
+
+    if(buyButton){
+
+      buyButton.addEventListener(
+        "click",
+        ()=>{
+          openProductOptions(
+            product.id,
+            "buy"
+          );
+        }
+      );
+
+    }
+
+
     grid.appendChild(card);
+
   });
+
+}
+
+
+/* =========================================================
+   PRODUCT OPTIONS MODAL
+   ========================================================= */
+
+function openProductOptions(
+  id,
+  action="cart"
+){
+
+  const product =
+    products.find(
+      p=>
+        String(p.id)===
+        String(id)
+    );
+
+
+  if(!product){
+    return;
+  }
+
+
+  selectedProductForCart =
+    product;
+
+  selectedSize="";
+  selectedColor="";
+  selectionAction=action;
+
+
+  const name =
+    document.getElementById(
+      "optionProductName"
+    );
+
+  const image =
+    document.getElementById(
+      "optionProductImage"
+    );
+
+  const price =
+    document.getElementById(
+      "optionProductPrice"
+    );
+
+  const sizeBox =
+    document.getElementById(
+      "sizeSelection"
+    );
+
+  const colorBox =
+    document.getElementById(
+      "colorSelection"
+    );
+
+  const message =
+    document.getElementById(
+      "selectionMessage"
+    );
+
+  const confirmButton =
+    document.getElementById(
+      "confirmSelectionButton"
+    );
+
+
+  if(name){
+
+    name.textContent =
+      product.name ||
+      (
+        currentLanguage==="ur"
+        ? "پروڈکٹ"
+        : "Product"
+      );
+
+  }
+
+
+  if(image){
+
+    image.src =
+      product.image_url || "";
+
+    image.alt =
+      product.name || "";
+
+  }
+
+
+  if(price){
+
+    price.textContent =
+      `Rs. ${Number(
+        product.price || 0
+      ).toLocaleString()}`;
+
+  }
+
+
+  if(message){
+
+    message.textContent="";
+
+  }
+
+
+  const sizes =
+    Array.isArray(product.sizes)
+    ? product.sizes
+        .map(x=>String(x).trim())
+        .filter(Boolean)
+    : [];
+
+
+  const colors =
+    Array.isArray(product.colors)
+    ? product.colors
+        .map(x=>String(x).trim())
+        .filter(Boolean)
+    : [];
+
+
+  if(sizeBox){
+
+    sizeBox.innerHTML="";
+
+
+    if(sizes.length){
+
+      sizeBox.innerHTML = `
+
+        <span class="option-label">
+          ${t("selectSize")}
+        </span>
+
+        <div class="option-buttons">
+          ${sizes.map(
+            size=>`
+              <button
+                type="button"
+                class="option-btn size-option-btn"
+              >
+                ${escapeHtml(size)}
+              </button>
+            `
+          ).join("")}
+        </div>
+
+      `;
+
+
+      sizeBox
+        .querySelectorAll(
+          ".size-option-btn"
+        )
+        .forEach(button=>{
+
+          button.addEventListener(
+            "click",
+            ()=>{
+
+              selectSize(
+                button.textContent.trim(),
+                button
+              );
+
+            }
+          );
+
+        });
+
+    }
+
+  }
+
+
+  if(colorBox){
+
+    colorBox.innerHTML="";
+
+
+    if(colors.length){
+
+      colorBox.innerHTML = `
+
+        <span class="option-label">
+          ${t("selectColor")}
+        </span>
+
+        <div class="option-buttons">
+          ${colors.map(
+            color=>`
+              <button
+                type="button"
+                class="option-btn color-option-btn"
+              >
+                ${escapeHtml(color)}
+              </button>
+            `
+          ).join("")}
+        </div>
+
+      `;
+
+
+      colorBox
+        .querySelectorAll(
+          ".color-option-btn"
+        )
+        .forEach(button=>{
+
+          button.addEventListener(
+            "click",
+            ()=>{
+
+              selectColor(
+                button.textContent.trim(),
+                button
+              );
+
+            }
+          );
+
+        });
+
+    }
+
+  }
+
+
+  if(confirmButton){
+
+    confirmButton.textContent =
+      action==="buy"
+      ? t("buyNow")
+      : t("addProductToCart");
+
+  }
+
+
+  openModal(
+    "productOptionsModal"
+  );
+
+}
+
+
+/* =========================================================
+   SELECT SIZE
+   ========================================================= */
+
+function selectSize(
+  size,
+  button
+){
+
+  selectedSize =
+    String(size).trim();
+
+
+  const container =
+    document.getElementById(
+      "sizeSelection"
+    );
+
+
+  if(container){
+
+    container
+      .querySelectorAll(
+        ".size-option-btn"
+      )
+      .forEach(btn=>{
+        btn.classList.remove(
+          "selected"
+        );
+      });
+
+  }
+
+
+  if(button){
+
+    button.classList.add(
+      "selected"
+    );
+
+  }
+
+
+  const message =
+    document.getElementById(
+      "selectionMessage"
+    );
+
+  if(message){
+
+    message.textContent="";
+
+  }
+
+}
+
+
+/* =========================================================
+   SELECT COLOR
+   ========================================================= */
+
+function selectColor(
+  color,
+  button
+){
+
+  selectedColor =
+    String(color).trim();
+
+
+  const container =
+    document.getElementById(
+      "colorSelection"
+    );
+
+
+  if(container){
+
+    container
+      .querySelectorAll(
+        ".color-option-btn"
+      )
+      .forEach(btn=>{
+        btn.classList.remove(
+          "selected"
+        );
+      });
+
+  }
+
+
+  if(button){
+
+    button.classList.add(
+      "selected"
+    );
+
+  }
+
+
+  const message =
+    document.getElementById(
+      "selectionMessage"
+    );
+
+  if(message){
+
+    message.textContent="";
+
+  }
+
+}
+
+
+/* =========================================================
+   CONFIRM PRODUCT SELECTION
+   ========================================================= */
+
+function confirmProductSelection(){
+
+  if(!selectedProductForCart){
+    return;
+  }
+
+
+  const product =
+    selectedProductForCart;
+
+
+  const sizes =
+    Array.isArray(product.sizes)
+    ? product.sizes
+        .map(x=>String(x).trim())
+        .filter(Boolean)
+    : [];
+
+
+  const colors =
+    Array.isArray(product.colors)
+    ? product.colors
+        .map(x=>String(x).trim())
+        .filter(Boolean)
+    : [];
+
+
+  if(
+    sizes.length &&
+    !selectedSize
+  ){
+
+    const message =
+      document.getElementById(
+        "selectionMessage"
+      );
+
+    if(message){
+
+      message.textContent =
+        t("selectRequired");
+
+    }
+
+    return;
+  }
+
+
+  if(
+    colors.length &&
+    !selectedColor
+  ){
+
+    const message =
+      document.getElementById(
+        "selectionMessage"
+      );
+
+    if(message){
+
+      message.textContent =
+        t("selectRequired");
+
+    }
+
+    return;
+  }
+
+
+  addToCart(
+    product.id,
+    selectedSize,
+    selectedColor
+  );
+
+
+  closeModal(
+    "productOptionsModal"
+  );
+
+
+  if(selectionAction==="buy"){
+
+    setTimeout(
+      ()=>{
+        openCheckout();
+      },
+      100
+    );
+
+  }
+
+
+  selectedProductForCart=null;
+  selectedSize="";
+  selectedColor="";
+
 }
 
 
@@ -1532,19 +2897,44 @@ function renderProducts(){
    CART
    ========================================================= */
 
-function addToCart(id){
+function addToCart(
+  id,
+  size="",
+  color=""
+){
 
-  const product=
+  const product =
     products.find(
-      p=>String(p.id)===String(id)
+      p=>
+        String(p.id)===
+        String(id)
     );
 
-  if(!product)return;
 
-  const existing=
+  if(!product){
+    return;
+  }
+
+
+  const cleanSize =
+    String(size || "").trim();
+
+
+  const cleanColor =
+    String(color || "").trim();
+
+
+  const existing =
     cart.find(
-      item=>String(item.id)===String(id)
+      item=>
+        String(item.id)===
+        String(id) &&
+        String(item.size || "")===
+        cleanSize &&
+        String(item.color || "")===
+        cleanColor
     );
+
 
   if(existing){
 
@@ -1553,18 +2943,29 @@ function addToCart(id){
   }else{
 
     cart.push({
+
       id:product.id,
       name:product.name,
       price:Number(product.price)||0,
       image_url:product.image_url,
+      size:cleanSize,
+      color:cleanColor,
       qty:1
+
     });
 
   }
 
+
   saveCart();
   renderCart();
+
 }
+
+
+/* =========================================================
+   SAVE CART
+   ========================================================= */
 
 function saveCart(){
 
@@ -1572,16 +2973,50 @@ function saveCart(){
     "kifalCart",
     JSON.stringify(cart)
   );
+
 }
+
+
+/* =========================================================
+   LOAD CART
+   ========================================================= */
 
 function loadCart(){
 
   try{
 
-    cart=
+    cart =
       JSON.parse(
-        localStorage.getItem("kifalCart")
+        localStorage.getItem(
+          "kifalCart"
+        )
       ) || [];
+
+
+    if(!Array.isArray(cart)){
+      cart=[];
+    }
+
+
+    cart =
+      cart.map(item=>({
+
+        ...item,
+
+        size:
+          item.size || "",
+
+        color:
+          item.color || "",
+
+        qty:
+          Number(item.qty) || 1,
+
+        price:
+          Number(item.price) || 0
+
+      }));
+
 
   }catch{
 
@@ -1589,75 +3024,138 @@ function loadCart(){
 
   }
 
+
   renderCart();
+
 }
 
-function changeQty(id,amount){
 
-  const item=
+/* =========================================================
+   CHANGE QTY
+   ========================================================= */
+
+function changeQty(
+  id,
+  amount,
+  size="",
+  color=""
+){
+
+  const item =
     cart.find(
-      i=>String(i.id)===String(id)
+      i=>
+        String(i.id)===
+        String(id) &&
+        String(i.size || "")===
+        String(size || "") &&
+        String(i.color || "")===
+        String(color || "")
     );
 
-  if(!item)return;
 
-  item.qty+=amount;
+  if(!item){
+    return;
+  }
+
+
+  item.qty += amount;
+
 
   if(item.qty<=0){
 
-    cart=
+    cart =
       cart.filter(
-        i=>String(i.id)!==String(id)
+        i=>
+          !(
+            String(i.id)===
+            String(id) &&
+            String(i.size || "")===
+            String(size || "") &&
+            String(i.color || "")===
+            String(color || "")
+          )
       );
 
   }
 
+
   saveCart();
   renderCart();
+
 }
+
+
+/* =========================================================
+   CART TOTAL
+   ========================================================= */
 
 function cartTotal(){
 
   return cart.reduce(
     (sum,item)=>
-      sum+(item.price*item.qty),
+      sum +
+      (
+        Number(item.price || 0) *
+        Number(item.qty || 0)
+      ),
     0
   );
+
 }
+
+
+/* =========================================================
+   RENDER CART
+   ========================================================= */
 
 function renderCart(){
 
-  const box=
-    document.getElementById("cartItems");
+  const box =
+    document.getElementById(
+      "cartItems"
+    );
 
-  const count=
-    document.getElementById("cartCount");
+  const count =
+    document.getElementById(
+      "cartCount"
+    );
 
-  const total=
-    document.getElementById("cartTotal");
+  const total =
+    document.getElementById(
+      "cartTotal"
+    );
 
-  if(!box)return;
+
+  if(!box){
+    return;
+  }
+
 
   if(count){
 
-    count.textContent=
+    count.textContent =
       cart.reduce(
-        (sum,item)=>sum+item.qty,
+        (sum,item)=>
+          sum +
+          Number(item.qty || 0),
         0
       );
 
   }
 
+
   if(total){
 
-    total.textContent=
-      cartTotal().toLocaleString();
+    total.textContent =
+      cartTotal()
+        .toLocaleString();
 
   }
 
+
   if(!cart.length){
 
-    box.innerHTML=`
+    box.innerHTML = `
 
       <div class="empty">
 
@@ -1674,48 +3172,116 @@ function renderCart(){
     return;
   }
 
+
   box.innerHTML="";
+
 
   cart.forEach(item=>{
 
-    const div=
-      document.createElement("div");
+    const div =
+      document.createElement(
+        "div"
+      );
 
-    div.className="cart-item";
+    div.className =
+      "cart-item";
 
-    div.innerHTML=`
+
+    let optionsHtml="";
+
+
+    if(item.size){
+
+      optionsHtml += `
+        <div>
+          ${
+            currentLanguage==="ur"
+            ? "سائز:"
+            : "Size:"
+          }
+          ${escapeHtml(item.size)}
+        </div>
+      `;
+
+    }
+
+
+    if(item.color){
+
+      optionsHtml += `
+        <div>
+          ${
+            currentLanguage==="ur"
+            ? "رنگ:"
+            : "Color:"
+          }
+          ${escapeHtml(item.color)}
+        </div>
+      `;
+
+    }
+
+
+    div.innerHTML = `
 
       <img
-        src="${escapeHtml(item.image_url || "")}"
+        src="${escapeHtml(
+          item.image_url || ""
+        )}"
         alt=""
       >
+
 
       <div class="cart-item-info">
 
         <strong>
-          ${escapeHtml(item.name)}
+          ${escapeHtml(
+            item.name || ""
+          )}
         </strong>
 
+
         <div style="margin-top:4px;">
-          Rs. ${item.price.toLocaleString()}
+          Rs.
+          ${Number(
+            item.price || 0
+          ).toLocaleString()}
         </div>
+
+
+        ${
+          optionsHtml
+          ? `
+            <div class="cart-options">
+              ${optionsHtml}
+            </div>
+          `
+          : ""
+        }
+
 
         <div class="qty-row">
 
           <button
             type="button"
             class="qty-btn"
-            onclick="changeQty('${item.id}',-1)"
+            data-qty-action="minus"
           >
             −
           </button>
 
-          <span>${item.qty}</span>
+
+          <span>
+            ${Number(
+              item.qty || 0
+            )}
+          </span>
+
 
           <button
             type="button"
             class="qty-btn"
-            onclick="changeQty('${item.id}',1)"
+            data-qty-action="plus"
           >
             +
           </button>
@@ -1723,24 +3289,98 @@ function renderCart(){
         </div>
 
       </div>
+
     `;
 
+
+    const minusButton =
+      div.querySelector(
+        '[data-qty-action="minus"]'
+      );
+
+
+    const plusButton =
+      div.querySelector(
+        '[data-qty-action="plus"]'
+      );
+
+
+    if(minusButton){
+
+      minusButton.addEventListener(
+        "click",
+        ()=>{
+
+          changeQty(
+            item.id,
+            -1,
+            item.size || "",
+            item.color || ""
+          );
+
+        }
+      );
+
+    }
+
+
+    if(plusButton){
+
+      plusButton.addEventListener(
+        "click",
+        ()=>{
+
+          changeQty(
+            item.id,
+            1,
+            item.size || "",
+            item.color || ""
+          );
+
+        }
+      );
+
+    }
+
+
     box.appendChild(div);
+
   });
+
 }
+
+
+/* =========================================================
+   OPEN CART
+   ========================================================= */
 
 function openCart(){
 
   document
-    .getElementById("cartDrawer")
-    ?.classList.add("open");
+    .getElementById(
+      "cartDrawer"
+    )
+    ?.classList.add(
+      "open"
+    );
+
 }
+
+
+/* =========================================================
+   CLOSE CART
+   ========================================================= */
 
 function closeCart(){
 
   document
-    .getElementById("cartDrawer")
-    ?.classList.remove("open");
+    .getElementById(
+      "cartDrawer"
+    )
+    ?.classList.remove(
+      "open"
+    );
+
 }
 
 
@@ -1761,121 +3401,263 @@ function openCheckout(){
     return;
   }
 
+
   closeCart();
 
-  document.getElementById(
-    "checkoutForm"
-  ).style.display="block";
 
-  document.getElementById(
-    "orderSuccess"
-  ).style.display="none";
+  const checkoutForm =
+    document.getElementById(
+      "checkoutForm"
+    );
 
-  document.getElementById(
-    "checkoutTotal"
-  ).textContent=
-    cartTotal().toLocaleString();
+  const orderSuccess =
+    document.getElementById(
+      "orderSuccess"
+    );
 
-  const summary=
+
+  if(checkoutForm){
+
+    checkoutForm.style.display =
+      "block";
+
+  }
+
+
+  if(orderSuccess){
+
+    orderSuccess.style.display =
+      "none";
+
+  }
+
+
+  const checkoutTotal =
+    document.getElementById(
+      "checkoutTotal"
+    );
+
+
+  if(checkoutTotal){
+
+    checkoutTotal.textContent =
+      cartTotal()
+        .toLocaleString();
+
+  }
+
+
+  const summary =
     document.getElementById(
       "checkoutSummary"
     );
 
+
+  if(!summary){
+    return;
+  }
+
+
   summary.innerHTML="";
+
 
   cart.forEach(item=>{
 
-    const line=
-      document.createElement("div");
+    const line =
+      document.createElement(
+        "div"
+      );
 
-    line.className="summary-line";
+    line.className =
+      "summary-line";
 
-    line.innerHTML=`
+
+    let optionsHtml="";
+
+
+    if(item.size){
+
+      optionsHtml += `
+        <div>
+          ${
+            currentLanguage==="ur"
+            ? "سائز:"
+            : "Size:"
+          }
+          ${escapeHtml(item.size)}
+        </div>
+      `;
+
+    }
+
+
+    if(item.color){
+
+      optionsHtml += `
+        <div>
+          ${
+            currentLanguage==="ur"
+            ? "رنگ:"
+            : "Color:"
+          }
+          ${escapeHtml(item.color)}
+        </div>
+      `;
+
+    }
+
+
+    line.innerHTML = `
 
       <span>
-        ${escapeHtml(item.name)}
-        × ${item.qty}
+
+        <strong>
+          ${escapeHtml(
+            item.name || ""
+          )}
+        </strong>
+
+        × ${Number(
+          item.qty || 0
+        )}
+
+        ${
+          optionsHtml
+          ? `
+            <div class="summary-options">
+              ${optionsHtml}
+            </div>
+          `
+          : ""
+        }
+
       </span>
+
 
       <span>
         Rs.
-        ${(item.price*item.qty).toLocaleString()}
+        ${(
+          Number(item.price || 0) *
+          Number(item.qty || 0)
+        ).toLocaleString()}
       </span>
 
     `;
 
+
     summary.appendChild(line);
+
   });
 
-  openModal("checkoutModal");
+
+  openModal(
+    "checkoutModal"
+  );
+
 }
+
+
+/* =========================================================
+   PLACE ORDER
+   ========================================================= */
 
 async function placeOrder(){
 
-  if(!cart.length)return;
+  if(!cart.length){
+    return;
+  }
 
-  const name=
+
+  const name =
     document.getElementById(
       "orderName"
     ).value.trim();
 
-  const phone=
+
+  const phone =
     document.getElementById(
       "orderPhone"
     ).value.trim();
 
-  const city=
+
+  const city =
     document.getElementById(
       "orderCity"
     ).value.trim();
 
-  const address=
+
+  const address =
     document.getElementById(
       "orderAddress"
     ).value.trim();
 
-  const message=
+
+  const message =
     document.getElementById(
       "orderMessage"
     );
 
-  if(!name || !phone || !city || !address){
 
-    message.style.color="#b00020";
+  if(
+    !name ||
+    !phone ||
+    !city ||
+    !address
+  ){
 
-    message.textContent=
+    message.style.color =
+      "#b00020";
+
+
+    message.textContent =
       currentLanguage==="ur"
       ? "براہ کرم تمام معلومات مکمل کریں۔"
       : "Please complete all information.";
 
+
     return;
   }
 
+
   if(!supabaseClient){
 
-    message.style.color="#b00020";
+    message.style.color =
+      "#b00020";
 
-    message.textContent=
+
+    message.textContent =
       currentLanguage==="ur"
       ? "ڈیٹا بیس کنکشن دستیاب نہیں۔"
       : "Database connection is not available.";
 
+
     return;
   }
 
+
   message.textContent="";
 
-  const orderItems=
+
+  const paymentMethod =
+    document.querySelector(
+      'input[name="paymentMethod"]:checked'
+    )?.value || "cod";
+
+
+  const orderItems =
     cart.map(item=>({
 
       id:item.id,
       name:item.name,
-      price:item.price,
-      qty:item.qty
+      price:Number(item.price)||0,
+      qty:Number(item.qty)||0,
+      size:item.size || "",
+      color:item.color || ""
 
     }));
 
-  const {error}=
+
+  const {error} =
     await supabaseClient
       .from("orders")
       .insert([{
@@ -1890,32 +3672,43 @@ async function placeOrder(){
 
       }]);
 
+
   if(error){
 
     console.error(error);
 
-    message.style.color="#b00020";
 
-    message.textContent=
+    message.style.color =
+      "#b00020";
+
+
+    message.textContent =
       currentLanguage==="ur"
       ? "آرڈر مکمل نہیں ہو سکا۔ دوبارہ کوشش کریں۔"
       : "Order could not be placed. Please try again.";
 
+
     return;
   }
+
 
   cart=[];
 
   saveCart();
   renderCart();
 
+
   document.getElementById(
     "checkoutForm"
-  ).style.display="none";
+  ).style.display =
+    "none";
+
 
   document.getElementById(
     "orderSuccess"
-  ).style.display="block";
+  ).style.display =
+    "block";
+
 }
 
 
@@ -1925,108 +3718,170 @@ async function placeOrder(){
 
 async function getCurrentUser(){
 
-  if(!supabaseClient)return null;
+  if(!supabaseClient){
+    return null;
+  }
 
-  const {data,error}=
+
+  const {
+    data,
+    error
+  } =
     await supabaseClient.auth.getUser();
 
-  if(error)return null;
+
+  if(error){
+    return null;
+  }
+
 
   return data?.user || null;
+
 }
+
+
+/* =========================================================
+   CHECK ADMIN
+   ========================================================= */
 
 async function checkAdmin(){
 
-  const user=
+  const user =
     await getCurrentUser();
 
-  if(!user)return false;
+
+  if(!user){
+    return false;
+  }
+
 
   return Boolean(
+
     user.email &&
+
     ADMIN_EMAILS.some(
       email=>
         user.email.toLowerCase()===
         email.toLowerCase()
     )
+
   );
+
 }
+
+
+/* =========================================================
+   UPDATE ADMIN BUTTON
+   ========================================================= */
 
 async function updateAdminButton(){
 
-  const allowed=
+  const allowed =
     await checkAdmin();
 
-  const button=
-    document.getElementById("adminButton");
+
+  const button =
+    document.getElementById(
+      "adminButton"
+    );
+
 
   if(button){
 
-    button.style.display=
-      allowed ? "block" : "none";
+    button.style.display =
+      allowed
+      ? "block"
+      : "none";
 
   }
+
 }
+
+
+/* =========================================================
+   LOGIN ADMIN
+   ========================================================= */
 
 async function loginAdmin(){
 
-  const email=
+  const email =
     document.getElementById(
       "loginEmail"
-    ).value.trim().toLowerCase();
+    ).value
+      .trim()
+      .toLowerCase();
 
-  const password=
+
+  const password =
     document.getElementById(
       "loginPassword"
     ).value;
 
-  const message=
+
+  const message =
     document.getElementById(
       "loginMessage"
     );
 
-  if(!email || !password){
 
-    message.style.color="#b00020";
+  if(
+    !email ||
+    !password
+  ){
 
-    message.textContent=
+    message.style.color =
+      "#b00020";
+
+
+    message.textContent =
       currentLanguage==="ur"
       ? "ای میل اور پاس ورڈ درج کریں۔"
       : "Please enter email and password.";
 
+
     return;
   }
+
 
   if(
     !ADMIN_EMAILS.some(
       adminEmail=>
-        email===adminEmail.toLowerCase()
+        email===
+        adminEmail.toLowerCase()
     )
   ){
 
-    message.style.color="#b00020";
+    message.style.color =
+      "#b00020";
 
-    message.textContent=
+
+    message.textContent =
       currentLanguage==="ur"
       ? "یہ ایڈمن اکاؤنٹ نہیں ہے۔"
       : "This is not the store admin account.";
 
+
     return;
   }
 
+
   if(!supabaseClient){
 
-    message.style.color="#b00020";
+    message.style.color =
+      "#b00020";
 
-    message.textContent=
+
+    message.textContent =
       currentLanguage==="ur"
       ? "Supabase کنکشن دستیاب نہیں۔"
       : "Supabase connection is not available.";
 
+
     return;
   }
 
-  const {error}=
+
+  const {error} =
     await supabaseClient.auth.signInWithPassword({
 
       email,
@@ -2034,42 +3889,71 @@ async function loginAdmin(){
 
     });
 
+
   if(error){
 
-    message.style.color="#b00020";
+    message.style.color =
+      "#b00020";
 
-    message.textContent=
+
+    message.textContent =
       error.message;
+
 
     return;
   }
 
+
   message.textContent="";
 
-  closeModal("loginModal");
+
+  closeModal(
+    "loginModal"
+  );
+
 
   await updateAdminButton();
 
+
   openAdmin();
+
 }
+
+
+/* =========================================================
+   LOGOUT ADMIN
+   ========================================================= */
 
 async function logoutAdmin(){
 
   if(supabaseClient){
 
-    await supabaseClient.auth.signOut();
+    await supabaseClient
+      .auth
+      .signOut();
 
   }
 
-  closeModal("adminModal");
+
+  closeModal(
+    "adminModal"
+  );
+
 
   await updateAdminButton();
+
 }
+
+
+/* =========================================================
+   OPEN ADMIN
+   ========================================================= */
 
 async function openAdmin(){
 
-  const allowed=
+  const allowed =
     await checkAdmin();
+
 
   if(!allowed){
 
@@ -2078,9 +3962,324 @@ async function openAdmin(){
     return;
   }
 
+
   await renderAdminProducts();
 
-  openModal("adminModal");
+
+  openModal(
+    "adminModal"
+  );
+
+
+  initializeAdminOptionBoxes();
+
+}
+
+
+/* =========================================================
+   DYNAMIC SIZE BOX
+   ========================================================= */
+
+function addSizeBox(
+  value=""
+){
+
+  const container =
+    document.getElementById(
+      "sizesContainer"
+    );
+
+
+  if(!container){
+    return;
+  }
+
+
+  const row =
+    document.createElement(
+      "div"
+    );
+
+  row.className =
+    "dynamic-option-box";
+
+
+  row.innerHTML = `
+
+    <input
+      class="input size-input"
+      type="text"
+      placeholder="Size"
+      value="${escapeHtml(value)}"
+    >
+
+
+    <button
+      type="button"
+      class="remove-option"
+      title="Remove"
+    >
+      ×
+    </button>
+
+  `;
+
+
+  const removeButton =
+    row.querySelector(
+      ".remove-option"
+    );
+
+
+  if(removeButton){
+
+    removeButton.addEventListener(
+      "click",
+      ()=>{
+
+        row.remove();
+
+        ensureMinimumAdminOptionBoxes();
+
+      }
+    );
+
+  }
+
+
+  container.appendChild(row);
+
+}
+
+
+/* =========================================================
+   DYNAMIC COLOR BOX
+   ========================================================= */
+
+function addColorBox(
+  value=""
+){
+
+  const container =
+    document.getElementById(
+      "colorsContainer"
+    );
+
+
+  if(!container){
+    return;
+  }
+
+
+  const row =
+    document.createElement(
+      "div"
+    );
+
+  row.className =
+    "dynamic-option-box";
+
+
+  row.innerHTML = `
+
+    <input
+      class="input color-input"
+      type="text"
+      placeholder="Color"
+      value="${escapeHtml(value)}"
+    >
+
+
+    <button
+      type="button"
+      class="remove-option"
+      title="Remove"
+    >
+      ×
+    </button>
+
+  `;
+
+
+  const removeButton =
+    row.querySelector(
+      ".remove-option"
+    );
+
+
+  if(removeButton){
+
+    removeButton.addEventListener(
+      "click",
+      ()=>{
+
+        row.remove();
+
+        ensureMinimumAdminOptionBoxes();
+
+      }
+    );
+
+  }
+
+
+  container.appendChild(row);
+
+}
+
+
+/* =========================================================
+   ADMIN SIZE VALUES
+   ========================================================= */
+
+function getAdminSizes(){
+
+  return [
+    ...document.querySelectorAll(
+      ".size-input"
+    )
+  ]
+    .map(
+      input=>
+        input.value.trim()
+    )
+    .filter(Boolean);
+
+}
+
+
+/* =========================================================
+   ADMIN COLOR VALUES
+   ========================================================= */
+
+function getAdminColors(){
+
+  return [
+    ...document.querySelectorAll(
+      ".color-input"
+    )
+  ]
+    .map(
+      input=>
+        input.value.trim()
+    )
+    .filter(Boolean);
+
+}
+
+
+/* =========================================================
+   RESET ADMIN OPTION BOXES
+   ========================================================= */
+
+function resetAdminOptionBoxes(){
+
+  const sizesContainer =
+    document.getElementById(
+      "sizesContainer"
+    );
+
+  const colorsContainer =
+    document.getElementById(
+      "colorsContainer"
+    );
+
+
+  if(sizesContainer){
+
+    sizesContainer.innerHTML="";
+
+  }
+
+
+  if(colorsContainer){
+
+    colorsContainer.innerHTML="";
+
+  }
+
+
+  addSizeBox();
+  addColorBox();
+
+}
+
+
+/* =========================================================
+   INITIALIZE ADMIN OPTION BOXES
+   ========================================================= */
+
+function initializeAdminOptionBoxes(){
+
+  const sizesContainer =
+    document.getElementById(
+      "sizesContainer"
+    );
+
+  const colorsContainer =
+    document.getElementById(
+      "colorsContainer"
+    );
+
+
+  if(
+    sizesContainer &&
+    !sizesContainer.children.length
+  ){
+
+    addSizeBox();
+
+  }
+
+
+  if(
+    colorsContainer &&
+    !colorsContainer.children.length
+  ){
+
+    addColorBox();
+
+  }
+
+}
+
+
+/* =========================================================
+   ENSURE MINIMUM BOXES
+   ========================================================= */
+
+function ensureMinimumAdminOptionBoxes(){
+
+  const sizesContainer =
+    document.getElementById(
+      "sizesContainer"
+    );
+
+  const colorsContainer =
+    document.getElementById(
+      "colorsContainer"
+    );
+
+
+  if(
+    sizesContainer &&
+    !sizesContainer.children.length
+  ){
+
+    addSizeBox();
+
+  }
+
+
+  if(
+    colorsContainer &&
+    !colorsContainer.children.length
+  ){
+
+    addColorBox();
+
+  }
+
 }
 
 
@@ -2090,8 +4289,9 @@ async function openAdmin(){
 
 async function addProduct(){
 
-  const allowed=
+  const allowed =
     await checkAdmin();
+
 
   if(!allowed){
 
@@ -2104,48 +4304,46 @@ async function addProduct(){
     return;
   }
 
-  const name=
+
+  const name =
     document.getElementById(
       "productName"
     ).value.trim();
 
-  const category=
+
+  const category =
     document.getElementById(
       "productCategory"
     ).value.trim();
 
-  const price=
+
+  const price =
     Number(
       document.getElementById(
         "productPrice"
       ).value
     );
 
-  const description=
+
+  const description =
     document.getElementById(
       "productDescription"
     ).value.trim();
 
-  const sizes=
-    document.getElementById(
-      "productSizes"
-    ).value
-      .split(",")
-      .map(x=>x.trim())
-      .filter(Boolean);
 
-  const colors=
-    document.getElementById(
-      "productColors"
-    ).value
-      .split(",")
-      .map(x=>x.trim())
-      .filter(Boolean);
+  const sizes =
+    getAdminSizes();
 
-  const imageFile=
+
+  const colors =
+    getAdminColors();
+
+
+  const imageFile =
     document.getElementById(
       "productImage"
     ).files[0];
+
 
   if(
     !name ||
@@ -2163,17 +4361,22 @@ async function addProduct(){
     return;
   }
 
-  const extension=
+
+  const extension =
     imageFile.name
       .split(".")
       .pop();
 
-  const fileName=
+
+  const fileName =
     `${Date.now()}-${Math.random()
       .toString(36)
       .slice(2)}.${extension}`;
 
-  const {error:uploadError}=
+
+  const {
+    error:uploadError
+  } =
     await supabaseClient
       .storage
       .from("products")
@@ -2182,25 +4385,39 @@ async function addProduct(){
         imageFile
       );
 
+
   if(uploadError){
 
-    console.error(uploadError);
+    console.error(
+      uploadError
+    );
 
-    alert(uploadError.message);
+
+    alert(
+      uploadError.message
+    );
+
 
     return;
   }
 
-  const {data:urlData}=
+
+  const {
+    data:urlData
+  } =
     supabaseClient
       .storage
       .from("products")
-      .getPublicUrl(fileName);
+      .getPublicUrl(
+        fileName
+      );
 
-  const imageUrl=
+
+  const imageUrl =
     urlData.publicUrl;
 
-  const {error}=
+
+  const {error} =
     await supabaseClient
       .from("products")
       .insert([{
@@ -2215,42 +4432,48 @@ async function addProduct(){
 
       }]);
 
+
   if(error){
 
     console.error(error);
 
-    alert(error.message);
+
+    alert(
+      error.message
+    );
+
 
     return;
   }
+
 
   document.getElementById(
     "productName"
   ).value="";
 
+
   document.getElementById(
     "productCategory"
   ).value="";
+
 
   document.getElementById(
     "productPrice"
   ).value="";
 
+
   document.getElementById(
     "productDescription"
   ).value="";
 
-  document.getElementById(
-    "productSizes"
-  ).value="";
-
-  document.getElementById(
-    "productColors"
-  ).value="";
 
   document.getElementById(
     "productImage"
   ).value="";
+
+
+  resetAdminOptionBoxes();
+
 
   alert(
     currentLanguage==="ur"
@@ -2258,7 +4481,9 @@ async function addProduct(){
     : "Product added successfully."
   );
 
+
   await loadProducts();
+
 }
 
 
@@ -2268,15 +4493,20 @@ async function addProduct(){
 
 async function renderAdminProducts(){
 
-  const box=
+  const box =
     document.getElementById(
       "adminProducts"
     );
 
-  if(!box)return;
 
-  const allowed=
+  if(!box){
+    return;
+  }
+
+
+  const allowed =
     await checkAdmin();
+
 
   if(!allowed){
 
@@ -2285,11 +4515,13 @@ async function renderAdminProducts(){
     return;
   }
 
+
   box.innerHTML="";
+
 
   if(!products.length){
 
-    box.innerHTML=`
+    box.innerHTML = `
 
       <div class="empty">
 
@@ -2306,27 +4538,44 @@ async function renderAdminProducts(){
     return;
   }
 
+
   products.forEach(product=>{
 
-    const row=
-      document.createElement("div");
+    const row =
+      document.createElement(
+        "div"
+      );
 
-    row.className="admin-product";
 
-    row.innerHTML=`
+    row.className =
+      "admin-product";
+
+
+    row.innerHTML = `
 
       <img
-        src="${escapeHtml(product.image_url || "")}"
+        src="${escapeHtml(
+          product.image_url || ""
+        )}"
         alt=""
       >
+
 
       <div class="admin-product-info">
 
         <strong>
-          ${escapeHtml(product.name || "")}
+          ${escapeHtml(
+            product.name || ""
+          )}
         </strong>
 
-        <div style="font-size:13px;color:#777;">
+
+        <div
+          style="
+            font-size:13px;
+            color:#777;
+          "
+        >
           Rs.
           ${Number(
             product.price || 0
@@ -2335,10 +4584,10 @@ async function renderAdminProducts(){
 
       </div>
 
+
       <button
         type="button"
         class="delete-btn"
-        onclick="deleteProduct('${product.id}')"
       >
         ${
           currentLanguage==="ur"
@@ -2349,53 +4598,117 @@ async function renderAdminProducts(){
 
     `;
 
+
+    const deleteButton =
+      row.querySelector(
+        ".delete-btn"
+      );
+
+
+    if(deleteButton){
+
+      deleteButton.addEventListener(
+        "click",
+        ()=>{
+
+          deleteProduct(
+            product.id
+          );
+
+        }
+      );
+
+    }
+
+
     box.appendChild(row);
+
   });
-}
 
-async function deleteProduct(id){
-
-  const allowed=
-    await checkAdmin();
-
-  if(!allowed)return;
-
-  const confirmText=
-    currentLanguage==="ur"
-    ? "کیا آپ واقعی یہ پروڈکٹ حذف کرنا چاہتے ہیں؟"
-    : "Are you sure you want to delete this product?";
-
-  if(!confirm(confirmText))return;
-
-  const {error}=
-    await supabaseClient
-      .from("products")
-      .delete()
-      .eq("id",id);
-
-  if(error){
-
-    alert(error.message);
-
-    return;
-  }
-
-  await loadProducts();
 }
 
 
 /* =========================================================
-   HELPERS
+   DELETE PRODUCT
+   ========================================================= */
+
+async function deleteProduct(id){
+
+  const allowed =
+    await checkAdmin();
+
+
+  if(!allowed){
+    return;
+  }
+
+
+  const confirmText =
+    currentLanguage==="ur"
+    ? "کیا آپ واقعی یہ پروڈکٹ حذف کرنا چاہتے ہیں؟"
+    : "Are you sure you want to delete this product?";
+
+
+  if(!confirm(confirmText)){
+    return;
+  }
+
+
+  const {error} =
+    await supabaseClient
+      .from("products")
+      .delete()
+      .eq(
+        "id",
+        id
+      );
+
+
+  if(error){
+
+    alert(
+      error.message
+    );
+
+    return;
+  }
+
+
+  await loadProducts();
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
    ========================================================= */
 
 function escapeHtml(value){
 
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+  return String(
+    value ?? ""
+  )
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
 }
 
 
@@ -2422,12 +4735,18 @@ if(supabaseClient){
    ========================================================= */
 
 loadCart();
-setLanguage(currentLanguage);
+
+setLanguage(
+  currentLanguage
+);
+
 loadProducts();
+
 updateAdminButton();
+
+initializeAdminOptionBoxes();
 
 </script>
 
 </body>
 </html>
-```
